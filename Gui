@@ -3,7 +3,7 @@
 
 -- Instances:
 
-local ScreenGui = Instance.new("ScreenGui")
+local Gui = Instance.new("ScreenGui")
 local MainFrame = Instance.new("Frame")
 local forward1 = Instance.new("ImageButton")
 local TextLabel = Instance.new("TextLabel")
@@ -38,6 +38,7 @@ local Spawn = Instance.new("TextButton")
 local LeaderBoard = Instance.new("TextButton")
 local godmode = Instance.new("TextButton")
 local settings = Instance.new("TextButton")
+local settings_2 = Instance.new("TextButton")
 local settingsF = Instance.new("Frame")
 local keybindbox = Instance.new("TextBox")
 local availablekeybinds = Instance.new("TextButton")
@@ -45,11 +46,12 @@ local keybindList = Instance.new("TextLabel")
 
 --Properties:
 
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-ScreenGui.ResetOnSpawn = false
+Gui.Name = "Gui"
+Gui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+Gui.ResetOnSpawn = false
 
 MainFrame.Name = "MainFrame"
-MainFrame.Parent = ScreenGui
+MainFrame.Parent = Gui
 MainFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 MainFrame.BorderColor3 = Color3.fromRGB(255, 255, 255)
 MainFrame.BorderSizePixel = 4
@@ -271,7 +273,7 @@ AntiChatLogger.TextSize = 14.000
 AntiChatLogger.TextWrapped = true
 
 togglegui.Name = "toggle gui"
-togglegui.Parent = ScreenGui
+togglegui.Parent = Gui
 togglegui.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 togglegui.Position = UDim2.new(0.0247093029, 0, 0.470989674, 0)
 togglegui.Size = UDim2.new(0, 36, 0, 50)
@@ -281,7 +283,7 @@ togglegui.ScaleType = Enum.ScaleType.Slice
 togglegui.SliceScale = 0.000
 
 MainFrame2.Name = "MainFrame2"
-MainFrame2.Parent = ScreenGui
+MainFrame2.Parent = Gui
 MainFrame2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 MainFrame2.BorderColor3 = Color3.fromRGB(255, 255, 255)
 MainFrame2.BorderSizePixel = 4
@@ -367,7 +369,7 @@ TrainFist.TextColor3 = Color3.fromRGB(0, 255, 255)
 TrainFist.TextSize = 14.000
 
 MainFrame3.Name = "MainFrame3"
-MainFrame3.Parent = ScreenGui
+MainFrame3.Parent = Gui
 MainFrame3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 MainFrame3.BorderColor3 = Color3.fromRGB(255, 255, 255)
 MainFrame3.BorderSizePixel = 4
@@ -437,15 +439,27 @@ settings.Parent = MainFrame3
 settings.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 settings.BorderColor3 = Color3.fromRGB(74, 74, 74)
 settings.BorderSizePixel = 7
-settings.Position = UDim2.new(0.40232861, 0, 0.758029997, 0)
+settings.Position = UDim2.new(0.130659789, 0, 0.417558908, 0)
 settings.Size = UDim2.new(0, 181, 0, 50)
 settings.Font = Enum.Font.SciFi
 settings.Text = "Settings"
 settings.TextColor3 = Color3.fromRGB(0, 255, 255)
 settings.TextSize = 14.000
 
+settings_2.Name = "settings"
+settings_2.Parent = MainFrame3
+settings_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+settings_2.BorderColor3 = Color3.fromRGB(74, 74, 74)
+settings_2.BorderSizePixel = 7
+settings_2.Position = UDim2.new(0.717981935, 0, 0.417558908, 0)
+settings_2.Size = UDim2.new(0, 181, 0, 50)
+settings_2.Font = Enum.Font.SciFi
+settings_2.Text = "Kill Gui"
+settings_2.TextColor3 = Color3.fromRGB(0, 255, 255)
+settings_2.TextSize = 14.000
+
 settingsF.Name = "settingsF"
-settingsF.Parent = ScreenGui
+settingsF.Parent = Gui
 settingsF.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 settingsF.BorderColor3 = Color3.fromRGB(255, 255, 255)
 settingsF.BorderSizePixel = 4
@@ -480,7 +494,7 @@ availablekeybinds.TextSize = 14.000
 availablekeybinds.TextWrapped = true
 
 keybindList.Name = "keybindList"
-keybindList.Parent = ScreenGui
+keybindList.Parent = Gui
 keybindList.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 keybindList.Position = UDim2.new(0.633720875, 0, 0.331058025, 0)
 keybindList.Size = UDim2.new(0, 180, 0, 295)
@@ -493,7 +507,7 @@ keybindList.TextWrapped = true
 
 -- Scripts:
 
-local function WUNUCVV_fake_script() -- MainFrame.draggableScript 
+local function FJOJHXU_fake_script() -- MainFrame.draggableScript 
 	local script = Instance.new('LocalScript', MainFrame)
 
 	script.Parent.Active = true
@@ -501,8 +515,8 @@ local function WUNUCVV_fake_script() -- MainFrame.draggableScript
 	script.Parent.Draggable = true
 	
 end
-coroutine.wrap(WUNUCVV_fake_script)()
-local function LYCXVWZ_fake_script() -- forward1.forward.script1 
+coroutine.wrap(FJOJHXU_fake_script)()
+local function BSUC_fake_script() -- forward1.forward.script1 
 	local script = Instance.new('LocalScript', forward1)
 
 	script.Parent.MouseButton1Down:Connect(function()
@@ -510,96 +524,96 @@ local function LYCXVWZ_fake_script() -- forward1.forward.script1
 		script.Parent.Parent.Parent.MainFrame2.Visible = true
 	end)
 end
-coroutine.wrap(LYCXVWZ_fake_script)()
-local function USMIG_fake_script() -- autoattack.autoattack 
+coroutine.wrap(BSUC_fake_script)()
+local function BGXTNHS_fake_script() -- autoattack.autoattack 
 	local script = Instance.new('LocalScript', autoattack)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/theplayer8000/Gui-Spts.scripts/main/auto%20spam%20on", true))()
 	end)
 end
-coroutine.wrap(USMIG_fake_script)()
-local function OKWQVW_fake_script() -- autoattackoff.auto Attack off 
+coroutine.wrap(BGXTNHS_fake_script)()
+local function HOOATWM_fake_script() -- autoattackoff.auto Attack off 
 	local script = Instance.new('LocalScript', autoattackoff)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/theplayer8000/Gui-Spts.scripts/main/auto%20spam%20off", true))()
 	end)
 end
-coroutine.wrap(OKWQVW_fake_script)()
-local function DUEAJH_fake_script() -- PsychicAll.psychic all on 
+coroutine.wrap(HOOATWM_fake_script)()
+local function HJQTUG_fake_script() -- PsychicAll.psychic all on 
 	local script = Instance.new('LocalScript', PsychicAll)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/theplayer8000/Gui-Spts.scripts/main/psychic%20all%20on", true))()
 	end)
 end
-coroutine.wrap(DUEAJH_fake_script)()
-local function DTNKSMN_fake_script() -- PsychicAllOff.psychicall off script 
+coroutine.wrap(HJQTUG_fake_script)()
+local function UBLBN_fake_script() -- PsychicAllOff.psychicall off script 
 	local script = Instance.new('LocalScript', PsychicAllOff)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/theplayer8000/Gui-Spts.scripts/main/psychic%20all%20off", true))()
 	end)
 end
-coroutine.wrap(DTNKSMN_fake_script)()
-local function ACIK_fake_script() -- PsychicToggle.psychic Toggle 
+coroutine.wrap(UBLBN_fake_script)()
+local function TXDXEK_fake_script() -- PsychicToggle.psychic Toggle 
 	local script = Instance.new('LocalScript', PsychicToggle)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/theplayer8000/Gui-Spts.scripts/main/Psychic%20Script.lua", true))()
 	end)
 end
-coroutine.wrap(ACIK_fake_script)()
-local function TKGBVZU_fake_script() -- RankChanger.rankChanger 
+coroutine.wrap(TXDXEK_fake_script)()
+local function OVYQGU_fake_script() -- RankChanger.rankChanger 
 	local script = Instance.new('LocalScript', RankChanger)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/theplayer8000/Gui-Spts.scripts/main/server%20rank%20changer.txt",true))()
 	end)
 end
-coroutine.wrap(TKGBVZU_fake_script)()
-local function KUBNS_fake_script() -- blackhub.blackhub 
+coroutine.wrap(OVYQGU_fake_script)()
+local function GOKROHU_fake_script() -- blackhub.blackhub 
 	local script = Instance.new('LocalScript', blackhub)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/theplayer8000/Gui-Spts.scripts/main/Black_Hub.txt", true))()
 	end)
 end
-coroutine.wrap(KUBNS_fake_script)()
-local function OCUI_fake_script() -- blackhub20.blackhub2.0/msg 
+coroutine.wrap(GOKROHU_fake_script)()
+local function PUNHS_fake_script() -- blackhub20.blackhub2.0/msg 
 	local script = Instance.new('LocalScript', blackhub20)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/theplayer8000/Gui-Spts.scripts/main/message.txt", true))()
 	end)
 end
-coroutine.wrap(OCUI_fake_script)()
-local function YHLECH_fake_script() -- cmdx.Cmd-x 
+coroutine.wrap(PUNHS_fake_script)()
+local function DUYSVP_fake_script() -- cmdx.Cmd-x 
 	local script = Instance.new('LocalScript', cmdx)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/CMD-X/CMD-X/master/Source", true))()
 	end)
 end
-coroutine.wrap(YHLECH_fake_script)()
-local function YWCSPLS_fake_script() -- respawnScript.Respawn SCript 
+coroutine.wrap(DUYSVP_fake_script)()
+local function TWVPSD_fake_script() -- respawnScript.Respawn SCript 
 	local script = Instance.new('LocalScript', respawnScript)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/theplayer8000/Respawn-script-/main/respawn.txt", true))()
 	end)
 end
-coroutine.wrap(YWCSPLS_fake_script)()
-local function IBSG_fake_script() -- MultiChecker.miltiscript 
+coroutine.wrap(TWVPSD_fake_script)()
+local function KIQQ_fake_script() -- MultiChecker.miltiscript 
 	local script = Instance.new('LocalScript', MultiChecker)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/theplayer8000/Gui-Spts.scripts/main/multi%20checker",true))()
 	end)
 end
-coroutine.wrap(IBSG_fake_script)()
-local function REZFZC_fake_script() -- clicktotp.click to tp 
+coroutine.wrap(KIQQ_fake_script)()
+local function WHJHUHI_fake_script() -- clicktotp.click to tp 
 	local script = Instance.new('LocalScript', clicktotp)
 
 	script.Parent.MouseButton1Down:Connect(function()
@@ -615,8 +629,8 @@ local function REZFZC_fake_script() -- clicktotp.click to tp
 		tool.Parent = game.Players.LocalPlayer.Backpack
 	end)
 end
-coroutine.wrap(REZFZC_fake_script)()
-local function ZQLUZRJ_fake_script() -- Repscript.RepScript 
+coroutine.wrap(WHJHUHI_fake_script)()
+local function FBSQFT_fake_script() -- Repscript.RepScript 
 	local script = Instance.new('LocalScript', Repscript)
 
 	script.Parent.MouseButton1Down:Connect(function()
@@ -624,24 +638,24 @@ local function ZQLUZRJ_fake_script() -- Repscript.RepScript
 		nigga.NameBbGui.NameTxt: Destroy()
 	end)
 end
-coroutine.wrap(ZQLUZRJ_fake_script)()
-local function PWEHZVF_fake_script() -- ChatSpy.chatspyscript 
+coroutine.wrap(FBSQFT_fake_script)()
+local function SFONKOF_fake_script() -- ChatSpy.chatspyscript 
 	local script = Instance.new('LocalScript', ChatSpy)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/theplayer8000/Gui-Spts.scripts/main/chatspy.txt",true))()
 	end)
 end
-coroutine.wrap(PWEHZVF_fake_script)()
-local function WXDWWO_fake_script() -- AntiChatLogger.AntichatLogger 
+coroutine.wrap(SFONKOF_fake_script)()
+local function QZHUO_fake_script() -- AntiChatLogger.AntichatLogger 
 	local script = Instance.new('LocalScript', AntiChatLogger)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/theplayer8000/Gui-Spts.scripts/main/nologs", true))()
 	end)
 end
-coroutine.wrap(WXDWWO_fake_script)()
-local function WADQYJD_fake_script() -- togglegui.toggleGui 
+coroutine.wrap(QZHUO_fake_script)()
+local function QCBJ_fake_script() -- togglegui.toggleGui 
 	local script = Instance.new('LocalScript', togglegui)
 
 	
@@ -663,8 +677,8 @@ local function WADQYJD_fake_script() -- togglegui.toggleGui
 		end
 	 end)
 end
-coroutine.wrap(WADQYJD_fake_script)()
-local function IVTSBQ_fake_script() -- MainFrame2.draggableScript 
+coroutine.wrap(QCBJ_fake_script)()
+local function DUWYS_fake_script() -- MainFrame2.draggableScript 
 	local script = Instance.new('LocalScript', MainFrame2)
 
 	script.Parent.Active = true
@@ -672,8 +686,8 @@ local function IVTSBQ_fake_script() -- MainFrame2.draggableScript
 	script.Parent.Draggable = true
 	
 end
-coroutine.wrap(IVTSBQ_fake_script)()
-local function KEKPFD_fake_script() -- backwards.return.script2 
+coroutine.wrap(DUWYS_fake_script)()
+local function QFDD_fake_script() -- backwards.return.script2 
 	local script = Instance.new('LocalScript', backwards)
 
 	script.Parent.MouseButton1Down:Connect(function()
@@ -681,8 +695,8 @@ local function KEKPFD_fake_script() -- backwards.return.script2
 		script.Parent.Parent.Parent.MainFrame.Visible = true
 	end)
 end
-coroutine.wrap(KEKPFD_fake_script)()
-local function IHKFWR_fake_script() -- forward2.forward.script2 
+coroutine.wrap(QFDD_fake_script)()
+local function YHMTXD_fake_script() -- forward2.forward.script2 
 	local script = Instance.new('LocalScript', forward2)
 
 	script.Parent.MouseButton1Down:Connect(function()
@@ -691,16 +705,16 @@ local function IHKFWR_fake_script() -- forward2.forward.script2
 		script.Parent.Parent.Parent.MainFrame3.Visible = true
 	end)
 end
-coroutine.wrap(IHKFWR_fake_script)()
-local function JCAQX_fake_script() -- OpVoid.Void Script 
+coroutine.wrap(YHMTXD_fake_script)()
+local function RWIUU_fake_script() -- OpVoid.Void Script 
 	local script = Instance.new('LocalScript', OpVoid)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/theplayer8000/Gui-Spts.scripts/main/spam%20void", true))()
 	end)
 end
-coroutine.wrap(JCAQX_fake_script)()
-local function QHVLP_fake_script() -- InvisLoop.Invis Loop 
+coroutine.wrap(RWIUU_fake_script)()
+local function AZEF_fake_script() -- InvisLoop.Invis Loop 
 	local script = Instance.new('LocalScript', InvisLoop)
 
 	script.Parent.MouseButton1Down:Connect(function()
@@ -719,8 +733,8 @@ local function QHVLP_fake_script() -- InvisLoop.Invis Loop
 		end
 	end)
 end
-coroutine.wrap(QHVLP_fake_script)()
-local function CFHYT_fake_script() -- Novoid.novoidscript 
+coroutine.wrap(AZEF_fake_script)()
+local function LPRJZWU_fake_script() -- Novoid.novoidscript 
 	local script = Instance.new('LocalScript', Novoid)
 
 	script.Parent.MouseButton1Down:Connect(function()
@@ -731,16 +745,16 @@ local function CFHYT_fake_script() -- Novoid.novoidscript
 		end
 	end)
 end
-coroutine.wrap(CFHYT_fake_script)()
-local function LHLBC_fake_script() -- DarkMode.Darkmode script 
+coroutine.wrap(LPRJZWU_fake_script)()
+local function SOIWNL_fake_script() -- DarkMode.Darkmode script 
 	local script = Instance.new('LocalScript', DarkMode)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/theplayer8000/Gui-Spts.scripts/main/Spts%20darkmode.txt",true))()
 	end)
 end
-coroutine.wrap(LHLBC_fake_script)()
-local function ONPUGI_fake_script() -- TrainFist.Train fist 
+coroutine.wrap(SOIWNL_fake_script)()
+local function CQDGZNF_fake_script() -- TrainFist.Train fist 
 	local script = Instance.new('LocalScript', TrainFist)
 
 	script.Parent.MouseButton1Down:Connect(function()
@@ -784,8 +798,8 @@ local function ONPUGI_fake_script() -- TrainFist.Train fist
 		end
 	end)
 end
-coroutine.wrap(ONPUGI_fake_script)()
-local function FYXYMEN_fake_script() -- MainFrame3.draggableScript 
+coroutine.wrap(CQDGZNF_fake_script)()
+local function RGSCEEN_fake_script() -- MainFrame3.draggableScript 
 	local script = Instance.new('LocalScript', MainFrame3)
 
 	script.Parent.Active = true
@@ -793,8 +807,8 @@ local function FYXYMEN_fake_script() -- MainFrame3.draggableScript
 	script.Parent.Draggable = true
 	
 end
-coroutine.wrap(FYXYMEN_fake_script)()
-local function LUQRYBJ_fake_script() -- backwards_2.return.script3 
+coroutine.wrap(RGSCEEN_fake_script)()
+local function MCXCL_fake_script() -- backwards_2.return.script3 
 	local script = Instance.new('LocalScript', backwards_2)
 
 	script.Parent.MouseButton1Down:Connect(function()
@@ -802,32 +816,32 @@ local function LUQRYBJ_fake_script() -- backwards_2.return.script3
 		script.Parent.Parent.Parent.MainFrame2.Visible = true
 	end)
 end
-coroutine.wrap(LUQRYBJ_fake_script)()
-local function UNWM_fake_script() -- Zen.Zen 
+coroutine.wrap(MCXCL_fake_script)()
+local function BBFJ_fake_script() -- Zen.Zen 
 	local script = Instance.new('LocalScript', Zen)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2628, 5550, -493)
 	end)
 end
-coroutine.wrap(UNWM_fake_script)()
-local function NKHEGZ_fake_script() -- Spawn.Spawn 
+coroutine.wrap(BBFJ_fake_script)()
+local function PKLGPTW_fake_script() -- Spawn.Spawn 
 	local script = Instance.new('LocalScript', Spawn)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(316, 249, 854)
 	end)
 end
-coroutine.wrap(NKHEGZ_fake_script)()
-local function PFXY_fake_script() -- LeaderBoard.LB 
+coroutine.wrap(PKLGPTW_fake_script)()
+local function CBXM_fake_script() -- LeaderBoard.LB 
 	local script = Instance.new('LocalScript', LeaderBoard)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-753, 249, 746)
 	end)
 end
-coroutine.wrap(PFXY_fake_script)()
-local function ZWIUUU_fake_script() -- godmode.god 
+coroutine.wrap(CBXM_fake_script)()
+local function PLYQZH_fake_script() -- godmode.god 
 	local script = Instance.new('LocalScript', godmode)
 
 	script.Parent.MouseButton1Down:Connect(function()
@@ -835,8 +849,8 @@ local function ZWIUUU_fake_script() -- godmode.god
 	end)
 	
 end
-coroutine.wrap(ZWIUUU_fake_script)()
-local function CSVPQ_fake_script() -- settings.settings_script 
+coroutine.wrap(PLYQZH_fake_script)()
+local function TBSYOL_fake_script() -- settings.settings_script 
 	local script = Instance.new('LocalScript', settings)
 
 	script.Parent.MouseButton1Down:Connect(function()
@@ -845,8 +859,17 @@ local function CSVPQ_fake_script() -- settings.settings_script
 	end)
 	
 end
-coroutine.wrap(CSVPQ_fake_script)()
-local function ZCADOIY_fake_script() -- settingsF.draggableScript 
+coroutine.wrap(TBSYOL_fake_script)()
+local function RVDECJ_fake_script() -- settings_2.Kill Gui 
+	local script = Instance.new('LocalScript', settings_2)
+
+	script.Parent.MouseButton1Down:Connect(function()
+		script.Parent.Parent.Parent.Parent.Gui:Destroy()
+	end)
+	
+end
+coroutine.wrap(RVDECJ_fake_script)()
+local function FTGMT_fake_script() -- settingsF.draggableScript 
 	local script = Instance.new('LocalScript', settingsF)
 
 	script.Parent.Active = true
@@ -854,8 +877,8 @@ local function ZCADOIY_fake_script() -- settingsF.draggableScript
 	script.Parent.Draggable = true
 	
 end
-coroutine.wrap(ZCADOIY_fake_script)()
-local function GJHAKF_fake_script() -- availablekeybinds.availablekeybindscript 
+coroutine.wrap(FTGMT_fake_script)()
+local function QVAYK_fake_script() -- availablekeybinds.availablekeybindscript 
 	local script = Instance.new('LocalScript', availablekeybinds)
 
 	local press = script.Parent.Parent.Parent
@@ -864,9 +887,9 @@ local function GJHAKF_fake_script() -- availablekeybinds.availablekeybindscript
 		press.keybindList.Visible = not press.keybindList.Visible
 	end)
 end
-coroutine.wrap(GJHAKF_fake_script)()
-local function DHVFNI_fake_script() -- ScreenGui.toggle gui/textbox 
-	local script = Instance.new('LocalScript', ScreenGui)
+coroutine.wrap(QVAYK_fake_script)()
+local function AMGZPZ_fake_script() -- Gui.toggle gui/textbox 
+	local script = Instance.new('LocalScript', Gui)
 
 	local textlabel = script.Parent.settingsF.keybindbox
 	
@@ -974,4 +997,4 @@ local function DHVFNI_fake_script() -- ScreenGui.toggle gui/textbox
 	)
 	
 end
-coroutine.wrap(DHVFNI_fake_script)()
+coroutine.wrap(AMGZPZ_fake_script)()

@@ -1,6 +1,3 @@
-while not game:IsLoaded() or not game:GetService("CoreGui") or not game:GetService("Players").LocalPlayer or not game:GetService("Players").LocalPlayer.PlayerGui do wait() end
-
-
 -- Gui to Lua
 -- Version: 3.2
 
@@ -9,43 +6,112 @@ while not game:IsLoaded() or not game:GetService("CoreGui") or not game:GetServi
 local Gui = Instance.new("ScreenGui")
 local MainFrame = Instance.new("Frame")
 local forward1 = Instance.new("ImageButton")
+local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
 local TextLabel = Instance.new("TextLabel")
+local UIAspectRatioConstraint_2 = Instance.new("UIAspectRatioConstraint")
+local UITextSizeConstraint = Instance.new("UITextSizeConstraint")
 local autoattack = Instance.new("TextButton")
+local UIAspectRatioConstraint_3 = Instance.new("UIAspectRatioConstraint")
+local UITextSizeConstraint_2 = Instance.new("UITextSizeConstraint")
 local autoattackoff = Instance.new("TextButton")
+local UIAspectRatioConstraint_4 = Instance.new("UIAspectRatioConstraint")
+local UITextSizeConstraint_3 = Instance.new("UITextSizeConstraint")
 local PsychicAll = Instance.new("TextButton")
+local UIAspectRatioConstraint_5 = Instance.new("UIAspectRatioConstraint")
+local UITextSizeConstraint_4 = Instance.new("UITextSizeConstraint")
 local PsychicAllOff = Instance.new("TextButton")
+local UIAspectRatioConstraint_6 = Instance.new("UIAspectRatioConstraint")
+local UITextSizeConstraint_5 = Instance.new("UITextSizeConstraint")
 local PsychicToggle = Instance.new("TextButton")
+local UIAspectRatioConstraint_7 = Instance.new("UIAspectRatioConstraint")
+local UITextSizeConstraint_6 = Instance.new("UITextSizeConstraint")
 local RankChanger = Instance.new("TextButton")
+local UIAspectRatioConstraint_8 = Instance.new("UIAspectRatioConstraint")
+local UITextSizeConstraint_7 = Instance.new("UITextSizeConstraint")
 local blackhub = Instance.new("TextButton")
+local UIAspectRatioConstraint_9 = Instance.new("UIAspectRatioConstraint")
+local UITextSizeConstraint_8 = Instance.new("UITextSizeConstraint")
 local blackhub20 = Instance.new("TextButton")
+local UIAspectRatioConstraint_10 = Instance.new("UIAspectRatioConstraint")
+local UITextSizeConstraint_9 = Instance.new("UITextSizeConstraint")
 local cmdx = Instance.new("TextButton")
+local UIAspectRatioConstraint_11 = Instance.new("UIAspectRatioConstraint")
+local UITextSizeConstraint_10 = Instance.new("UITextSizeConstraint")
 local respawnScript = Instance.new("TextButton")
+local UIAspectRatioConstraint_12 = Instance.new("UIAspectRatioConstraint")
+local UITextSizeConstraint_11 = Instance.new("UITextSizeConstraint")
 local MultiChecker = Instance.new("TextButton")
+local UIAspectRatioConstraint_13 = Instance.new("UIAspectRatioConstraint")
+local UITextSizeConstraint_12 = Instance.new("UITextSizeConstraint")
 local clicktotp = Instance.new("TextButton")
+local UIAspectRatioConstraint_14 = Instance.new("UIAspectRatioConstraint")
+local UITextSizeConstraint_13 = Instance.new("UITextSizeConstraint")
 local Repscript = Instance.new("TextButton")
+local UIAspectRatioConstraint_15 = Instance.new("UIAspectRatioConstraint")
+local UITextSizeConstraint_14 = Instance.new("UITextSizeConstraint")
 local ChatSpy = Instance.new("TextButton")
+local UIAspectRatioConstraint_16 = Instance.new("UIAspectRatioConstraint")
+local UITextSizeConstraint_15 = Instance.new("UITextSizeConstraint")
 local AntiChatLogger = Instance.new("TextButton")
+local UIAspectRatioConstraint_17 = Instance.new("UIAspectRatioConstraint")
+local UITextSizeConstraint_16 = Instance.new("UITextSizeConstraint")
+local UIAspectRatioConstraint_18 = Instance.new("UIAspectRatioConstraint")
 local togglegui = Instance.new("ImageButton")
+local UIAspectRatioConstraint_19 = Instance.new("UIAspectRatioConstraint")
 local MainFrame2 = Instance.new("Frame")
 local backwards = Instance.new("ImageButton")
+local UIAspectRatioConstraint_20 = Instance.new("UIAspectRatioConstraint")
 local forward2 = Instance.new("ImageButton")
+local UIAspectRatioConstraint_21 = Instance.new("UIAspectRatioConstraint")
 local OpVoid = Instance.new("TextButton")
+local UIAspectRatioConstraint_22 = Instance.new("UIAspectRatioConstraint")
+local UITextSizeConstraint_17 = Instance.new("UITextSizeConstraint")
 local InvisLoop = Instance.new("TextButton")
+local UIAspectRatioConstraint_23 = Instance.new("UIAspectRatioConstraint")
+local UITextSizeConstraint_18 = Instance.new("UITextSizeConstraint")
 local Novoid = Instance.new("TextButton")
+local UIAspectRatioConstraint_24 = Instance.new("UIAspectRatioConstraint")
+local UITextSizeConstraint_19 = Instance.new("UITextSizeConstraint")
 local DarkMode = Instance.new("TextButton")
+local UIAspectRatioConstraint_25 = Instance.new("UIAspectRatioConstraint")
+local UITextSizeConstraint_20 = Instance.new("UITextSizeConstraint")
 local TrainFist = Instance.new("TextButton")
+local UIAspectRatioConstraint_26 = Instance.new("UIAspectRatioConstraint")
+local UITextSizeConstraint_21 = Instance.new("UITextSizeConstraint")
+local UIAspectRatioConstraint_27 = Instance.new("UIAspectRatioConstraint")
 local MainFrame3 = Instance.new("Frame")
 local backwards_2 = Instance.new("ImageButton")
+local UIAspectRatioConstraint_28 = Instance.new("UIAspectRatioConstraint")
 local Zen = Instance.new("TextButton")
+local UIAspectRatioConstraint_29 = Instance.new("UIAspectRatioConstraint")
+local UITextSizeConstraint_22 = Instance.new("UITextSizeConstraint")
 local Spawn = Instance.new("TextButton")
+local UIAspectRatioConstraint_30 = Instance.new("UIAspectRatioConstraint")
+local UITextSizeConstraint_23 = Instance.new("UITextSizeConstraint")
 local LeaderBoard = Instance.new("TextButton")
+local UIAspectRatioConstraint_31 = Instance.new("UIAspectRatioConstraint")
+local UITextSizeConstraint_24 = Instance.new("UITextSizeConstraint")
 local godmode = Instance.new("TextButton")
+local UIAspectRatioConstraint_32 = Instance.new("UIAspectRatioConstraint")
+local UITextSizeConstraint_25 = Instance.new("UITextSizeConstraint")
 local settings = Instance.new("TextButton")
+local UIAspectRatioConstraint_33 = Instance.new("UIAspectRatioConstraint")
+local UITextSizeConstraint_26 = Instance.new("UITextSizeConstraint")
 local settings_2 = Instance.new("TextButton")
+local UIAspectRatioConstraint_34 = Instance.new("UIAspectRatioConstraint")
+local UITextSizeConstraint_27 = Instance.new("UITextSizeConstraint")
+local UIAspectRatioConstraint_35 = Instance.new("UIAspectRatioConstraint")
 local settingsF = Instance.new("Frame")
 local keybindbox = Instance.new("TextBox")
+local UIAspectRatioConstraint_36 = Instance.new("UIAspectRatioConstraint")
+local UITextSizeConstraint_28 = Instance.new("UITextSizeConstraint")
 local availablekeybinds = Instance.new("TextButton")
+local UIAspectRatioConstraint_37 = Instance.new("UIAspectRatioConstraint")
+local UITextSizeConstraint_29 = Instance.new("UITextSizeConstraint")
+local UIAspectRatioConstraint_38 = Instance.new("UIAspectRatioConstraint")
 local keybindList = Instance.new("TextLabel")
+local UIAspectRatioConstraint_39 = Instance.new("UIAspectRatioConstraint")
+local UITextSizeConstraint_30 = Instance.new("UITextSizeConstraint")
 
 --Properties:
 
@@ -55,24 +121,29 @@ Gui.ResetOnSpawn = false
 
 MainFrame.Name = "MainFrame"
 MainFrame.Parent = Gui
+MainFrame.Active = true
 MainFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 MainFrame.BorderColor3 = Color3.fromRGB(255, 255, 255)
 MainFrame.BorderSizePixel = 4
+MainFrame.ClipsDescendants = true
 MainFrame.Position = UDim2.new(0.218935221, 0, 0.233322993, 0)
-MainFrame.Size = UDim2.new(0, 773, 0, 467)
-MainFrame.Visible = false
+MainFrame.Selectable = true
+MainFrame.Size = UDim2.new(0.600155294, 0, 0.494703382, 0)
 
 forward1.Name = "forward1"
 forward1.Parent = MainFrame
 forward1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 forward1.Position = UDim2.new(0.880565226, 0, 0.389721632, 0)
-forward1.Size = UDim2.new(0, 91, 0, 100)
+forward1.Size = UDim2.new(0.117723159, 0, 0.214132756, 0)
 forward1.Image = "http://www.roblox.com/asset/?id=1594671524"
 forward1.ImageColor3 = Color3.fromRGB(0, 255, 255)
 
+UIAspectRatioConstraint.Parent = forward1
+UIAspectRatioConstraint.AspectRatio = 0.910
+
 TextLabel.Parent = MainFrame
 TextLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-TextLabel.Size = UDim2.new(0, 773, 0, 50)
+TextLabel.Size = UDim2.new(1, 0, 0.107066378, 0)
 TextLabel.Font = Enum.Font.SciFi
 TextLabel.Text = "Main Page |Made by Tosin 😎"
 TextLabel.TextColor3 = Color3.fromRGB(0, 255, 255)
@@ -80,18 +151,31 @@ TextLabel.TextScaled = true
 TextLabel.TextSize = 14.000
 TextLabel.TextWrapped = true
 
+UIAspectRatioConstraint_2.Parent = TextLabel
+UIAspectRatioConstraint_2.AspectRatio = 15.460
+
+UITextSizeConstraint.Parent = TextLabel
+UITextSizeConstraint.MaxTextSize = 49
+
 autoattack.Name = "auto attack"
 autoattack.Parent = MainFrame
 autoattack.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 autoattack.BorderColor3 = Color3.fromRGB(74, 74, 74)
 autoattack.BorderSizePixel = 7
 autoattack.Position = UDim2.new(0.032341525, 0, 0.162740901, 0)
-autoattack.Size = UDim2.new(0, 200, 0, 50)
+autoattack.Size = UDim2.new(0.2587322, 0, 0.107066378, 0)
 autoattack.Font = Enum.Font.SciFi
 autoattack.Text = "Auto Attack"
 autoattack.TextColor3 = Color3.fromRGB(0, 255, 255)
+autoattack.TextScaled = true
 autoattack.TextSize = 14.000
 autoattack.TextWrapped = true
+
+UIAspectRatioConstraint_3.Parent = autoattack
+UIAspectRatioConstraint_3.AspectRatio = 4.000
+
+UITextSizeConstraint_2.Parent = autoattack
+UITextSizeConstraint_2.MaxTextSize = 14
 
 autoattackoff.Name = "auto attack off"
 autoattackoff.Parent = MainFrame
@@ -99,12 +183,19 @@ autoattackoff.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 autoattackoff.BorderColor3 = Color3.fromRGB(74, 74, 74)
 autoattackoff.BorderSizePixel = 7
 autoattackoff.Position = UDim2.new(0.369987071, 0, 0.162740901, 0)
-autoattackoff.Size = UDim2.new(0, 200, 0, 50)
+autoattackoff.Size = UDim2.new(0.2587322, 0, 0.107066378, 0)
 autoattackoff.Font = Enum.Font.SciFi
 autoattackoff.Text = "Auto Attack off"
 autoattackoff.TextColor3 = Color3.fromRGB(0, 255, 255)
+autoattackoff.TextScaled = true
 autoattackoff.TextSize = 14.000
 autoattackoff.TextWrapped = true
+
+UIAspectRatioConstraint_4.Parent = autoattackoff
+UIAspectRatioConstraint_4.AspectRatio = 4.000
+
+UITextSizeConstraint_3.Parent = autoattackoff
+UITextSizeConstraint_3.MaxTextSize = 14
 
 PsychicAll.Name = "Psychic All"
 PsychicAll.Parent = MainFrame
@@ -112,12 +203,19 @@ PsychicAll.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 PsychicAll.BorderColor3 = Color3.fromRGB(74, 74, 74)
 PsychicAll.BorderSizePixel = 7
 PsychicAll.Position = UDim2.new(0.032341525, 0, 0.336188436, 0)
-PsychicAll.Size = UDim2.new(0, 200, 0, 50)
+PsychicAll.Size = UDim2.new(0.2587322, 0, 0.107066378, 0)
 PsychicAll.Font = Enum.Font.SciFi
 PsychicAll.Text = "Psychic All"
 PsychicAll.TextColor3 = Color3.fromRGB(0, 255, 255)
+PsychicAll.TextScaled = true
 PsychicAll.TextSize = 14.000
 PsychicAll.TextWrapped = true
+
+UIAspectRatioConstraint_5.Parent = PsychicAll
+UIAspectRatioConstraint_5.AspectRatio = 4.000
+
+UITextSizeConstraint_4.Parent = PsychicAll
+UITextSizeConstraint_4.MaxTextSize = 14
 
 PsychicAllOff.Name = "Psychic All Off"
 PsychicAllOff.Parent = MainFrame
@@ -125,12 +223,19 @@ PsychicAllOff.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 PsychicAllOff.BorderColor3 = Color3.fromRGB(74, 74, 74)
 PsychicAllOff.BorderSizePixel = 7
 PsychicAllOff.Position = UDim2.new(0.369987071, 0, 0.336188436, 0)
-PsychicAllOff.Size = UDim2.new(0, 200, 0, 50)
+PsychicAllOff.Size = UDim2.new(0.2587322, 0, 0.107066378, 0)
 PsychicAllOff.Font = Enum.Font.SciFi
 PsychicAllOff.Text = "Psychic All Off"
 PsychicAllOff.TextColor3 = Color3.fromRGB(0, 255, 255)
+PsychicAllOff.TextScaled = true
 PsychicAllOff.TextSize = 14.000
 PsychicAllOff.TextWrapped = true
+
+UIAspectRatioConstraint_6.Parent = PsychicAllOff
+UIAspectRatioConstraint_6.AspectRatio = 4.000
+
+UITextSizeConstraint_5.Parent = PsychicAllOff
+UITextSizeConstraint_5.MaxTextSize = 14
 
 PsychicToggle.Name = "Psychic Toggle"
 PsychicToggle.Parent = MainFrame
@@ -138,12 +243,19 @@ PsychicToggle.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 PsychicToggle.BorderColor3 = Color3.fromRGB(74, 74, 74)
 PsychicToggle.BorderSizePixel = 7
 PsychicToggle.Position = UDim2.new(0.70892626, 0, 0.162740886, 0)
-PsychicToggle.Size = UDim2.new(0, 200, 0, 50)
+PsychicToggle.Size = UDim2.new(0.2587322, 0, 0.107066378, 0)
 PsychicToggle.Font = Enum.Font.SciFi
 PsychicToggle.Text = "Psychic Toggle"
 PsychicToggle.TextColor3 = Color3.fromRGB(0, 255, 255)
+PsychicToggle.TextScaled = true
 PsychicToggle.TextSize = 14.000
 PsychicToggle.TextWrapped = true
+
+UIAspectRatioConstraint_7.Parent = PsychicToggle
+UIAspectRatioConstraint_7.AspectRatio = 4.000
+
+UITextSizeConstraint_6.Parent = PsychicToggle
+UITextSizeConstraint_6.MaxTextSize = 14
 
 RankChanger.Name = "RankChanger"
 RankChanger.Parent = MainFrame
@@ -151,12 +263,19 @@ RankChanger.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 RankChanger.BorderColor3 = Color3.fromRGB(74, 74, 74)
 RankChanger.BorderSizePixel = 7
 RankChanger.Position = UDim2.new(0.70892626, 0, 0.847965598, 0)
-RankChanger.Size = UDim2.new(0, 200, 0, 50)
+RankChanger.Size = UDim2.new(0.2587322, 0, 0.107066378, 0)
 RankChanger.Font = Enum.Font.SciFi
 RankChanger.Text = "Rank Changer"
 RankChanger.TextColor3 = Color3.fromRGB(0, 255, 255)
+RankChanger.TextScaled = true
 RankChanger.TextSize = 14.000
 RankChanger.TextWrapped = true
+
+UIAspectRatioConstraint_8.Parent = RankChanger
+UIAspectRatioConstraint_8.AspectRatio = 4.000
+
+UITextSizeConstraint_7.Parent = RankChanger
+UITextSizeConstraint_7.MaxTextSize = 14
 
 blackhub.Name = "blackhub"
 blackhub.Parent = MainFrame
@@ -164,12 +283,19 @@ blackhub.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 blackhub.BorderColor3 = Color3.fromRGB(74, 74, 74)
 blackhub.BorderSizePixel = 7
 blackhub.Position = UDim2.new(0.680465698, 0, 0.336188346, 0)
-blackhub.Size = UDim2.new(0, 133, 0, 50)
+blackhub.Size = UDim2.new(0.172056928, 0, 0.107066378, 0)
 blackhub.Font = Enum.Font.SciFi
 blackhub.Text = "BlackHub"
 blackhub.TextColor3 = Color3.fromRGB(0, 255, 255)
+blackhub.TextScaled = true
 blackhub.TextSize = 14.000
 blackhub.TextWrapped = true
+
+UIAspectRatioConstraint_9.Parent = blackhub
+UIAspectRatioConstraint_9.AspectRatio = 2.660
+
+UITextSizeConstraint_8.Parent = blackhub
+UITextSizeConstraint_8.MaxTextSize = 14
 
 blackhub20.Name = "blackhub2.0"
 blackhub20.Parent = MainFrame
@@ -177,12 +303,19 @@ blackhub20.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 blackhub20.BorderColor3 = Color3.fromRGB(74, 74, 74)
 blackhub20.BorderSizePixel = 7
 blackhub20.Position = UDim2.new(0.680465698, 0, 0.496787935, 0)
-blackhub20.Size = UDim2.new(0, 133, 0, 50)
+blackhub20.Size = UDim2.new(0.172056928, 0, 0.107066378, 0)
 blackhub20.Font = Enum.Font.SciFi
 blackhub20.Text = "BlackHub2.0"
 blackhub20.TextColor3 = Color3.fromRGB(0, 255, 255)
+blackhub20.TextScaled = true
 blackhub20.TextSize = 14.000
 blackhub20.TextWrapped = true
+
+UIAspectRatioConstraint_10.Parent = blackhub20
+UIAspectRatioConstraint_10.AspectRatio = 2.660
+
+UITextSizeConstraint_9.Parent = blackhub20
+UITextSizeConstraint_9.MaxTextSize = 14
 
 cmdx.Name = "cmd-x"
 cmdx.Parent = MainFrame
@@ -190,12 +323,19 @@ cmdx.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 cmdx.BorderColor3 = Color3.fromRGB(74, 74, 74)
 cmdx.BorderSizePixel = 7
 cmdx.Position = UDim2.new(0.70892626, 0, 0.670235395, 0)
-cmdx.Size = UDim2.new(0, 200, 0, 50)
+cmdx.Size = UDim2.new(0.2587322, 0, 0.107066378, 0)
 cmdx.Font = Enum.Font.SciFi
 cmdx.Text = "Cmd-x"
 cmdx.TextColor3 = Color3.fromRGB(0, 255, 255)
+cmdx.TextScaled = true
 cmdx.TextSize = 14.000
 cmdx.TextWrapped = true
+
+UIAspectRatioConstraint_11.Parent = cmdx
+UIAspectRatioConstraint_11.AspectRatio = 4.000
+
+UITextSizeConstraint_10.Parent = cmdx
+UITextSizeConstraint_10.MaxTextSize = 14
 
 respawnScript.Name = "respawnScript"
 respawnScript.Parent = MainFrame
@@ -203,12 +343,19 @@ respawnScript.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 respawnScript.BorderColor3 = Color3.fromRGB(74, 74, 74)
 respawnScript.BorderSizePixel = 7
 respawnScript.Position = UDim2.new(0.369987071, 0, 0.668094218, 0)
-respawnScript.Size = UDim2.new(0, 200, 0, 50)
+respawnScript.Size = UDim2.new(0.2587322, 0, 0.107066378, 0)
 respawnScript.Font = Enum.Font.SciFi
 respawnScript.Text = "RespawnScript"
 respawnScript.TextColor3 = Color3.fromRGB(0, 255, 255)
+respawnScript.TextScaled = true
 respawnScript.TextSize = 14.000
 respawnScript.TextWrapped = true
+
+UIAspectRatioConstraint_12.Parent = respawnScript
+UIAspectRatioConstraint_12.AspectRatio = 4.000
+
+UITextSizeConstraint_11.Parent = respawnScript
+UITextSizeConstraint_11.MaxTextSize = 14
 
 MultiChecker.Name = "MultiChecker"
 MultiChecker.Parent = MainFrame
@@ -216,12 +363,19 @@ MultiChecker.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 MultiChecker.BorderColor3 = Color3.fromRGB(74, 74, 74)
 MultiChecker.BorderSizePixel = 7
 MultiChecker.Position = UDim2.new(0.369987071, 0, 0.84582442, 0)
-MultiChecker.Size = UDim2.new(0, 200, 0, 50)
+MultiChecker.Size = UDim2.new(0.2587322, 0, 0.107066378, 0)
 MultiChecker.Font = Enum.Font.SciFi
 MultiChecker.Text = "MultiChecker"
 MultiChecker.TextColor3 = Color3.fromRGB(0, 255, 255)
+MultiChecker.TextScaled = true
 MultiChecker.TextSize = 14.000
 MultiChecker.TextWrapped = true
+
+UIAspectRatioConstraint_13.Parent = MultiChecker
+UIAspectRatioConstraint_13.AspectRatio = 4.000
+
+UITextSizeConstraint_12.Parent = MultiChecker
+UITextSizeConstraint_12.MaxTextSize = 14
 
 clicktotp.Name = "click to tp"
 clicktotp.Parent = MainFrame
@@ -229,12 +383,19 @@ clicktotp.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 clicktotp.BorderColor3 = Color3.fromRGB(74, 74, 74)
 clicktotp.BorderSizePixel = 7
 clicktotp.Position = UDim2.new(0.369987071, 0, 0.494646668, 0)
-clicktotp.Size = UDim2.new(0, 200, 0, 50)
+clicktotp.Size = UDim2.new(0.2587322, 0, 0.107066378, 0)
 clicktotp.Font = Enum.Font.SciFi
 clicktotp.Text = "Click to Tp Tool"
 clicktotp.TextColor3 = Color3.fromRGB(0, 255, 255)
+clicktotp.TextScaled = true
 clicktotp.TextSize = 14.000
 clicktotp.TextWrapped = true
+
+UIAspectRatioConstraint_14.Parent = clicktotp
+UIAspectRatioConstraint_14.AspectRatio = 4.000
+
+UITextSizeConstraint_13.Parent = clicktotp
+UITextSizeConstraint_13.MaxTextSize = 14
 
 Repscript.Name = "Rep script"
 Repscript.Parent = MainFrame
@@ -242,12 +403,19 @@ Repscript.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 Repscript.BorderColor3 = Color3.fromRGB(74, 74, 74)
 Repscript.BorderSizePixel = 7
 Repscript.Position = UDim2.new(0.0323415399, 0, 0.494646668, 0)
-Repscript.Size = UDim2.new(0, 200, 0, 50)
+Repscript.Size = UDim2.new(0.2587322, 0, 0.107066378, 0)
 Repscript.Font = Enum.Font.SciFi
 Repscript.Text = "Rep Script"
 Repscript.TextColor3 = Color3.fromRGB(0, 255, 255)
+Repscript.TextScaled = true
 Repscript.TextSize = 14.000
 Repscript.TextWrapped = true
+
+UIAspectRatioConstraint_15.Parent = Repscript
+UIAspectRatioConstraint_15.AspectRatio = 4.000
+
+UITextSizeConstraint_14.Parent = Repscript
+UITextSizeConstraint_14.MaxTextSize = 14
 
 ChatSpy.Name = "ChatSpy"
 ChatSpy.Parent = MainFrame
@@ -255,12 +423,19 @@ ChatSpy.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 ChatSpy.BorderColor3 = Color3.fromRGB(74, 74, 74)
 ChatSpy.BorderSizePixel = 7
 ChatSpy.Position = UDim2.new(0.0323415399, 0, 0.668094218, 0)
-ChatSpy.Size = UDim2.new(0, 200, 0, 50)
+ChatSpy.Size = UDim2.new(0.2587322, 0, 0.107066378, 0)
 ChatSpy.Font = Enum.Font.SciFi
 ChatSpy.Text = "ChatSpy"
 ChatSpy.TextColor3 = Color3.fromRGB(0, 255, 255)
+ChatSpy.TextScaled = true
 ChatSpy.TextSize = 14.000
 ChatSpy.TextWrapped = true
+
+UIAspectRatioConstraint_16.Parent = ChatSpy
+UIAspectRatioConstraint_16.AspectRatio = 4.000
+
+UITextSizeConstraint_15.Parent = ChatSpy
+UITextSizeConstraint_15.MaxTextSize = 14
 
 AntiChatLogger.Name = "AntiChatLogger"
 AntiChatLogger.Parent = MainFrame
@@ -268,22 +443,35 @@ AntiChatLogger.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 AntiChatLogger.BorderColor3 = Color3.fromRGB(74, 74, 74)
 AntiChatLogger.BorderSizePixel = 7
 AntiChatLogger.Position = UDim2.new(0.0323415399, 0, 0.84582442, 0)
-AntiChatLogger.Size = UDim2.new(0, 200, 0, 50)
+AntiChatLogger.Size = UDim2.new(0.2587322, 0, 0.107066378, 0)
 AntiChatLogger.Font = Enum.Font.SciFi
 AntiChatLogger.Text = "Anti Chat Logger"
 AntiChatLogger.TextColor3 = Color3.fromRGB(0, 255, 255)
+AntiChatLogger.TextScaled = true
 AntiChatLogger.TextSize = 14.000
 AntiChatLogger.TextWrapped = true
+
+UIAspectRatioConstraint_17.Parent = AntiChatLogger
+UIAspectRatioConstraint_17.AspectRatio = 4.000
+
+UITextSizeConstraint_16.Parent = AntiChatLogger
+UITextSizeConstraint_16.MaxTextSize = 14
+
+UIAspectRatioConstraint_18.Parent = MainFrame
+UIAspectRatioConstraint_18.AspectRatio = 1.655
 
 togglegui.Name = "toggle gui"
 togglegui.Parent = Gui
 togglegui.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 togglegui.Position = UDim2.new(0.0247093029, 0, 0.470989674, 0)
-togglegui.Size = UDim2.new(0, 36, 0, 50)
+togglegui.Size = UDim2.new(0.0279503111, 0, 0.052966103, 0)
 togglegui.Image = "http://www.roblox.com/asset/?id=7018107931"
 togglegui.ImageColor3 = Color3.fromRGB(204, 201, 199)
 togglegui.ScaleType = Enum.ScaleType.Slice
 togglegui.SliceScale = 0.000
+
+UIAspectRatioConstraint_19.Parent = togglegui
+UIAspectRatioConstraint_19.AspectRatio = 0.720
 
 MainFrame2.Name = "MainFrame2"
 MainFrame2.Parent = Gui
@@ -291,7 +479,7 @@ MainFrame2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 MainFrame2.BorderColor3 = Color3.fromRGB(255, 255, 255)
 MainFrame2.BorderSizePixel = 4
 MainFrame2.Position = UDim2.new(0.21875, 0, 0.233219564, 0)
-MainFrame2.Size = UDim2.new(0, 773, 0, 467)
+MainFrame2.Size = UDim2.new(0.600155294, 0, 0.494703382, 0)
 MainFrame2.Visible = false
 
 backwards.Name = "backwards"
@@ -299,17 +487,23 @@ backwards.Parent = MainFrame2
 backwards.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 backwards.Position = UDim2.new(5.96046448e-08, 0, 0.389721632, 0)
 backwards.Rotation = 180.000
-backwards.Size = UDim2.new(0, 91, 0, 100)
+backwards.Size = UDim2.new(0.117723159, 0, 0.214132756, 0)
 backwards.Image = "http://www.roblox.com/asset/?id=1594671524"
 backwards.ImageColor3 = Color3.fromRGB(0, 255, 255)
+
+UIAspectRatioConstraint_20.Parent = backwards
+UIAspectRatioConstraint_20.AspectRatio = 0.910
 
 forward2.Name = "forward2"
 forward2.Parent = MainFrame2
 forward2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 forward2.Position = UDim2.new(0.880565226, 0, 0.389721632, 0)
-forward2.Size = UDim2.new(0, 91, 0, 100)
+forward2.Size = UDim2.new(0.117723159, 0, 0.214132756, 0)
 forward2.Image = "http://www.roblox.com/asset/?id=1594671524"
 forward2.ImageColor3 = Color3.fromRGB(0, 255, 255)
+
+UIAspectRatioConstraint_21.Parent = forward2
+UIAspectRatioConstraint_21.AspectRatio = 0.910
 
 OpVoid.Name = "Op Void"
 OpVoid.Parent = MainFrame2
@@ -317,11 +511,19 @@ OpVoid.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 OpVoid.BorderColor3 = Color3.fromRGB(74, 74, 74)
 OpVoid.BorderSizePixel = 7
 OpVoid.Position = UDim2.new(0.0426908135, 0, 0.0663811564, 0)
-OpVoid.Size = UDim2.new(0, 683, 0, 50)
+OpVoid.Size = UDim2.new(0.883570492, 0, 0.107066378, 0)
 OpVoid.Font = Enum.Font.SciFi
 OpVoid.Text = "Op Void"
 OpVoid.TextColor3 = Color3.fromRGB(0, 255, 255)
+OpVoid.TextScaled = true
 OpVoid.TextSize = 14.000
+OpVoid.TextWrapped = true
+
+UIAspectRatioConstraint_22.Parent = OpVoid
+UIAspectRatioConstraint_22.AspectRatio = 13.660
+
+UITextSizeConstraint_17.Parent = OpVoid
+UITextSizeConstraint_17.MaxTextSize = 14
 
 InvisLoop.Name = "Invis Loop"
 InvisLoop.Parent = MainFrame2
@@ -329,11 +531,19 @@ InvisLoop.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 InvisLoop.BorderColor3 = Color3.fromRGB(74, 74, 74)
 InvisLoop.BorderSizePixel = 7
 InvisLoop.Position = UDim2.new(0.0426908135, 0, 0.261241972, 0)
-InvisLoop.Size = UDim2.new(0, 683, 0, 50)
+InvisLoop.Size = UDim2.new(0.883570492, 0, 0.107066378, 0)
 InvisLoop.Font = Enum.Font.SciFi
 InvisLoop.Text = "Invis Loop"
 InvisLoop.TextColor3 = Color3.fromRGB(0, 255, 255)
+InvisLoop.TextScaled = true
 InvisLoop.TextSize = 14.000
+InvisLoop.TextWrapped = true
+
+UIAspectRatioConstraint_23.Parent = InvisLoop
+UIAspectRatioConstraint_23.AspectRatio = 13.660
+
+UITextSizeConstraint_18.Parent = InvisLoop
+UITextSizeConstraint_18.MaxTextSize = 14
 
 Novoid.Name = "Novoid"
 Novoid.Parent = MainFrame2
@@ -341,11 +551,19 @@ Novoid.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 Novoid.BorderColor3 = Color3.fromRGB(74, 74, 74)
 Novoid.BorderSizePixel = 7
 Novoid.Position = UDim2.new(0.130659848, 0, 0.471092075, 0)
-Novoid.Size = UDim2.new(0, 572, 0, 50)
+Novoid.Size = UDim2.new(0.739974141, 0, 0.107066378, 0)
 Novoid.Font = Enum.Font.SciFi
 Novoid.Text = "Novoid"
 Novoid.TextColor3 = Color3.fromRGB(0, 255, 255)
+Novoid.TextScaled = true
 Novoid.TextSize = 14.000
+Novoid.TextWrapped = true
+
+UIAspectRatioConstraint_24.Parent = Novoid
+UIAspectRatioConstraint_24.AspectRatio = 11.440
+
+UITextSizeConstraint_19.Parent = Novoid
+UITextSizeConstraint_19.MaxTextSize = 14
 
 DarkMode.Name = "DarkMode"
 DarkMode.Parent = MainFrame2
@@ -353,11 +571,19 @@ DarkMode.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 DarkMode.BorderColor3 = Color3.fromRGB(74, 74, 74)
 DarkMode.BorderSizePixel = 7
 DarkMode.Position = UDim2.new(0.0426908135, 0, 0.674518228, 0)
-DarkMode.Size = UDim2.new(0, 683, 0, 50)
+DarkMode.Size = UDim2.new(0.883570492, 0, 0.107066378, 0)
 DarkMode.Font = Enum.Font.SciFi
 DarkMode.Text = "S.P.T.S DarkMode"
 DarkMode.TextColor3 = Color3.fromRGB(0, 255, 255)
+DarkMode.TextScaled = true
 DarkMode.TextSize = 14.000
+DarkMode.TextWrapped = true
+
+UIAspectRatioConstraint_25.Parent = DarkMode
+UIAspectRatioConstraint_25.AspectRatio = 13.660
+
+UITextSizeConstraint_20.Parent = DarkMode
+UITextSizeConstraint_20.MaxTextSize = 14
 
 TrainFist.Name = "Train Fist"
 TrainFist.Parent = MainFrame2
@@ -365,11 +591,22 @@ TrainFist.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 TrainFist.BorderColor3 = Color3.fromRGB(74, 74, 74)
 TrainFist.BorderSizePixel = 7
 TrainFist.Position = UDim2.new(0.0426908135, 0, 0.852248371, 0)
-TrainFist.Size = UDim2.new(0, 683, 0, 50)
+TrainFist.Size = UDim2.new(0.883570492, 0, 0.107066378, 0)
 TrainFist.Font = Enum.Font.SciFi
 TrainFist.Text = "Train Fist"
 TrainFist.TextColor3 = Color3.fromRGB(0, 255, 255)
+TrainFist.TextScaled = true
 TrainFist.TextSize = 14.000
+TrainFist.TextWrapped = true
+
+UIAspectRatioConstraint_26.Parent = TrainFist
+UIAspectRatioConstraint_26.AspectRatio = 13.660
+
+UITextSizeConstraint_21.Parent = TrainFist
+UITextSizeConstraint_21.MaxTextSize = 14
+
+UIAspectRatioConstraint_27.Parent = MainFrame2
+UIAspectRatioConstraint_27.AspectRatio = 1.655
 
 MainFrame3.Name = "MainFrame3"
 MainFrame3.Parent = Gui
@@ -377,7 +614,7 @@ MainFrame3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 MainFrame3.BorderColor3 = Color3.fromRGB(255, 255, 255)
 MainFrame3.BorderSizePixel = 4
 MainFrame3.Position = UDim2.new(0.21875, 0, 0.233219564, 0)
-MainFrame3.Size = UDim2.new(0, 773, 0, 467)
+MainFrame3.Size = UDim2.new(0.600155294, 0, 0.494703382, 0)
 MainFrame3.Visible = false
 
 backwards_2.Name = "backwards"
@@ -385,9 +622,12 @@ backwards_2.Parent = MainFrame3
 backwards_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 backwards_2.Position = UDim2.new(5.96046448e-08, 0, 0.389721632, 0)
 backwards_2.Rotation = 180.000
-backwards_2.Size = UDim2.new(0, 91, 0, 100)
+backwards_2.Size = UDim2.new(0.117723159, 0, 0.214132756, 0)
 backwards_2.Image = "http://www.roblox.com/asset/?id=1594671524"
 backwards_2.ImageColor3 = Color3.fromRGB(0, 255, 255)
+
+UIAspectRatioConstraint_28.Parent = backwards_2
+UIAspectRatioConstraint_28.AspectRatio = 0.910
 
 Zen.Name = "Zen"
 Zen.Parent = MainFrame3
@@ -395,11 +635,19 @@ Zen.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 Zen.BorderColor3 = Color3.fromRGB(74, 74, 74)
 Zen.BorderSizePixel = 7
 Zen.Position = UDim2.new(0.0582147464, 0, 0.094218418, 0)
-Zen.Size = UDim2.new(0, 181, 0, 50)
+Zen.Size = UDim2.new(0.234152645, 0, 0.107066378, 0)
 Zen.Font = Enum.Font.SciFi
 Zen.Text = "Zen"
 Zen.TextColor3 = Color3.fromRGB(0, 255, 255)
+Zen.TextScaled = true
 Zen.TextSize = 14.000
+Zen.TextWrapped = true
+
+UIAspectRatioConstraint_29.Parent = Zen
+UIAspectRatioConstraint_29.AspectRatio = 3.620
+
+UITextSizeConstraint_22.Parent = Zen
+UITextSizeConstraint_22.MaxTextSize = 14
 
 Spawn.Name = "Spawn"
 Spawn.Parent = MainFrame3
@@ -407,11 +655,19 @@ Spawn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 Spawn.BorderColor3 = Color3.fromRGB(74, 74, 74)
 Spawn.BorderSizePixel = 7
 Spawn.Position = UDim2.new(0.382923692, 0, 0.094218418, 0)
-Spawn.Size = UDim2.new(0, 181, 0, 50)
+Spawn.Size = UDim2.new(0.234152645, 0, 0.107066378, 0)
 Spawn.Font = Enum.Font.SciFi
 Spawn.Text = "Spawn"
 Spawn.TextColor3 = Color3.fromRGB(0, 255, 255)
+Spawn.TextScaled = true
 Spawn.TextSize = 14.000
+Spawn.TextWrapped = true
+
+UIAspectRatioConstraint_30.Parent = Spawn
+UIAspectRatioConstraint_30.AspectRatio = 3.620
+
+UITextSizeConstraint_23.Parent = Spawn
+UITextSizeConstraint_23.MaxTextSize = 14
 
 LeaderBoard.Name = "LeaderBoard"
 LeaderBoard.Parent = MainFrame3
@@ -419,11 +675,19 @@ LeaderBoard.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 LeaderBoard.BorderColor3 = Color3.fromRGB(74, 74, 74)
 LeaderBoard.BorderSizePixel = 7
 LeaderBoard.Position = UDim2.new(0.72574389, 0, 0.094218418, 0)
-LeaderBoard.Size = UDim2.new(0, 181, 0, 50)
+LeaderBoard.Size = UDim2.new(0.234152645, 0, 0.107066378, 0)
 LeaderBoard.Font = Enum.Font.SciFi
 LeaderBoard.Text = "LeaderBoards"
 LeaderBoard.TextColor3 = Color3.fromRGB(0, 255, 255)
+LeaderBoard.TextScaled = true
 LeaderBoard.TextSize = 14.000
+LeaderBoard.TextWrapped = true
+
+UIAspectRatioConstraint_31.Parent = LeaderBoard
+UIAspectRatioConstraint_31.AspectRatio = 3.620
+
+UITextSizeConstraint_24.Parent = LeaderBoard
+UITextSizeConstraint_24.MaxTextSize = 14
 
 godmode.Name = "godmode"
 godmode.Parent = MainFrame3
@@ -431,11 +695,19 @@ godmode.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 godmode.BorderColor3 = Color3.fromRGB(74, 74, 74)
 godmode.BorderSizePixel = 7
 godmode.Position = UDim2.new(0.40232861, 0, 0.417558908, 0)
-godmode.Size = UDim2.new(0, 181, 0, 50)
+godmode.Size = UDim2.new(0.234152645, 0, 0.107066378, 0)
 godmode.Font = Enum.Font.SciFi
 godmode.Text = "GodMode(Ghost)"
 godmode.TextColor3 = Color3.fromRGB(0, 255, 255)
+godmode.TextScaled = true
 godmode.TextSize = 14.000
+godmode.TextWrapped = true
+
+UIAspectRatioConstraint_32.Parent = godmode
+UIAspectRatioConstraint_32.AspectRatio = 3.620
+
+UITextSizeConstraint_25.Parent = godmode
+UITextSizeConstraint_25.MaxTextSize = 14
 
 settings.Name = "settings"
 settings.Parent = MainFrame3
@@ -443,11 +715,19 @@ settings.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 settings.BorderColor3 = Color3.fromRGB(74, 74, 74)
 settings.BorderSizePixel = 7
 settings.Position = UDim2.new(0.130659789, 0, 0.417558908, 0)
-settings.Size = UDim2.new(0, 181, 0, 50)
+settings.Size = UDim2.new(0.234152645, 0, 0.107066378, 0)
 settings.Font = Enum.Font.SciFi
 settings.Text = "Settings"
 settings.TextColor3 = Color3.fromRGB(0, 255, 255)
+settings.TextScaled = true
 settings.TextSize = 14.000
+settings.TextWrapped = true
+
+UIAspectRatioConstraint_33.Parent = settings
+UIAspectRatioConstraint_33.AspectRatio = 3.620
+
+UITextSizeConstraint_26.Parent = settings
+UITextSizeConstraint_26.MaxTextSize = 14
 
 settings_2.Name = "settings"
 settings_2.Parent = MainFrame3
@@ -455,11 +735,22 @@ settings_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 settings_2.BorderColor3 = Color3.fromRGB(74, 74, 74)
 settings_2.BorderSizePixel = 7
 settings_2.Position = UDim2.new(0.717981935, 0, 0.417558908, 0)
-settings_2.Size = UDim2.new(0, 181, 0, 50)
+settings_2.Size = UDim2.new(0.234152645, 0, 0.107066378, 0)
 settings_2.Font = Enum.Font.SciFi
 settings_2.Text = "Kill Gui"
 settings_2.TextColor3 = Color3.fromRGB(0, 255, 255)
+settings_2.TextScaled = true
 settings_2.TextSize = 14.000
+settings_2.TextWrapped = true
+
+UIAspectRatioConstraint_34.Parent = settings_2
+UIAspectRatioConstraint_34.AspectRatio = 3.620
+
+UITextSizeConstraint_27.Parent = settings_2
+UITextSizeConstraint_27.MaxTextSize = 14
+
+UIAspectRatioConstraint_35.Parent = MainFrame3
+UIAspectRatioConstraint_35.AspectRatio = 1.655
 
 settingsF.Name = "settingsF"
 settingsF.Parent = Gui
@@ -467,7 +758,7 @@ settingsF.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 settingsF.BorderColor3 = Color3.fromRGB(255, 255, 255)
 settingsF.BorderSizePixel = 4
 settingsF.Position = UDim2.new(0.21875, 0, 0.233219564, 0)
-settingsF.Size = UDim2.new(0, 773, 0, 467)
+settingsF.Size = UDim2.new(0.600155294, 0, 0.494703382, 0)
 settingsF.Visible = false
 
 keybindbox.Name = "keybindbox"
@@ -476,41 +767,63 @@ keybindbox.BackgroundColor3 = Color3.fromRGB(141, 141, 141)
 keybindbox.BorderColor3 = Color3.fromRGB(0, 255, 255)
 keybindbox.BorderSizePixel = 7
 keybindbox.Position = UDim2.new(0.0698576942, 0, 0.214132756, 0)
-keybindbox.Size = UDim2.new(0, 481, 0, 269)
+keybindbox.Size = UDim2.new(0.622250974, 0, 0.576017141, 0)
 keybindbox.Font = Enum.Font.SourceSans
 keybindbox.PlaceholderColor3 = Color3.fromRGB(0, 0, 0)
 keybindbox.PlaceholderText = "choose desired keybind, Q is default...."
 keybindbox.Text = ""
 keybindbox.TextColor3 = Color3.fromRGB(0, 0, 0)
+keybindbox.TextScaled = true
 keybindbox.TextSize = 20.000
 keybindbox.TextWrapped = true
+
+UIAspectRatioConstraint_36.Parent = keybindbox
+UIAspectRatioConstraint_36.AspectRatio = 1.788
+
+UITextSizeConstraint_28.Parent = keybindbox
 
 availablekeybinds.Name = "availablekeybinds"
 availablekeybinds.Parent = settingsF
 availablekeybinds.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 availablekeybinds.BorderColor3 = Color3.fromRGB(255, 255, 255)
-availablekeybinds.Size = UDim2.new(0, 773, 0, 50)
+availablekeybinds.Size = UDim2.new(1, 0, 0.107066378, 0)
 availablekeybinds.Font = Enum.Font.SourceSans
 availablekeybinds.Text = "Click for Available KeyBinds"
 availablekeybinds.TextColor3 = Color3.fromRGB(0, 255, 255)
+availablekeybinds.TextScaled = true
 availablekeybinds.TextSize = 14.000
 availablekeybinds.TextWrapped = true
+
+UIAspectRatioConstraint_37.Parent = availablekeybinds
+UIAspectRatioConstraint_37.AspectRatio = 15.460
+
+UITextSizeConstraint_29.Parent = availablekeybinds
+UITextSizeConstraint_29.MaxTextSize = 14
+
+UIAspectRatioConstraint_38.Parent = settingsF
+UIAspectRatioConstraint_38.AspectRatio = 1.655
 
 keybindList.Name = "keybindList"
 keybindList.Parent = Gui
 keybindList.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 keybindList.Position = UDim2.new(0.633720875, 0, 0.331058025, 0)
-keybindList.Size = UDim2.new(0, 180, 0, 295)
+keybindList.Size = UDim2.new(0.139751554, 0, 0.3125, 0)
 keybindList.Visible = false
 keybindList.Font = Enum.Font.SourceSans
 keybindList.Text = " Available keybinds                     ---------------------                              b,c,e,f,g,h,i,j,k,l,m,n,o,p,r,t,u,v,x,y,z rightshift,leftalt, leftcontrol"
 keybindList.TextColor3 = Color3.fromRGB(0, 255, 255)
+keybindList.TextScaled = true
 keybindList.TextSize = 26.000
 keybindList.TextWrapped = true
 
+UIAspectRatioConstraint_39.Parent = keybindList
+UIAspectRatioConstraint_39.AspectRatio = 0.610
+
+UITextSizeConstraint_30.Parent = keybindList
+
 -- Scripts:
 
-local function FJOJHXU_fake_script() -- MainFrame.draggableScript 
+local function XFQQP_fake_script() -- MainFrame.draggableScript 
 	local script = Instance.new('LocalScript', MainFrame)
 
 	script.Parent.Active = true
@@ -518,8 +831,8 @@ local function FJOJHXU_fake_script() -- MainFrame.draggableScript
 	script.Parent.Draggable = true
 	
 end
-coroutine.wrap(FJOJHXU_fake_script)()
-local function BSUC_fake_script() -- forward1.forward.script1 
+coroutine.wrap(XFQQP_fake_script)()
+local function RAPORG_fake_script() -- forward1.forward.script1 
 	local script = Instance.new('LocalScript', forward1)
 
 	script.Parent.MouseButton1Down:Connect(function()
@@ -527,96 +840,96 @@ local function BSUC_fake_script() -- forward1.forward.script1
 		script.Parent.Parent.Parent.MainFrame2.Visible = true
 	end)
 end
-coroutine.wrap(BSUC_fake_script)()
-local function BGXTNHS_fake_script() -- autoattack.autoattack 
+coroutine.wrap(RAPORG_fake_script)()
+local function UFVE_fake_script() -- autoattack.autoattack 
 	local script = Instance.new('LocalScript', autoattack)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/theplayer8000/Gui-Spts.scripts/main/auto%20spam%20on", true))()
 	end)
 end
-coroutine.wrap(BGXTNHS_fake_script)()
-local function HOOATWM_fake_script() -- autoattackoff.auto Attack off 
+coroutine.wrap(UFVE_fake_script)()
+local function EQTRO_fake_script() -- autoattackoff.auto Attack off 
 	local script = Instance.new('LocalScript', autoattackoff)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/theplayer8000/Gui-Spts.scripts/main/auto%20spam%20off", true))()
 	end)
 end
-coroutine.wrap(HOOATWM_fake_script)()
-local function HJQTUG_fake_script() -- PsychicAll.psychic all on 
+coroutine.wrap(EQTRO_fake_script)()
+local function DFBM_fake_script() -- PsychicAll.psychic all on 
 	local script = Instance.new('LocalScript', PsychicAll)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/theplayer8000/Gui-Spts.scripts/main/psychic%20all%20on", true))()
 	end)
 end
-coroutine.wrap(HJQTUG_fake_script)()
-local function UBLBN_fake_script() -- PsychicAllOff.psychicall off script 
+coroutine.wrap(DFBM_fake_script)()
+local function LNNLAC_fake_script() -- PsychicAllOff.psychicall off script 
 	local script = Instance.new('LocalScript', PsychicAllOff)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/theplayer8000/Gui-Spts.scripts/main/psychic%20all%20off", true))()
 	end)
 end
-coroutine.wrap(UBLBN_fake_script)()
-local function TXDXEK_fake_script() -- PsychicToggle.psychic Toggle 
+coroutine.wrap(LNNLAC_fake_script)()
+local function IBXVEI_fake_script() -- PsychicToggle.psychic Toggle 
 	local script = Instance.new('LocalScript', PsychicToggle)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/theplayer8000/Gui-Spts.scripts/main/Psychic%20Script.lua", true))()
 	end)
 end
-coroutine.wrap(TXDXEK_fake_script)()
-local function OVYQGU_fake_script() -- RankChanger.rankChanger 
+coroutine.wrap(IBXVEI_fake_script)()
+local function LVZSLW_fake_script() -- RankChanger.rankChanger 
 	local script = Instance.new('LocalScript', RankChanger)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/theplayer8000/Gui-Spts.scripts/main/server%20rank%20changer.txt",true))()
 	end)
 end
-coroutine.wrap(OVYQGU_fake_script)()
-local function GOKROHU_fake_script() -- blackhub.blackhub 
+coroutine.wrap(LVZSLW_fake_script)()
+local function QRNYUBX_fake_script() -- blackhub.blackhub 
 	local script = Instance.new('LocalScript', blackhub)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/theplayer8000/Gui-Spts.scripts/main/Black_Hub.txt", true))()
 	end)
 end
-coroutine.wrap(GOKROHU_fake_script)()
-local function PUNHS_fake_script() -- blackhub20.blackhub2.0/msg 
+coroutine.wrap(QRNYUBX_fake_script)()
+local function WIZYCCQ_fake_script() -- blackhub20.blackhub2.0/msg 
 	local script = Instance.new('LocalScript', blackhub20)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/theplayer8000/Gui-Spts.scripts/main/message.txt", true))()
 	end)
 end
-coroutine.wrap(PUNHS_fake_script)()
-local function DUYSVP_fake_script() -- cmdx.Cmd-x 
+coroutine.wrap(WIZYCCQ_fake_script)()
+local function UQHD_fake_script() -- cmdx.Cmd-x 
 	local script = Instance.new('LocalScript', cmdx)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/CMD-X/CMD-X/master/Source", true))()
 	end)
 end
-coroutine.wrap(DUYSVP_fake_script)()
-local function TWVPSD_fake_script() -- respawnScript.Respawn SCript 
+coroutine.wrap(UQHD_fake_script)()
+local function PBQZNN_fake_script() -- respawnScript.Respawn SCript 
 	local script = Instance.new('LocalScript', respawnScript)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/theplayer8000/Respawn-script-/main/respawn.txt", true))()
 	end)
 end
-coroutine.wrap(TWVPSD_fake_script)()
-local function KIQQ_fake_script() -- MultiChecker.miltiscript 
+coroutine.wrap(PBQZNN_fake_script)()
+local function DARLA_fake_script() -- MultiChecker.miltiscript 
 	local script = Instance.new('LocalScript', MultiChecker)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/theplayer8000/Gui-Spts.scripts/main/multi%20checker",true))()
 	end)
 end
-coroutine.wrap(KIQQ_fake_script)()
-local function WHJHUHI_fake_script() -- clicktotp.click to tp 
+coroutine.wrap(DARLA_fake_script)()
+local function RSKXBVZ_fake_script() -- clicktotp.click to tp 
 	local script = Instance.new('LocalScript', clicktotp)
 
 	script.Parent.MouseButton1Down:Connect(function()
@@ -632,8 +945,8 @@ local function WHJHUHI_fake_script() -- clicktotp.click to tp
 		tool.Parent = game.Players.LocalPlayer.Backpack
 	end)
 end
-coroutine.wrap(WHJHUHI_fake_script)()
-local function FBSQFT_fake_script() -- Repscript.RepScript 
+coroutine.wrap(RSKXBVZ_fake_script)()
+local function WRDYX_fake_script() -- Repscript.RepScript 
 	local script = Instance.new('LocalScript', Repscript)
 
 	script.Parent.MouseButton1Down:Connect(function()
@@ -641,24 +954,24 @@ local function FBSQFT_fake_script() -- Repscript.RepScript
 		nigga.NameBbGui.NameTxt: Destroy()
 	end)
 end
-coroutine.wrap(FBSQFT_fake_script)()
-local function SFONKOF_fake_script() -- ChatSpy.chatspyscript 
+coroutine.wrap(WRDYX_fake_script)()
+local function WTXW_fake_script() -- ChatSpy.chatspyscript 
 	local script = Instance.new('LocalScript', ChatSpy)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/theplayer8000/Gui-Spts.scripts/main/chatspy.txt",true))()
 	end)
 end
-coroutine.wrap(SFONKOF_fake_script)()
-local function QZHUO_fake_script() -- AntiChatLogger.AntichatLogger 
+coroutine.wrap(WTXW_fake_script)()
+local function XGCWDG_fake_script() -- AntiChatLogger.AntichatLogger 
 	local script = Instance.new('LocalScript', AntiChatLogger)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/theplayer8000/Gui-Spts.scripts/main/nologs", true))()
 	end)
 end
-coroutine.wrap(QZHUO_fake_script)()
-local function QCBJ_fake_script() -- togglegui.toggleGui 
+coroutine.wrap(XGCWDG_fake_script)()
+local function NPRDZHT_fake_script() -- togglegui.toggleGui 
 	local script = Instance.new('LocalScript', togglegui)
 
 	
@@ -680,8 +993,8 @@ local function QCBJ_fake_script() -- togglegui.toggleGui
 		end
 	 end)
 end
-coroutine.wrap(QCBJ_fake_script)()
-local function DUWYS_fake_script() -- MainFrame2.draggableScript 
+coroutine.wrap(NPRDZHT_fake_script)()
+local function ODOIEJA_fake_script() -- MainFrame2.draggableScript 
 	local script = Instance.new('LocalScript', MainFrame2)
 
 	script.Parent.Active = true
@@ -689,8 +1002,8 @@ local function DUWYS_fake_script() -- MainFrame2.draggableScript
 	script.Parent.Draggable = true
 	
 end
-coroutine.wrap(DUWYS_fake_script)()
-local function QFDD_fake_script() -- backwards.return.script2 
+coroutine.wrap(ODOIEJA_fake_script)()
+local function CEGE_fake_script() -- backwards.return.script2 
 	local script = Instance.new('LocalScript', backwards)
 
 	script.Parent.MouseButton1Down:Connect(function()
@@ -698,8 +1011,8 @@ local function QFDD_fake_script() -- backwards.return.script2
 		script.Parent.Parent.Parent.MainFrame.Visible = true
 	end)
 end
-coroutine.wrap(QFDD_fake_script)()
-local function YHMTXD_fake_script() -- forward2.forward.script2 
+coroutine.wrap(CEGE_fake_script)()
+local function JDAOR_fake_script() -- forward2.forward.script2 
 	local script = Instance.new('LocalScript', forward2)
 
 	script.Parent.MouseButton1Down:Connect(function()
@@ -708,16 +1021,16 @@ local function YHMTXD_fake_script() -- forward2.forward.script2
 		script.Parent.Parent.Parent.MainFrame3.Visible = true
 	end)
 end
-coroutine.wrap(YHMTXD_fake_script)()
-local function RWIUU_fake_script() -- OpVoid.Void Script 
+coroutine.wrap(JDAOR_fake_script)()
+local function PVNV_fake_script() -- OpVoid.Void Script 
 	local script = Instance.new('LocalScript', OpVoid)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/theplayer8000/Gui-Spts.scripts/main/spam%20void", true))()
 	end)
 end
-coroutine.wrap(RWIUU_fake_script)()
-local function AZEF_fake_script() -- InvisLoop.Invis Loop 
+coroutine.wrap(PVNV_fake_script)()
+local function XCQSF_fake_script() -- InvisLoop.Invis Loop 
 	local script = Instance.new('LocalScript', InvisLoop)
 
 	script.Parent.MouseButton1Down:Connect(function()
@@ -736,8 +1049,8 @@ local function AZEF_fake_script() -- InvisLoop.Invis Loop
 		end
 	end)
 end
-coroutine.wrap(AZEF_fake_script)()
-local function LPRJZWU_fake_script() -- Novoid.novoidscript 
+coroutine.wrap(XCQSF_fake_script)()
+local function NIOXS_fake_script() -- Novoid.novoidscript 
 	local script = Instance.new('LocalScript', Novoid)
 
 	script.Parent.MouseButton1Down:Connect(function()
@@ -748,16 +1061,16 @@ local function LPRJZWU_fake_script() -- Novoid.novoidscript
 		end
 	end)
 end
-coroutine.wrap(LPRJZWU_fake_script)()
-local function SOIWNL_fake_script() -- DarkMode.Darkmode script 
+coroutine.wrap(NIOXS_fake_script)()
+local function JRAH_fake_script() -- DarkMode.Darkmode script 
 	local script = Instance.new('LocalScript', DarkMode)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/theplayer8000/Gui-Spts.scripts/main/Spts%20darkmode.txt",true))()
 	end)
 end
-coroutine.wrap(SOIWNL_fake_script)()
-local function CQDGZNF_fake_script() -- TrainFist.Train fist 
+coroutine.wrap(JRAH_fake_script)()
+local function BHPEZF_fake_script() -- TrainFist.Train fist 
 	local script = Instance.new('LocalScript', TrainFist)
 
 	script.Parent.MouseButton1Down:Connect(function()
@@ -801,8 +1114,8 @@ local function CQDGZNF_fake_script() -- TrainFist.Train fist
 		end
 	end)
 end
-coroutine.wrap(CQDGZNF_fake_script)()
-local function RGSCEEN_fake_script() -- MainFrame3.draggableScript 
+coroutine.wrap(BHPEZF_fake_script)()
+local function HIOABYU_fake_script() -- MainFrame3.draggableScript 
 	local script = Instance.new('LocalScript', MainFrame3)
 
 	script.Parent.Active = true
@@ -810,8 +1123,8 @@ local function RGSCEEN_fake_script() -- MainFrame3.draggableScript
 	script.Parent.Draggable = true
 	
 end
-coroutine.wrap(RGSCEEN_fake_script)()
-local function MCXCL_fake_script() -- backwards_2.return.script3 
+coroutine.wrap(HIOABYU_fake_script)()
+local function MCBMFV_fake_script() -- backwards_2.return.script3 
 	local script = Instance.new('LocalScript', backwards_2)
 
 	script.Parent.MouseButton1Down:Connect(function()
@@ -819,32 +1132,32 @@ local function MCXCL_fake_script() -- backwards_2.return.script3
 		script.Parent.Parent.Parent.MainFrame2.Visible = true
 	end)
 end
-coroutine.wrap(MCXCL_fake_script)()
-local function BBFJ_fake_script() -- Zen.Zen 
+coroutine.wrap(MCBMFV_fake_script)()
+local function ISBPQPT_fake_script() -- Zen.Zen 
 	local script = Instance.new('LocalScript', Zen)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2628, 5550, -493)
 	end)
 end
-coroutine.wrap(BBFJ_fake_script)()
-local function PKLGPTW_fake_script() -- Spawn.Spawn 
+coroutine.wrap(ISBPQPT_fake_script)()
+local function EDRWUH_fake_script() -- Spawn.Spawn 
 	local script = Instance.new('LocalScript', Spawn)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(316, 249, 854)
 	end)
 end
-coroutine.wrap(PKLGPTW_fake_script)()
-local function CBXM_fake_script() -- LeaderBoard.LB 
+coroutine.wrap(EDRWUH_fake_script)()
+local function QNUSM_fake_script() -- LeaderBoard.LB 
 	local script = Instance.new('LocalScript', LeaderBoard)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-753, 249, 746)
 	end)
 end
-coroutine.wrap(CBXM_fake_script)()
-local function PLYQZH_fake_script() -- godmode.god 
+coroutine.wrap(QNUSM_fake_script)()
+local function GZJMY_fake_script() -- godmode.god 
 	local script = Instance.new('LocalScript', godmode)
 
 	script.Parent.MouseButton1Down:Connect(function()
@@ -852,8 +1165,8 @@ local function PLYQZH_fake_script() -- godmode.god
 	end)
 	
 end
-coroutine.wrap(PLYQZH_fake_script)()
-local function TBSYOL_fake_script() -- settings.settings_script 
+coroutine.wrap(GZJMY_fake_script)()
+local function IMDA_fake_script() -- settings.settings_script 
 	local script = Instance.new('LocalScript', settings)
 
 	script.Parent.MouseButton1Down:Connect(function()
@@ -862,8 +1175,8 @@ local function TBSYOL_fake_script() -- settings.settings_script
 	end)
 	
 end
-coroutine.wrap(TBSYOL_fake_script)()
-local function RVDECJ_fake_script() -- settings_2.Kill Gui 
+coroutine.wrap(IMDA_fake_script)()
+local function SRTGBKW_fake_script() -- settings_2.Kill Gui 
 	local script = Instance.new('LocalScript', settings_2)
 
 	script.Parent.MouseButton1Down:Connect(function()
@@ -871,8 +1184,8 @@ local function RVDECJ_fake_script() -- settings_2.Kill Gui
 	end)
 	
 end
-coroutine.wrap(RVDECJ_fake_script)()
-local function FTGMT_fake_script() -- settingsF.draggableScript 
+coroutine.wrap(SRTGBKW_fake_script)()
+local function HYHS_fake_script() -- settingsF.draggableScript 
 	local script = Instance.new('LocalScript', settingsF)
 
 	script.Parent.Active = true
@@ -880,8 +1193,8 @@ local function FTGMT_fake_script() -- settingsF.draggableScript
 	script.Parent.Draggable = true
 	
 end
-coroutine.wrap(FTGMT_fake_script)()
-local function QVAYK_fake_script() -- availablekeybinds.availablekeybindscript 
+coroutine.wrap(HYHS_fake_script)()
+local function ULUOP_fake_script() -- availablekeybinds.availablekeybindscript 
 	local script = Instance.new('LocalScript', availablekeybinds)
 
 	local press = script.Parent.Parent.Parent
@@ -890,8 +1203,8 @@ local function QVAYK_fake_script() -- availablekeybinds.availablekeybindscript
 		press.keybindList.Visible = not press.keybindList.Visible
 	end)
 end
-coroutine.wrap(QVAYK_fake_script)()
-local function AMGZPZ_fake_script() -- Gui.toggle gui/textbox 
+coroutine.wrap(ULUOP_fake_script)()
+local function BGPXKUT_fake_script() -- Gui.toggle gui/textbox 
 	local script = Instance.new('LocalScript', Gui)
 
 	local textlabel = script.Parent.settingsF.keybindbox
@@ -1000,4 +1313,4 @@ local function AMGZPZ_fake_script() -- Gui.toggle gui/textbox
 	)
 	
 end
-coroutine.wrap(AMGZPZ_fake_script)()
+coroutine.wrap(BGPXKUT_fake_script)()

@@ -164,7 +164,7 @@ end
     v.Parent = cmdlp.Character.HumanoidRootPart
     firetouchinterest(target.Character.HumanoidRootPart, v.Handle, 0)
     firetouchinterest(target.Character.HumanoidRootPart, v.Handle, 1)
-    pcall(function() cmdlp.Character.HumanoidRootPart.CFrame = CFrame.new(0, workspace.FallenPartsDestroyHeight + 5, 0) end)
+    pcall(function() cmdlp.Character.HumanoidRootPart.CFrame = CFrame.new(0, 100000000000000000000000, 0) end)
     wait(.3)
     cmdlp.Character:Remove()
     cmdlp.CharacterAdded:Wait()

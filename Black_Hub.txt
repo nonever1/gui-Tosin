@@ -1,9 +1,15 @@
 -- Open the Dev Console (F9) to read information about the GUI --
 
-print("\nSuper Power Training Simulator LuckyGui Created by LuckyMMB @ V3rmillion.net\nDiscord https://discord.gg/GKzJnUC\nLast updated 5th December 2018")
+print(
+    "\nSuper Power Training Simulator LuckyGui Created by LuckyMMB @ V3rmillion.net\nDiscord https://discord.gg/GKzJnUC\nLast updated 5th December 2018"
+)
 print("\nThe Y Key activates Panic Mode and teleports you to the Safe Zone. This can be changed to another key.")
-print("\nUse the OnDeath Return button to respawn you and return to your previous position\nwhen you are killed. Great for farming BT in zones as soon as you\ncan take 1 hit and survive (eg. 6Bil in 100Bil+ BT Taining Area).")
-print("\nOnce your Fist, Body and Psychic stats are higher you will not be able to Auto\nFarm more than one skill at a time as you need to be near the\nlocation you are farming at.")
+print(
+    "\nUse the OnDeath Return button to respawn you and return to your previous position\nwhen you are killed. Great for farming BT in zones as soon as you\ncan take 1 hit and survive (eg. 6Bil in 100Bil+ BT Taining Area)."
+)
+print(
+    "\nOnce your Fist, Body and Psychic stats are higher you will not be able to Auto\nFarm more than one skill at a time as you need to be near the\nlocation you are farming at."
+)
 
 local plr = game:GetService("Players").LocalPlayer
 local char = plr.Character
@@ -11,7 +17,7 @@ local root = char.HumanoidRootPart
 local Plrs = game:GetService("Players")
 local MyPlr = Plrs.LocalPlayer
 local MyChar = MyPlr.Character
-local UIS = game:GetService'UserInputService'
+local UIS = game:GetService "UserInputService"
 local RepStor = game:GetService("ReplicatedStorage")
 local CoreGui = game:GetService("CoreGui")
 local Run = game:GetService("RunService")
@@ -19,11 +25,13 @@ local mouse = game.Players.LocalPlayer:GetMouse()
 local human = plr.Character:WaitForChild("Humanoid")
 
 -- Anti Idle --
-local VirtualUser=game:service'VirtualUser'
-game:service'Players'.LocalPlayer.Idled:connect(function()
-	VirtualUser:CaptureController()
-	VirtualUser:ClickButton2(Vector2.new())
-end)
+local VirtualUser = game:service "VirtualUser"
+game:service "Players".LocalPlayer.Idled:connect(
+    function()
+        VirtualUser:CaptureController()
+        VirtualUser:ClickButton2(Vector2.new())
+    end
+)
 
 showstartmessage = true
 showtopplayersactive = false
@@ -51,177 +59,193 @@ punchmodeactive = false
 ESPEnabled = false
 ESPLength = 20000
 
-CharAddedEvent = { }
+CharAddedEvent = {}
 
-Plrs.PlayerAdded:connect(function(plr)
-	if CharAddedEvent[plr.Name] == nil then
-		CharAddedEvent[plr.Name] = plr.CharacterAdded:connect(function(char)
-			if ESPEnabled then
-				RemoveESP(plr)
-				CreateESP(plr)
-			end
-		end)
-	end
-end)
+Plrs.PlayerAdded:connect(
+    function(plr)
+        if CharAddedEvent[plr.Name] == nil then
+            CharAddedEvent[plr.Name] =
+                plr.CharacterAdded:connect(
+                function(char)
+                    if ESPEnabled then
+                        RemoveESP(plr)
+                        CreateESP(plr)
+                    end
+                end
+            )
+        end
+    end
+)
 
-Plrs.PlayerRemoving:connect(function(plr)
-	if CharAddedEvent[plr.Name] ~= nil then
-		CharAddedEvent[plr.Name]:Disconnect()
-		CharAddedEvent[plr.Name] = nil
-	end
-	RemoveESP(plr)
-end)
+Plrs.PlayerRemoving:connect(
+    function(plr)
+        if CharAddedEvent[plr.Name] ~= nil then
+            CharAddedEvent[plr.Name]:Disconnect()
+            CharAddedEvent[plr.Name] = nil
+        end
+        RemoveESP(plr)
+    end
+)
 
 function CreateESP(plr)
-	if plr ~= nil then
-		local GetChar = plr.Character
-		if not GetChar then return end
-		local GetHead do
-			repeat wait() until GetChar:FindFirstChild("Head")
-		end
-		GetHead = GetChar.Head
-		
-		local bb = Instance.new("BillboardGui", CoreGui)
-		bb.Adornee = GetHead
-		bb.ExtentsOffset = Vector3.new(0, 1, 0)
-		bb.AlwaysOnTop = true
-		bb.Size = UDim2.new(0, 5, 0, 5)
-		bb.StudsOffset = Vector3.new(0, 3, 0)
-		bb.Name = "ESP_" .. plr.Name
-		
-		local frame = Instance.new("Frame", bb)
-		frame.ZIndex = 10
-		frame.BackgroundTransparency = 1
-		frame.Size = UDim2.new(1, 0, 1, 0)
-		
-		local TxtName = Instance.new("TextLabel", frame)
-		TxtName.Name = "Names"
-		TxtName.ZIndex = 10
-		TxtName.Text = plr.Name
-		TxtName.BackgroundTransparency = 1
-		TxtName.Position = UDim2.new(0, 0, 0, -45)
-		TxtName.Size = UDim2.new(1, 0, 10, 0)
-		TxtName.Font = "SourceSansBold"
-		TxtName.TextColor3 = Color3.new(0, 0, 0)
-		TxtName.TextSize = 14
-		TxtName.TextStrokeTransparency = 0.5
-		
-		local TxtDist = Instance.new("TextLabel", frame)
-		TxtDist.Name = "Dist"
-		TxtDist.ZIndex = 10
-		TxtDist.Text = ""
-		TxtDist.BackgroundTransparency = 1
-		TxtDist.Position = UDim2.new(0, 0, 0, -35)
-		TxtDist.Size = UDim2.new(1, 0, 10, 0)
-		TxtDist.Font = "SourceSansBold"
-		TxtDist.TextColor3 = Color3.new(0, 0, 0)
-		TxtDist.TextSize = 15
-		TxtDist.TextStrokeTransparency = 0.5
+    if plr ~= nil then
+        local GetChar = plr.Character
+        if not GetChar then
+            return
+        end
+        local GetHead
+        do
+            repeat
+                wait()
+            until GetChar:FindFirstChild("Head")
+        end
+        GetHead = GetChar.Head
 
-		local TxtHealth = Instance.new("TextLabel", frame)
-		TxtHealth.Name = "Health"
-		TxtHealth.ZIndex = 10
-		TxtHealth.Text = ""
-		TxtHealth.BackgroundTransparency = 1
-		TxtHealth.Position = UDim2.new(0, 0, 0, -25)
-		TxtHealth.Size = UDim2.new(1, 0, 10, 0)
-		TxtHealth.Font = "SourceSansBold"
-		TxtHealth.TextColor3 = Color3.new(0, 0, 0)
-		TxtHealth.TextSize = 15
-		TxtHealth.TextStrokeTransparency = 0.5
+        local bb = Instance.new("BillboardGui", CoreGui)
+        bb.Adornee = GetHead
+        bb.ExtentsOffset = Vector3.new(0, 1, 0)
+        bb.AlwaysOnTop = true
+        bb.Size = UDim2.new(0, 5, 0, 5)
+        bb.StudsOffset = Vector3.new(0, 3, 0)
+        bb.Name = "ESP_" .. plr.Name
 
-		local TxtFist = Instance.new("TextLabel", frame)
-		TxtFist.Name = "Fist"
-		TxtFist.ZIndex = 10
-		TxtFist.Text = ""
-		TxtFist.BackgroundTransparency = 1
-		TxtFist.Position = UDim2.new(0, 0, 0, -15)
-		TxtFist.Size = UDim2.new(1, 0, 10, 0)
-		TxtFist.Font = "SourceSansBold"
-		TxtFist.TextColor3 = Color3.new(0, 0, 0)
-		TxtFist.TextSize = 15
-		TxtFist.TextStrokeTransparency = 0.5
+        local frame = Instance.new("Frame", bb)
+        frame.ZIndex = 10
+        frame.BackgroundTransparency = 1
+        frame.Size = UDim2.new(1, 0, 1, 0)
 
-		local TxtPsychic = Instance.new("TextLabel", frame)
-		TxtPsychic.Name = "Psychic"
-		TxtPsychic.ZIndex = 10
-		TxtPsychic.Text = ""
-		TxtPsychic.BackgroundTransparency = 1
-		TxtPsychic.Position = UDim2.new(0, 0, 0, -5)
-		TxtPsychic.Size = UDim2.new(1, 0, 10, 0)
-		TxtPsychic.Font = "SourceSansBold"
-		TxtPsychic.TextColor3 = Color3.new(0, 0, 0)
-		TxtPsychic.TextSize = 15
-		TxtPsychic.TextStrokeTransparency = 0.5
-	end
+        local TxtName = Instance.new("TextLabel", frame)
+        TxtName.Name = "Names"
+        TxtName.ZIndex = 10
+        TxtName.Text = plr.Name
+        TxtName.BackgroundTransparency = 1
+        TxtName.Position = UDim2.new(0, 0, 0, -45)
+        TxtName.Size = UDim2.new(1, 0, 10, 0)
+        TxtName.Font = "SourceSansBold"
+        TxtName.TextColor3 = Color3.new(0, 0, 0)
+        TxtName.TextSize = 14
+        TxtName.TextStrokeTransparency = 0.5
+
+        local TxtDist = Instance.new("TextLabel", frame)
+        TxtDist.Name = "Dist"
+        TxtDist.ZIndex = 10
+        TxtDist.Text = ""
+        TxtDist.BackgroundTransparency = 1
+        TxtDist.Position = UDim2.new(0, 0, 0, -35)
+        TxtDist.Size = UDim2.new(1, 0, 10, 0)
+        TxtDist.Font = "SourceSansBold"
+        TxtDist.TextColor3 = Color3.new(0, 0, 0)
+        TxtDist.TextSize = 15
+        TxtDist.TextStrokeTransparency = 0.5
+
+        local TxtHealth = Instance.new("TextLabel", frame)
+        TxtHealth.Name = "Health"
+        TxtHealth.ZIndex = 10
+        TxtHealth.Text = ""
+        TxtHealth.BackgroundTransparency = 1
+        TxtHealth.Position = UDim2.new(0, 0, 0, -25)
+        TxtHealth.Size = UDim2.new(1, 0, 10, 0)
+        TxtHealth.Font = "SourceSansBold"
+        TxtHealth.TextColor3 = Color3.new(0, 0, 0)
+        TxtHealth.TextSize = 15
+        TxtHealth.TextStrokeTransparency = 0.5
+
+        local TxtFist = Instance.new("TextLabel", frame)
+        TxtFist.Name = "Fist"
+        TxtFist.ZIndex = 10
+        TxtFist.Text = ""
+        TxtFist.BackgroundTransparency = 1
+        TxtFist.Position = UDim2.new(0, 0, 0, -15)
+        TxtFist.Size = UDim2.new(1, 0, 10, 0)
+        TxtFist.Font = "SourceSansBold"
+        TxtFist.TextColor3 = Color3.new(0, 0, 0)
+        TxtFist.TextSize = 15
+        TxtFist.TextStrokeTransparency = 0.5
+
+        local TxtPsychic = Instance.new("TextLabel", frame)
+        TxtPsychic.Name = "Psychic"
+        TxtPsychic.ZIndex = 10
+        TxtPsychic.Text = ""
+        TxtPsychic.BackgroundTransparency = 1
+        TxtPsychic.Position = UDim2.new(0, 0, 0, -5)
+        TxtPsychic.Size = UDim2.new(1, 0, 10, 0)
+        TxtPsychic.Font = "SourceSansBold"
+        TxtPsychic.TextColor3 = Color3.new(0, 0, 0)
+        TxtPsychic.TextSize = 15
+        TxtPsychic.TextStrokeTransparency = 0.5
+    end
 end
 
 function UpdateESP(plr)
-	local Find = CoreGui:FindFirstChild("ESP_" .. plr.Name)
-	if Find then
-		local plrStatus = game.Players[plr.Name].leaderstats.Status
-		if plrStatus.Value == "Criminal" then
-			Find.Frame.Names.TextColor3 = Color3.new(1, 0.1, 1)
-		elseif plrStatus.Value == "Lawbreaker" then
-			Find.Frame.Names.TextColor3 = Color3.new(1, 0.1, 0.1)
-		elseif plrStatus.Value == "Guardian" then
-			Find.Frame.Names.TextColor3 = Color3.new(0.1, 0.8, 1)
-		elseif plrStatus.Value == "Protector" then
-			Find.Frame.Names.TextColor3 = Color3.new(0.1, 0.1, 1)
-		elseif plrStatus.Value == "Supervillain" then
-			Find.Frame.Names.TextColor3 = Color3.new(0.3, 0.1, 0.1)
-		elseif plrStatus.Value == "Superhero" then
-			Find.Frame.Names.TextColor3 = Color3.new(0.8, 0.8, 0)
-		else
-			Find.Frame.Names.TextColor3 = Color3.new(1, 1, 1)
-		end
-		Find.Frame.Dist.TextColor3 = Color3.new(1, 1, 1)
-		Find.Frame.Health.TextColor3 = Color3.new(1, 1, 1)
-		Find.Frame.Fist.TextColor3 = Color3.new(1, 1, 1)
-		Find.Frame.Psychic.TextColor3 = Color3.new(1, 1, 1)
-		local GetChar = plr.Character
-		if MyChar and GetChar then
-			local Find2 = MyChar:FindFirstChild("HumanoidRootPart")
-			local Find3 = GetChar:FindFirstChild("HumanoidRootPart")
-			local Find4 = GetChar:FindFirstChildOfClass("Humanoid")
-			if Find2 and Find3 then
-				local pos = Find3.Position
-				local Dist = (Find2.Position - pos).magnitude
-				if Dist > ESPLength then
-					Find.Frame.Names.Visible = false
-					Find.Frame.Dist.Visible = false
-					Find.Frame.Health.Visible = false
-					Find.Frame.Fist.Visible = false
-					Find.Frame.Psychic.Visible = false
-					return
-				else
-					Find.Frame.Names.Visible = true
-					Find.Frame.Dist.Visible = true
-					Find.Frame.Health.Visible = true
-					Find.Frame.Fist.Visible = true
-					Find.Frame.Psychic.Visible = true
-				end
-				Find.Frame.Dist.Text = "Distance: " .. string.format("%.0f", Dist)
-				--Find.Frame.Pos.Text = "(X: " .. string.format("%.0f", pos.X) .. ", Y: " .. string.format("%.0f", pos.Y) .. ", Z: " .. string.format("%.0f", pos.Z) .. ")"
-				if Find4 then
-					Find.Frame.Health.Text = "Health: " ..converttoletter(string.format("%.0f", Find4.Health))
-					Find.Frame.Fist.Text = "Fist: " ..converttoletter(string.format("%.0f", game.Players[plr.Name].PrivateStats.FistStrength.Value))
-					Find.Frame.Psychic.Text = "Psychic: " ..converttoletter(string.format("%.0f", game.Players[plr.Name].PrivateStats.PsychicPower.Value))
-				else
-					Find.Frame.Health.Text = ""
-					Find.Frame.Fist.Text = ""
-					Find.Frame.Psychic.Text = ""
-				end
-			end
-		end
-	end
+    local Find = CoreGui:FindFirstChild("ESP_" .. plr.Name)
+    if Find then
+        local plrStatus = game.Players[plr.Name].leaderstats.Status
+        if plrStatus.Value == "Criminal" then
+            Find.Frame.Names.TextColor3 = Color3.new(1, 0.1, 1)
+        elseif plrStatus.Value == "Lawbreaker" then
+            Find.Frame.Names.TextColor3 = Color3.new(1, 0.1, 0.1)
+        elseif plrStatus.Value == "Guardian" then
+            Find.Frame.Names.TextColor3 = Color3.new(0.1, 0.8, 1)
+        elseif plrStatus.Value == "Protector" then
+            Find.Frame.Names.TextColor3 = Color3.new(0.1, 0.1, 1)
+        elseif plrStatus.Value == "Supervillain" then
+            Find.Frame.Names.TextColor3 = Color3.new(0.3, 0.1, 0.1)
+        elseif plrStatus.Value == "Superhero" then
+            Find.Frame.Names.TextColor3 = Color3.new(0.8, 0.8, 0)
+        else
+            Find.Frame.Names.TextColor3 = Color3.new(1, 1, 1)
+        end
+        Find.Frame.Dist.TextColor3 = Color3.new(1, 1, 1)
+        Find.Frame.Health.TextColor3 = Color3.new(1, 1, 1)
+        Find.Frame.Fist.TextColor3 = Color3.new(1, 1, 1)
+        Find.Frame.Psychic.TextColor3 = Color3.new(1, 1, 1)
+        local GetChar = plr.Character
+        if MyChar and GetChar then
+            local Find2 = MyChar:FindFirstChild("HumanoidRootPart")
+            local Find3 = GetChar:FindFirstChild("HumanoidRootPart")
+            local Find4 = GetChar:FindFirstChildOfClass("Humanoid")
+            if Find2 and Find3 then
+                local pos = Find3.Position
+                local Dist = (Find2.Position - pos).magnitude
+                if Dist > ESPLength then
+                    Find.Frame.Names.Visible = false
+                    Find.Frame.Dist.Visible = false
+                    Find.Frame.Health.Visible = false
+                    Find.Frame.Fist.Visible = false
+                    Find.Frame.Psychic.Visible = false
+                    return
+                else
+                    Find.Frame.Names.Visible = true
+                    Find.Frame.Dist.Visible = true
+                    Find.Frame.Health.Visible = true
+                    Find.Frame.Fist.Visible = true
+                    Find.Frame.Psychic.Visible = true
+                end
+                Find.Frame.Dist.Text = "Distance: " .. string.format("%.0f", Dist)
+                --Find.Frame.Pos.Text = "(X: " .. string.format("%.0f", pos.X) .. ", Y: " .. string.format("%.0f", pos.Y) .. ", Z: " .. string.format("%.0f", pos.Z) .. ")"
+                if Find4 then
+                    Find.Frame.Health.Text = "Health: " .. converttoletter(string.format("%.0f", Find4.Health))
+                    Find.Frame.Fist.Text =
+                        "Fist: " ..
+                        converttoletter(string.format("%.0f", game.Players[plr.Name].PrivateStats.FistStrength.Value))
+                    Find.Frame.Psychic.Text =
+                        "Psychic: " ..
+                        converttoletter(string.format("%.0f", game.Players[plr.Name].PrivateStats.PsychicPower.Value))
+                else
+                    Find.Frame.Health.Text = ""
+                    Find.Frame.Fist.Text = ""
+                    Find.Frame.Psychic.Text = ""
+                end
+            end
+        end
+    end
 end
 
 function RemoveESP(plr)
-	local ESP = CoreGui:FindFirstChild("ESP_" .. plr.Name)
-	if ESP then
-		ESP:Destroy()
-	end
+    local ESP = CoreGui:FindFirstChild("ESP_" .. plr.Name)
+    if ESP then
+        ESP:Destroy()
+    end
 end
 
 local MainGUI = Instance.new("ScreenGui")
@@ -360,7 +384,8 @@ c1.Position = UDim2.new(0, 10, 0, 13)
 c1.Size = UDim2.new(0, 370, 0, 160)
 c1.Font = Enum.Font.Fantasy
 c1.TextColor3 = Color3.new(1, 1, 1)
-c1.Text = "SUPER POWERS TRAINING SIMULATOR GUI\nmade by LuckyMMB#8645 (discord)\n\nPress F9 to read more information about the GUI\n\nThis GUI is free, if you paid for it you were scammed\nand should report it.\n\nNo unauthorized use of this GUI without written\npermission from the creator."
+c1.Text =
+    "SUPER POWERS TRAINING SIMULATOR GUI\nmade by LuckyMMB#8645 (discord)\n\nPress F9 to read more information about the GUI\n\nThis GUI is free, if you paid for it you were scammed\nand should report it.\n\nNo unauthorized use of this GUI without written\npermission from the creator."
 c1.TextSize = 17
 
 c.Name = "c"
@@ -394,7 +419,11 @@ MainFrame.BackgroundTransparency = 0.5
 MainFrame.BorderSizePixel = 0
 MainFrame.Position = UDim2.new(0.5, -382.5, 0, -32)
 MainFrame.Size = UDim2.new(0, 765, 0, 30)
-if not cf.Visible then MainGUI:Destroy() else MainFrame.Visible = true end
+if not cf.Visible then
+    MainGUI:Destroy()
+else
+    MainFrame.Visible = true
+end
 
 Close.Name = "Close"
 Close.Parent = MainFrame
@@ -502,7 +531,7 @@ TPLocation.TextSize = 16
 
 Location1.Name = "Location1"
 Location1.Parent = WayPointsFrame
-Location1.BackgroundColor3 = Color3.new(255/255, 94/255, 40/255)
+Location1.BackgroundColor3 = Color3.new(255 / 255, 94 / 255, 40 / 255)
 Location1.TextColor3 = Color3.new(1, 1, 1)
 Location1.BorderColor3 = Color3.new(0.6, 0.6, 0.6)
 Location1.Position = UDim2.new(0, 5, 0, 30)
@@ -514,7 +543,7 @@ Location1.TextSize = 16
 
 Location2.Name = "Location2"
 Location2.Parent = WayPointsFrame
-Location2.BackgroundColor3 = Color3.new(70/255, 105/255, 0)
+Location2.BackgroundColor3 = Color3.new(70 / 255, 105 / 255, 0)
 Location2.TextColor3 = Color3.new(1, 1, 1)
 Location2.BorderColor3 = Color3.new(0.6, 0.6, 0.6)
 Location2.Position = UDim2.new(0, 5, 0, 55)
@@ -526,7 +555,7 @@ Location2.TextSize = 16
 
 Location7.Name = "Location7"
 Location7.Parent = WayPointsFrame
-Location7.BackgroundColor3 = Color3.new(70/255, 105/255, 0)
+Location7.BackgroundColor3 = Color3.new(70 / 255, 105 / 255, 0)
 Location7.TextColor3 = Color3.new(1, 1, 1)
 Location7.BorderColor3 = Color3.new(0.6, 0.6, 0.6)
 Location7.Position = UDim2.new(0, 5, 0, 80)
@@ -538,7 +567,7 @@ Location7.TextSize = 16
 
 LocationFS1B.Name = "LocationFS1B"
 LocationFS1B.Parent = WayPointsFrame
-LocationFS1B.BackgroundColor3 = Color3.new(70/255, 105/255, 0)
+LocationFS1B.BackgroundColor3 = Color3.new(70 / 255, 105 / 255, 0)
 LocationFS1B.TextColor3 = Color3.new(1, 1, 1)
 LocationFS1B.BorderColor3 = Color3.new(0.6, 0.6, 0.6)
 LocationFS1B.Position = UDim2.new(0, 5, 0, 105)
@@ -550,7 +579,7 @@ LocationFS1B.TextSize = 16
 
 LocationFS100B.Name = "LocationFS100B"
 LocationFS100B.Parent = WayPointsFrame
-LocationFS100B.BackgroundColor3 = Color3.new(70/255, 105/255, 0)
+LocationFS100B.BackgroundColor3 = Color3.new(70 / 255, 105 / 255, 0)
 LocationFS100B.TextColor3 = Color3.new(1, 1, 1)
 LocationFS100B.BorderColor3 = Color3.new(0.6, 0.6, 0.6)
 LocationFS100B.Position = UDim2.new(0, 5, 0, 130)
@@ -562,7 +591,7 @@ LocationFS100B.TextSize = 16
 
 LocationFS10T.Name = "LocationFS10T"
 LocationFS10T.Parent = WayPointsFrame
-LocationFS10T.BackgroundColor3 = Color3.new(70/255, 105/255, 0)
+LocationFS10T.BackgroundColor3 = Color3.new(70 / 255, 105 / 255, 0)
 LocationFS10T.TextColor3 = Color3.new(1, 1, 1)
 LocationFS10T.BorderColor3 = Color3.new(0.6, 0.6, 0.6)
 LocationFS10T.Position = UDim2.new(0, 5, 0, 155)
@@ -574,7 +603,7 @@ LocationFS10T.TextSize = 16
 
 Location3.Name = "Location3"
 Location3.Parent = WayPointsFrame
-Location3.BackgroundColor3 = Color3.new(66/255, 0, 165/255)
+Location3.BackgroundColor3 = Color3.new(66 / 255, 0, 165 / 255)
 Location3.TextColor3 = Color3.new(1, 1, 1)
 Location3.BorderColor3 = Color3.new(0.6, 0.6, 0.6)
 Location3.Position = UDim2.new(0, 5, 0, 180)
@@ -586,7 +615,7 @@ Location3.TextSize = 16
 
 Location4.Name = "Location4"
 Location4.Parent = WayPointsFrame
-Location4.BackgroundColor3 = Color3.new(66/255, 0, 165/255)
+Location4.BackgroundColor3 = Color3.new(66 / 255, 0, 165 / 255)
 Location4.TextColor3 = Color3.new(1, 1, 1)
 Location4.BorderColor3 = Color3.new(0.6, 0.6, 0.6)
 Location4.Position = UDim2.new(0, 5, 0, 205)
@@ -598,7 +627,7 @@ Location4.TextSize = 16
 
 Location5.Name = "Location5"
 Location5.Parent = WayPointsFrame
-Location5.BackgroundColor3 = Color3.new(66/255, 0, 165/255)
+Location5.BackgroundColor3 = Color3.new(66 / 255, 0, 165 / 255)
 Location5.TextColor3 = Color3.new(1, 1, 1)
 Location5.BorderColor3 = Color3.new(0.6, 0.6, 0.6)
 Location5.Position = UDim2.new(0, 5, 0, 230)
@@ -610,7 +639,7 @@ Location5.TextSize = 16
 
 Location6.Name = "Location6"
 Location6.Parent = WayPointsFrame
-Location6.BackgroundColor3 = Color3.new(66/255, 0, 165/255)
+Location6.BackgroundColor3 = Color3.new(66 / 255, 0, 165 / 255)
 Location6.TextColor3 = Color3.new(1, 1, 1)
 Location6.BorderColor3 = Color3.new(0.6, 0.6, 0.6)
 Location6.Position = UDim2.new(0, 5, 0, 255)
@@ -622,7 +651,7 @@ Location6.TextSize = 16
 
 Location8.Name = "Location8"
 Location8.Parent = WayPointsFrame
-Location8.BackgroundColor3 = Color3.new(66/255, 0, 165/255)
+Location8.BackgroundColor3 = Color3.new(66 / 255, 0, 165 / 255)
 Location8.TextColor3 = Color3.new(1, 1, 1)
 Location8.BorderColor3 = Color3.new(0.6, 0.6, 0.6)
 Location8.Position = UDim2.new(0, 5, 0, 280)
@@ -634,7 +663,7 @@ Location8.TextSize = 16
 
 LocationBT1B.Name = "LocationBT1B"
 LocationBT1B.Parent = WayPointsFrame
-LocationBT1B.BackgroundColor3 = Color3.new(66/255, 0, 165/255)
+LocationBT1B.BackgroundColor3 = Color3.new(66 / 255, 0, 165 / 255)
 LocationBT1B.TextColor3 = Color3.new(1, 1, 1)
 LocationBT1B.BorderColor3 = Color3.new(0.6, 0.6, 0.6)
 LocationBT1B.Position = UDim2.new(0, 5, 0, 305)
@@ -646,7 +675,7 @@ LocationBT1B.TextSize = 16
 
 LocationBT100B.Name = "LocationBT100B"
 LocationBT100B.Parent = WayPointsFrame
-LocationBT100B.BackgroundColor3 = Color3.new(66/255, 0, 165/255)
+LocationBT100B.BackgroundColor3 = Color3.new(66 / 255, 0, 165 / 255)
 LocationBT100B.TextColor3 = Color3.new(1, 1, 1)
 LocationBT100B.BorderColor3 = Color3.new(0.6, 0.6, 0.6)
 LocationBT100B.Position = UDim2.new(0, 5, 0, 330)
@@ -658,7 +687,7 @@ LocationBT100B.TextSize = 16
 
 LocationBT10T.Name = "LocationBT10T"
 LocationBT10T.Parent = WayPointsFrame
-LocationBT10T.BackgroundColor3 = Color3.new(66/255, 0, 165/255)
+LocationBT10T.BackgroundColor3 = Color3.new(66 / 255, 0, 165 / 255)
 LocationBT10T.TextColor3 = Color3.new(1, 1, 1)
 LocationBT10T.BorderColor3 = Color3.new(0.6, 0.6, 0.6)
 LocationBT10T.Position = UDim2.new(0, 5, 0, 355)
@@ -670,7 +699,7 @@ LocationBT10T.TextSize = 16
 
 LocationPP1M.Name = "LocationPP1M"
 LocationPP1M.Parent = WayPointsFrame
-LocationPP1M.BackgroundColor3 = Color3.new(195/255, 0, 39/255)
+LocationPP1M.BackgroundColor3 = Color3.new(195 / 255, 0, 39 / 255)
 LocationPP1M.TextColor3 = Color3.new(1, 1, 1)
 LocationPP1M.BorderColor3 = Color3.new(0.6, 0.6, 0.6)
 LocationPP1M.Position = UDim2.new(0, 5, 0, 380)
@@ -682,7 +711,7 @@ LocationPP1M.TextSize = 16
 
 LocationPP1B.Name = "LocationPP1B"
 LocationPP1B.Parent = WayPointsFrame
-LocationPP1B.BackgroundColor3 = Color3.new(195/255, 0, 39/255)
+LocationPP1B.BackgroundColor3 = Color3.new(195 / 255, 0, 39 / 255)
 LocationPP1B.TextColor3 = Color3.new(1, 1, 1)
 LocationPP1B.BorderColor3 = Color3.new(0.6, 0.6, 0.6)
 LocationPP1B.Position = UDim2.new(0, 5, 0, 405)
@@ -694,7 +723,7 @@ LocationPP1B.TextSize = 16
 
 LocationPP1T.Name = "LocationPP1T"
 LocationPP1T.Parent = WayPointsFrame
-LocationPP1T.BackgroundColor3 = Color3.new(195/255, 0, 39/255)
+LocationPP1T.BackgroundColor3 = Color3.new(195 / 255, 0, 39 / 255)
 LocationPP1T.TextColor3 = Color3.new(1, 1, 1)
 LocationPP1T.BorderColor3 = Color3.new(0.6, 0.6, 0.6)
 LocationPP1T.Position = UDim2.new(0, 5, 0, 430)
@@ -706,7 +735,7 @@ LocationPP1T.TextSize = 16
 
 LocationPP1Qa.Name = "LocationPP1Qa"
 LocationPP1Qa.Parent = WayPointsFrame
-LocationPP1Qa.BackgroundColor3 = Color3.new(195/255, 0, 39/255)
+LocationPP1Qa.BackgroundColor3 = Color3.new(195 / 255, 0, 39 / 255)
 LocationPP1Qa.TextColor3 = Color3.new(1, 1, 1)
 LocationPP1Qa.BorderColor3 = Color3.new(0.6, 0.6, 0.6)
 LocationPP1Qa.Position = UDim2.new(0, 5, 0, 455)
@@ -796,7 +825,8 @@ FarmBodyLabel.BorderColor3 = Color3.new(0.1, 0.1, 0.1)
 FarmBodyLabel.Position = UDim2.new(0, 213, 0, 65)
 FarmBodyLabel.Size = UDim2.new(0, 200, 0, 100)
 FarmBodyLabel.Font = Enum.Font.Fantasy
-FarmBodyLabel.Text = "Look at teleports and go to the best place you can go for your Body Toughness. You need 10Mil to go in the volcano but you need at least 50Mil before you can afk in there."
+FarmBodyLabel.Text =
+    "Look at teleports and go to the best place you can go for your Body Toughness. You need 10Mil to go in the volcano but you need at least 50Mil before you can afk in there."
 FarmBodyLabel.TextSize = 16
 FarmBodyLabel.TextWrapped = true
 FarmBodyLabel.Visible = false
@@ -809,7 +839,8 @@ FarmSpeedLabel.BorderColor3 = Color3.new(0.1, 0.1, 0.1)
 FarmSpeedLabel.Position = UDim2.new(0, 213, 0, 65)
 FarmSpeedLabel.Size = UDim2.new(0, 200, 0, 100)
 FarmSpeedLabel.Font = Enum.Font.Fantasy
-FarmSpeedLabel.Text = "Press 4 and equip the 100TON weight to get the maximum boost. If you still want to move around select the heaviest weight you can move around with but you wont get as much."
+FarmSpeedLabel.Text =
+    "Press 4 and equip the 100TON weight to get the maximum boost. If you still want to move around select the heaviest weight you can move around with but you wont get as much."
 FarmSpeedLabel.TextSize = 16
 FarmSpeedLabel.TextWrapped = true
 FarmSpeedLabel.Visible = false
@@ -1226,7 +1257,8 @@ farmbtsafetyText1.BorderColor3 = Color3.new(0.1, 0.1, 0.1)
 farmbtsafetyText1.Position = UDim2.new(0, -155, 0, 141)
 farmbtsafetyText1.Size = UDim2.new(0, 150, 0, 115)
 farmbtsafetyText1.Font = Enum.Font.Fantasy
-farmbtsafetyText1.Text = "Enable this to tp you to the safe zone when your health goes below the preset figure. Only useful if you can take more than 1 hit from your attacker."
+farmbtsafetyText1.Text =
+    "Enable this to tp you to the safe zone when your health goes below the preset figure. Only useful if you can take more than 1 hit from your attacker."
 farmbtsafetyText1.TextSize = 16
 farmbtsafetyText1.TextWrapped = true
 farmbtsafetyText1.Visible = false
@@ -1265,7 +1297,8 @@ InfoText1.Position = UDim2.new(0, 405, 0, 32)
 InfoText1.Size = UDim2.new(0, 190, 0, 180)
 InfoText1.TextColor3 = Color3.new(1, 1, 1)
 InfoText1.Font = Enum.Font.Fantasy
-InfoText1.Text = "This Gui was created by LuckyMMB@V3rmillion.net\nDiscord https://discord.gg/GKzJnUC\n\nCredits:\n-racist dolphin for the original ESP script which I edited and customised and whoever found the remotes for farming exp."
+InfoText1.Text =
+    "This Gui was created by LuckyMMB@V3rmillion.net\nDiscord https://discord.gg/GKzJnUC\n\nCredits:\n-racist dolphin for the original ESP script which I edited and customised and whoever found the remotes for farming exp."
 InfoText1.TextSize = 15
 InfoText1.TextWrapped = true
 InfoText1.Visible = false
@@ -1320,954 +1353,1339 @@ ShowStats2.TextXAlignment = Enum.TextXAlignment.Right
 
 -- Close --
 
-Open.MouseButton1Down:connect(function()
-	TopFrame.Visible = false
-	MainFrame.Visible = true
-end)
+Open.MouseButton1Down:connect(
+    function()
+        TopFrame.Visible = false
+        MainFrame.Visible = true
+    end
+)
 
-Minimize.MouseButton1Down:connect(function()
-	TopFrame.Visible = true
-	MainFrame.Visible = false
-end)
+Minimize.MouseButton1Down:connect(
+    function()
+        TopFrame.Visible = true
+        MainFrame.Visible = false
+    end
+)
 
-Close.MouseButton1Down:connect(function()
-MainGUI:Destroy()
-end)
+Close.MouseButton1Down:connect(
+    function()
+        MainGUI:Destroy()
+    end
+)
 
 -- Menus --
 
 local Menus = {
-	[WayPoints] = WayPointsFrame;
-	[FarmExp] = FarmExpFrame;
-	[Extras] = ExtrasFrame;
+    [WayPoints] = WayPointsFrame,
+    [FarmExp] = FarmExpFrame,
+    [Extras] = ExtrasFrame
 }
-for button,frame in pairs(Menus) do
-	button.MouseButton1Click:connect(function()
-		if frame.Visible then
-			frame.Visible = false
-			return
-		end
-		for k,v in pairs(Menus) do
-			v.Visible = v == frame
-		end
-	end)
+for button, frame in pairs(Menus) do
+    button.MouseButton1Click:connect(
+        function()
+            if frame.Visible then
+                frame.Visible = false
+                return
+            end
+            for k, v in pairs(Menus) do
+                v.Visible = v == frame
+            end
+        end
+    )
 end
 
-FarmBody.MouseEnter:connect(function()
-	FarmBodyLabel.Visible = true
-end)
+FarmBody.MouseEnter:connect(
+    function()
+        FarmBodyLabel.Visible = true
+    end
+)
 
-FarmBody.MouseLeave:connect(function()
-	FarmBodyLabel.Visible = false
-end)
+FarmBody.MouseLeave:connect(
+    function()
+        FarmBodyLabel.Visible = false
+    end
+)
 
-FarmSpeed.MouseEnter:connect(function()
-	FarmSpeedLabel.Visible = true
-end)
+FarmSpeed.MouseEnter:connect(
+    function()
+        FarmSpeedLabel.Visible = true
+    end
+)
 
-FarmSpeed.MouseLeave:connect(function()
-	FarmSpeedLabel.Visible = false
-end)
+FarmSpeed.MouseLeave:connect(
+    function()
+        FarmSpeedLabel.Visible = false
+    end
+)
 
-FarmJump.MouseEnter:connect(function()
-	FarmSpeedLabel.Visible = true
-end)
+FarmJump.MouseEnter:connect(
+    function()
+        FarmSpeedLabel.Visible = true
+    end
+)
 
-FarmJump.MouseLeave:connect(function()
-	FarmSpeedLabel.Visible = false
-end)
+FarmJump.MouseLeave:connect(
+    function()
+        FarmSpeedLabel.Visible = false
+    end
+)
 
-farmbtsafety.MouseEnter:connect(function()
-	farmbtsafetyText1.Visible = true
-end)
+farmbtsafety.MouseEnter:connect(
+    function()
+        farmbtsafetyText1.Visible = true
+    end
+)
 
-farmbtsafety.MouseLeave:connect(function()
-	farmbtsafetyText1.Visible = false
-end)
+farmbtsafety.MouseLeave:connect(
+    function()
+        farmbtsafetyText1.Visible = false
+    end
+)
 
-InfoScreen.MouseEnter:connect(function()
-	InfoText1.Visible = true
-end)
+InfoScreen.MouseEnter:connect(
+    function()
+        InfoText1.Visible = true
+    end
+)
 
-InfoScreen.MouseLeave:connect(function()
-	InfoText1.Visible = false
-end)
+InfoScreen.MouseLeave:connect(
+    function()
+        InfoText1.Visible = false
+    end
+)
 
-c.MouseButton1Down:connect(function()
-	cf.Visible = false
-end)
+c.MouseButton1Down:connect(
+    function()
+        cf.Visible = false
+    end
+)
 
 -- Round Number to decimal places and convert to letter value --
 
 function round(num, numDecimalPlaces)
-	local mult = 10^(numDecimalPlaces or 0)
-	return math.floor(num * mult + 0.5) / mult
+    local mult = 10 ^ (numDecimalPlaces or 0)
+    return math.floor(num * mult + 0.5) / mult
 end
-		
+
 function converttoletter(num)
-	if num / 1e21 >=1 then
-		newnum = num / 1e21
-		return round(newnum, 6).. "Sx"
-	elseif num / 1e18 >=1 then
-		newnum = num / 1e18
-		return round(newnum, 6).. "Qi"
-	elseif num / 1e15 >=1 then
-		newnum = num / 1e15
-		return round(newnum, 6).. "Qa"
-	elseif num / 1e12 >=1 then
-		newnum = num / 1e12
-		return round(newnum, 6).. "T"
-	elseif num / 1e09 >=1 then
-		newnum = num / 1e09
-		return round(newnum, 6).. "B"
-	elseif num / 1e06 >=1 then
-		newnum = num / 1e06
-		return round(newnum, 6).. "M"
-	elseif num / 1e03 >=1 then
-		newnum = num / 1e03
-		return round(newnum, 6).. "K"
-	else return num
-	end
+    if num / 1e21 >= 1 then
+        newnum = num / 1e21
+        return round(newnum, 6) .. "Sx"
+    elseif num / 1e18 >= 1 then
+        newnum = num / 1e18
+        return round(newnum, 6) .. "Qi"
+    elseif num / 1e15 >= 1 then
+        newnum = num / 1e15
+        return round(newnum, 6) .. "Qa"
+    elseif num / 1e12 >= 1 then
+        newnum = num / 1e12
+        return round(newnum, 6) .. "T"
+    elseif num / 1e09 >= 1 then
+        newnum = num / 1e09
+        return round(newnum, 6) .. "B"
+    elseif num / 1e06 >= 1 then
+        newnum = num / 1e06
+        return round(newnum, 6) .. "M"
+    elseif num / 1e03 >= 1 then
+        newnum = num / 1e03
+        return round(newnum, 6) .. "K"
+    else
+        return num
+    end
 end
 
 --- NoClip ---
 
-NoClip.MouseButton1Down:connect(function()
-	noclip = not noclip
-	if noclip then
-		NoClip.Text = "NoClip Mode: ON"
-		NoClip.BackgroundColor3 = Color3.new(0, 0.5, 0)
-	else
-		NoClip.Text = "NoClip Mode: OFF"
-		NoClip.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-	end
-end)
-game:GetService('RunService').Stepped:connect(function()
-	if noclip then
-		game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
-	end
-end)
+NoClip.MouseButton1Down:connect(
+    function()
+        noclip = not noclip
+        if noclip then
+            NoClip.Text = "NoClip Mode: ON"
+            NoClip.BackgroundColor3 = Color3.new(0, 0.5, 0)
+        else
+            NoClip.Text = "NoClip Mode: OFF"
+            NoClip.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+        end
+    end
+)
+game:GetService("RunService").Stepped:connect(
+    function()
+        if noclip then
+            game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+        end
+    end
+)
 
 --- Farm BT Safety ---
 
-farmbtsafety.MouseButton1Down:connect(function()
-	farmbtsafetyactive = not farmbtsafetyactive
-	if farmbtsafetyactive then
-		farmbtsafety.Text = "Safety Net: ON"
-		farmbtsafety.BackgroundColor3 = Color3.new(0, 0.5, 0)
-	else
-		farmbtsafety.Text = "Safety Net: OFF"
-		farmbtsafety.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-	end
-end)
+farmbtsafety.MouseButton1Down:connect(
+    function()
+        farmbtsafetyactive = not farmbtsafetyactive
+        if farmbtsafetyactive then
+            farmbtsafety.Text = "Safety Net: ON"
+            farmbtsafety.BackgroundColor3 = Color3.new(0, 0.5, 0)
+        else
+            farmbtsafety.Text = "Safety Net: OFF"
+            farmbtsafety.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+        end
+    end
+)
 
-spawn(function()
-	while true do
-		if farmbtsafetyactive then
-			while farmbtsafetyactive do
-				local FindHum = game.Players.LocalPlayer.Character:WaitForChild("Humanoid")
-				local currenthealth = tonumber(string.format("%.0f", FindHum.Health))
-				local minhealth = tonumber(string.format("%.0f", FindHum.MaxHealth))*tonumber(farmbtsafetylevel.Text)/100
-				-- print("Current Health: " ..tostring(currenthealth).. ". Min Health: " ..tostring(minhealth))
-				if currenthealth <= minhealth then
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(459, 248, 887)
-				end
-			wait(0)
-			end
-		end
-		wait()
-	end
-end)
+spawn(
+    function()
+        while true do
+            pcall(
+                function()
+                    if farmbtsafetyactive then
+                        while farmbtsafetyactive do
+                            local FindHum = game.Players.LocalPlayer.Character:WaitForChild("Humanoid")
+                            local currenthealth = tonumber(string.format("%.0f", FindHum.Health))
+                            local minhealth =
+                                tonumber(string.format("%.0f", FindHum.MaxHealth)) * tonumber(farmbtsafetylevel.Text) /
+                                100
+                            -- print("Current Health: " ..tostring(currenthealth).. ". Min Health: " ..tostring(minhealth))
+                            if currenthealth <= minhealth then
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(459, 248, 887)
+                            end
+                            wait(0)
+                        end
+                    end
+                    wait()
+                end
+            )
+        end
+    end
+)
 
 -- Show Location --
 
-local curlocation = coroutine.wrap(function()
-	while true do
-		LocationX = round(game.Players.LocalPlayer.Character.HumanoidRootPart.Position.x, 0)
-		LocationY = round(game.Players.LocalPlayer.Character.HumanoidRootPart.Position.y, 0)
-		LocationZ = round(game.Players.LocalPlayer.Character.HumanoidRootPart.Position.z, 0)
-		ShowLocation.Text = "Coords: "..LocationX..", "..LocationY..", "..LocationZ
-		wait(0)
-	end
-end)
+local curlocation =
+    coroutine.wrap(
+    function()
+        while true do
+            LocationX = round(game.Players.LocalPlayer.Character.HumanoidRootPart.Position.x, 0)
+            LocationY = round(game.Players.LocalPlayer.Character.HumanoidRootPart.Position.y, 0)
+            LocationZ = round(game.Players.LocalPlayer.Character.HumanoidRootPart.Position.z, 0)
+            ShowLocation.Text = "Coords: " .. LocationX .. ", " .. LocationY .. ", " .. LocationZ
+            wait(0)
+        end
+    end
+)
 
 curlocation()
 
 -- Set Locations --
 
-SetLocation.MouseButton1Down:connect(function()
-	function round(num, numDecimalPlaces)
-		local mult = 10^(numDecimalPlaces or 0)
-		return math.floor(num * mult + 0.5) / mult
-	end
-	setlocationx = round(game.Players.LocalPlayer.Character.HumanoidRootPart.Position.x, 0)
-	setlocationy = round(game.Players.LocalPlayer.Character.HumanoidRootPart.Position.y, 0)
-	setlocationz = round(game.Players.LocalPlayer.Character.HumanoidRootPart.Position.z, 0)
-	print("Set Custom Location: "..setlocationx..", "..setlocationy..", "..setlocationz)
-    SetLocation.Text = setlocationx..","..setlocationy..","..setlocationz
-	CustomLocationSet = true
-end)
+SetLocation.MouseButton1Down:connect(
+    function()
+        function round(num, numDecimalPlaces)
+            local mult = 10 ^ (numDecimalPlaces or 0)
+            return math.floor(num * mult + 0.5) / mult
+        end
+        setlocationx = round(game.Players.LocalPlayer.Character.HumanoidRootPart.Position.x, 0)
+        setlocationy = round(game.Players.LocalPlayer.Character.HumanoidRootPart.Position.y, 0)
+        setlocationz = round(game.Players.LocalPlayer.Character.HumanoidRootPart.Position.z, 0)
+        print("Set Custom Location: " .. setlocationx .. ", " .. setlocationy .. ", " .. setlocationz)
+        SetLocation.Text = setlocationx .. "," .. setlocationy .. "," .. setlocationz
+        CustomLocationSet = true
+    end
+)
 
 --- TP to custom location ---
 
-TPLocation.MouseButton1Down:connect(function()
-	if CustomLocationSet == true then
-		workspace:WaitForChild(game.Players.LocalPlayer.Name).HumanoidRootPart.CFrame = CFrame.new(setlocationx, setlocationy, setlocationz)
-		WayPointsFrame.Visible = false
-	end
-end)
+TPLocation.MouseButton1Down:connect(
+    function()
+        if CustomLocationSet == true then
+            workspace:WaitForChild(game.Players.LocalPlayer.Name).HumanoidRootPart.CFrame =
+                CFrame.new(setlocationx, setlocationy, setlocationz)
+            WayPointsFrame.Visible = false
+        end
+    end
+)
 
-Location1.MouseButton1Click:connect(function()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(459, 248, 887)
-	WayPointsFrame.Visible = false
-end)
-	
-Location2.MouseButton1Click:connect(function()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(409, 271, 978)
-	WayPointsFrame.Visible = false
-end)
+Location1.MouseButton1Click:connect(
+    function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(459, 248, 887)
+        WayPointsFrame.Visible = false
+    end
+)
 
-LocationFS1B.MouseButton1Click:connect(function()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1176, 4789, -2293)
-	WayPointsFrame.Visible = false
-end)
+Location2.MouseButton1Click:connect(
+    function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(409, 271, 978)
+        WayPointsFrame.Visible = false
+    end
+)
 
-LocationFS10T.MouseButton1Click:connect(function()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-369, 15735, -9)
-	WayPointsFrame.Visible = false
-end)
+LocationFS1B.MouseButton1Click:connect(
+    function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1176, 4789, -2293)
+        WayPointsFrame.Visible = false
+    end
+)
 
-LocationFS100B.MouseButton1Click:connect(function()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1381, 9274, 1647)
-	WayPointsFrame.Visible = false
-end)
+LocationFS10T.MouseButton1Click:connect(
+    function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-369, 15735, -9)
+        WayPointsFrame.Visible = false
+    end
+)
 
-Location7.MouseButton1Click:connect(function()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2279, 1944, 1053)
-	WayPointsFrame.Visible = false
-end)
+LocationFS100B.MouseButton1Click:connect(
+    function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1381, 9274, 1647)
+        WayPointsFrame.Visible = false
+    end
+)
 
-Location3.MouseButton1Click:connect(function()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(365, 249, -445)
-	settplocation = "BT100Area"
-	WayPointsFrame.Visible = false
-end)
+Location7.MouseButton1Click:connect(
+    function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2279, 1944, 1053)
+        WayPointsFrame.Visible = false
+    end
+)
 
-Location4.MouseButton1Click:connect(function()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(349, 263, -490)
-	settplocation = "BT10KArea"
-	WayPointsFrame.Visible = false
-end)
+Location3.MouseButton1Click:connect(
+    function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(365, 249, -445)
+        settplocation = "BT100Area"
+        WayPointsFrame.Visible = false
+    end
+)
 
-Location5.MouseButton1Click:connect(function()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1640, 258, 2244)
-	settplocation = "BT100KArea"
-	WayPointsFrame.Visible = false
-end)
+Location4.MouseButton1Click:connect(
+    function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(349, 263, -490)
+        settplocation = "BT10KArea"
+        WayPointsFrame.Visible = false
+    end
+)
 
-Location6.MouseButton1Click:connect(function()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2307, 976, 1068)
-	settplocation = "BT1MArea"
-	WayPointsFrame.Visible = false
-end)
+Location5.MouseButton1Click:connect(
+    function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1640, 258, 2244)
+        settplocation = "BT100KArea"
+        WayPointsFrame.Visible = false
+    end
+)
 
-Location8.MouseButton1Click:connect(function()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2024, 714, -1860)
-	settplocation = "BT10MArea"
-	WayPointsFrame.Visible = false
-end)
+Location6.MouseButton1Click:connect(
+    function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2307, 976, 1068)
+        settplocation = "BT1MArea"
+        WayPointsFrame.Visible = false
+    end
+)
 
-LocationBT1B.MouseButton1Click:connect(function()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-254, 286, 980)
-	settplocation = "BT1BArea"
-	WayPointsFrame.Visible = false
-end)
+Location8.MouseButton1Click:connect(
+    function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2024, 714, -1860)
+        settplocation = "BT10MArea"
+        WayPointsFrame.Visible = false
+    end
+)
 
-LocationBT100B.MouseButton1Click:connect(function()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-271, 279, 991)
-	settplocation = "BT100BArea"
-	WayPointsFrame.Visible = false
-end)
+LocationBT1B.MouseButton1Click:connect(
+    function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-254, 286, 980)
+        settplocation = "BT1BArea"
+        WayPointsFrame.Visible = false
+    end
+)
 
-LocationBT10T.MouseButton1Click:connect(function()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-279, 279, 1007)
-	settplocation = "BT10TArea"
-	WayPointsFrame.Visible = false
-end)
+LocationBT100B.MouseButton1Click:connect(
+    function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-271, 279, 991)
+        settplocation = "BT100BArea"
+        WayPointsFrame.Visible = false
+    end
+)
 
-LocationPP1M.MouseButton1Click:connect(function()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2527, 5486, -532)
-	settplocation = "PP1MArea"
-	WayPointsFrame.Visible = false
-end)
+LocationBT10T.MouseButton1Click:connect(
+    function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-279, 279, 1007)
+        settplocation = "BT10TArea"
+        WayPointsFrame.Visible = false
+    end
+)
 
-LocationPP1B.MouseButton1Click:connect(function()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2560, 5500, -439)
-	settplocation = "PP1BArea"
-	WayPointsFrame.Visible = false
-end)
+LocationPP1M.MouseButton1Click:connect(
+    function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2527, 5486, -532)
+        settplocation = "PP1MArea"
+        WayPointsFrame.Visible = false
+    end
+)
 
-LocationPP1T.MouseButton1Click:connect(function()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2582, 5516, -504)
-	settplocation = "PP1TArea"
-	WayPointsFrame.Visible = false
-end)
+LocationPP1B.MouseButton1Click:connect(
+    function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2560, 5500, -439)
+        settplocation = "PP1BArea"
+        WayPointsFrame.Visible = false
+    end
+)
 
-LocationPP1Qa.MouseButton1Click:connect(function()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2544, 5412, -495)
-	settplocation = "PP1QaArea"
-	WayPointsFrame.Visible = false
-end)
+LocationPP1T.MouseButton1Click:connect(
+    function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2582, 5516, -504)
+        settplocation = "PP1TArea"
+        WayPointsFrame.Visible = false
+    end
+)
+
+LocationPP1Qa.MouseButton1Click:connect(
+    function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2544, 5412, -495)
+        settplocation = "PP1QaArea"
+        WayPointsFrame.Visible = false
+    end
+)
 
 -- ESP Stuff --
 
-Run:BindToRenderStep("UpdateESP", Enum.RenderPriority.Character.Value, function()
-	for _, v in next, Plrs:GetPlayers() do
-		UpdateESP(v)
-	end
-end)
+Run:BindToRenderStep(
+    "UpdateESP",
+    Enum.RenderPriority.Character.Value,
+    function()
+        for _, v in next, Plrs:GetPlayers() do
+            UpdateESP(v)
+        end
+    end
+)
 
 -- Farm Exp --
 
-FarmAll.MouseButton1Click:Connect(function()
-	if farmallactive ~= true then
-		farmallactive = true
-		farmfistactive = true
-		farmbodyactive = true
-		farmspeedactive = true
-		farmpsychicactive = true
-		farmjumpactive = true
-		FarmAll.BackgroundColor3 = Color3.new(0, 0.5, 0)
-		FarmAll.Text = "Farm All: ON"
-		FarmExp.BackgroundColor3 = Color3.new(0, 0.5, 0)
-	else
-		farmallactive = false
-		farmfistactive = false
-		farmbodyactive = false
-		farmspeedactive = false
-		farmpsychicactive = false
-		farmjumpactive = false
-		FarmFist.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-		FarmBody.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-		FarmSpeed.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-		FarmJump.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-		FarmPsychic.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-		FarmAll.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-		FarmAll.Text = "Farm All: OFF"
-		FarmExp.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-	end
-end)
+FarmAll.MouseButton1Click:Connect(
+    function()
+        if farmallactive ~= true then
+            farmallactive = true
+            farmfistactive = true
+            farmbodyactive = true
+            farmspeedactive = true
+            farmpsychicactive = true
+            farmjumpactive = true
+            FarmAll.BackgroundColor3 = Color3.new(0, 0.5, 0)
+            FarmAll.Text = "Farm All: ON"
+            FarmExp.BackgroundColor3 = Color3.new(0, 0.5, 0)
+        else
+            farmallactive = false
+            farmfistactive = false
+            farmbodyactive = false
+            farmspeedactive = false
+            farmpsychicactive = false
+            farmjumpactive = false
+            FarmFist.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+            FarmBody.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+            FarmSpeed.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+            FarmJump.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+            FarmPsychic.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+            FarmAll.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+            FarmAll.Text = "Farm All: OFF"
+            FarmExp.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+        end
+    end
+)
 
-FarmFist.MouseButton1Click:Connect(function()
-	if farmfistactive ~= true then
-		farmfistactive = true
-		FarmFist.BackgroundColor3 = Color3.new(0, 0.5, 0)
-		FarmFist.Text = "Farm Fist Strength: ON"
-		FarmExp.BackgroundColor3 = Color3.new(0, 0.5, 0)
-	else
-		farmfistactive = false
-		FarmFist.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-		FarmFist.Text = "Farm Fist Strength: OFF"
-		FarmExp.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-	end
-end)
+FarmFist.MouseButton1Click:Connect(
+    function()
+        if farmfistactive ~= true then
+            farmfistactive = true
+            FarmFist.BackgroundColor3 = Color3.new(0, 0.5, 0)
+            FarmFist.Text = "Farm Fist Strength: ON"
+            FarmExp.BackgroundColor3 = Color3.new(0, 0.5, 0)
+        else
+            farmfistactive = false
+            FarmFist.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+            FarmFist.Text = "Farm Fist Strength: OFF"
+            FarmExp.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+        end
+    end
+)
 
-FarmBody.MouseButton1Click:Connect(function()
-	if farmbodyactive ~= true then
-		farmbodyactive = true
-		FarmBody.BackgroundColor3 = Color3.new(0, 0.5, 0)
-		FarmBody.Text = "Farm Body Strength: ON"
-		FarmExp.BackgroundColor3 = Color3.new(0, 0.5, 0)
-	else
-		farmbodyactive = false
-		FarmBody.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-		FarmBody.Text = "Farm Body Strength: OFF"
-		FarmExp.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-	end
-end)
+FarmBody.MouseButton1Click:Connect(
+    function()
+        if farmbodyactive ~= true then
+            farmbodyactive = true
+            FarmBody.BackgroundColor3 = Color3.new(0, 0.5, 0)
+            FarmBody.Text = "Farm Body Strength: ON"
+            FarmExp.BackgroundColor3 = Color3.new(0, 0.5, 0)
+        else
+            farmbodyactive = false
+            FarmBody.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+            FarmBody.Text = "Farm Body Strength: OFF"
+            FarmExp.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+        end
+    end
+)
 
-FarmSpeed.MouseButton1Click:Connect(function()
-	if farmspeedactive ~= true then
-		farmspeedactive = true
-		FarmSpeed.BackgroundColor3 = Color3.new(0, 0.5, 0)
-		FarmSpeed.Text = "Farm Speed Strength: ON"
-		FarmExp.BackgroundColor3 = Color3.new(0, 0.5, 0)
-	else
-		farmspeedactive = false
-		FarmSpeed.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-		FarmSpeed.Text = "Farm Speed Strength: OFF"
-		FarmExp.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-	end
-end)
+FarmSpeed.MouseButton1Click:Connect(
+    function()
+        if farmspeedactive ~= true then
+            farmspeedactive = true
+            FarmSpeed.BackgroundColor3 = Color3.new(0, 0.5, 0)
+            FarmSpeed.Text = "Farm Speed Strength: ON"
+            FarmExp.BackgroundColor3 = Color3.new(0, 0.5, 0)
+        else
+            farmspeedactive = false
+            FarmSpeed.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+            FarmSpeed.Text = "Farm Speed Strength: OFF"
+            FarmExp.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+        end
+    end
+)
 
-FarmJump.MouseButton1Click:Connect(function()
-	if farmjumpactive ~= true then
-		farmjumpactive = true
-		FarmJump.BackgroundColor3 = Color3.new(0, 0.5, 0)
-		FarmJump.Text = "Farm Jump Strength: ON"
-		FarmExp.BackgroundColor3 = Color3.new(0, 0.5, 0)
-	else
-		farmjumpactive = false
-		FarmJump.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-		FarmJump.Text = "Farm Jump Strength: OFF"
-		FarmExp.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-	end
-end)
+FarmJump.MouseButton1Click:Connect(
+    function()
+        if farmjumpactive ~= true then
+            farmjumpactive = true
+            FarmJump.BackgroundColor3 = Color3.new(0, 0.5, 0)
+            FarmJump.Text = "Farm Jump Strength: ON"
+            FarmExp.BackgroundColor3 = Color3.new(0, 0.5, 0)
+        else
+            farmjumpactive = false
+            FarmJump.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+            FarmJump.Text = "Farm Jump Strength: OFF"
+            FarmExp.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+        end
+    end
+)
 
-FarmPsychic.MouseButton1Click:Connect(function()
-	if farmpsychicactive ~= true then
-		farmpsychicactive = true
-		FarmPsychic.BackgroundColor3 = Color3.new(0, 0.5, 0)
-		FarmPsychic.Text = "Farm Psychic Strength: ON"
-		FarmExp.BackgroundColor3 = Color3.new(0, 0.5, 0)
-	else
-		farmpsychicactive = false
-		FarmPsychic.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-		FarmPsychic.Text = "Farm Psychic Strength: OFF"
-		FarmExp.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-	end
-end)
+FarmPsychic.MouseButton1Click:Connect(
+    function()
+        if farmpsychicactive ~= true then
+            farmpsychicactive = true
+            FarmPsychic.BackgroundColor3 = Color3.new(0, 0.5, 0)
+            FarmPsychic.Text = "Farm Psychic Strength: ON"
+            FarmExp.BackgroundColor3 = Color3.new(0, 0.5, 0)
+        else
+            farmpsychicactive = false
+            FarmPsychic.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+            FarmPsychic.Text = "Farm Psychic Strength: OFF"
+            FarmExp.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+        end
+    end
+)
 
-spawn(function()
-	while true do
-		if farmfistactive and game.Players.LocalPlayer.Character:WaitForChild("Humanoid") then
-			if tonumber(string.format("%.0f", game.Players.LocalPlayer.PrivateStats.FistStrength.Value)) >= 10e12 then
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-369, 15735, -9)
-				fistarguments = {"+FS6"}
-				farmpsychicactive = false
-				FarmPsychic.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-				FarmPsychic.Text = "Farm Psychic Strength: OFF"
-			elseif tonumber(string.format("%.0f", game.Players.LocalPlayer.PrivateStats.FistStrength.Value)) >= 100e09 then
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1381, 9274, 1647)
-				fistarguments = {"+FS5"}
-				farmpsychicactive = false
-				FarmPsychic.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-				FarmPsychic.Text = "Farm Psychic Strength: OFF"
-			elseif tonumber(string.format("%.0f", game.Players.LocalPlayer.PrivateStats.FistStrength.Value)) >= 1e09 then
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1176, 4789, -2293)
-				fistarguments = {"+FS4"}
-				farmpsychicactive = false
-				FarmPsychic.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-				FarmPsychic.Text = "Farm Psychic Strength: OFF"
-			else
-				fistarguments = {"+FS3", "+FS2", "+FS1"}
-			end
-			while farmfistactive do
-				game:GetService('RunService').Stepped:wait()
-				for i,v in pairs(fistarguments) do
-					game.ReplicatedStorage.RemoteEvent:FireServer({[1] = v})
-				end
-			end
-		end
-		wait()
-	end
-end)
+spawn(
+    function()
+        while true do
+            pcall(
+                function()
+                    if farmfistactive and game.Players.LocalPlayer.Character:WaitForChild("Humanoid") then
+                        if
+                            tonumber(string.format("%.0f", game.Players.LocalPlayer.PrivateStats.FistStrength.Value)) >=
+                                10e12
+                         then
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-369, 15735, -9)
+                            fistarguments = {"+FS6"}
+                            farmpsychicactive = false
+                            FarmPsychic.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+                            FarmPsychic.Text = "Farm Psychic Strength: OFF"
+                        elseif
+                            tonumber(string.format("%.0f", game.Players.LocalPlayer.PrivateStats.FistStrength.Value)) >=
+                                100e09
+                         then
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1381, 9274, 1647)
+                            fistarguments = {"+FS5"}
+                            farmpsychicactive = false
+                            FarmPsychic.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+                            FarmPsychic.Text = "Farm Psychic Strength: OFF"
+                        elseif
+                            tonumber(string.format("%.0f", game.Players.LocalPlayer.PrivateStats.FistStrength.Value)) >=
+                                1e09
+                         then
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1176, 4789, -2293)
+                            fistarguments = {"+FS4"}
+                            farmpsychicactive = false
+                            FarmPsychic.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+                            FarmPsychic.Text = "Farm Psychic Strength: OFF"
+                        else
+                            fistarguments = {"+FS3", "+FS2", "+FS1"}
+                        end
+                        while farmfistactive do
+                            game:GetService("RunService").Stepped:wait()
+                            for i, v in pairs(fistarguments) do
+                                game.ReplicatedStorage.RemoteEvent:FireServer({[1] = v})
+                            end
+                        end
+                    end
+                    wait()
+                end
+            )
+        end
+    end
+)
 
-spawn(function()
-	while true do
-		if farmbodyactive and game.Players.LocalPlayer.Character:WaitForChild("Humanoid") then
-			while farmbodyactive do
-				local bodyarguments = {"+BT5", "+BT4", "+BT3", "+BT2", "+BT1"}
-				local event = game.ReplicatedStorage.RemoteEvent
-				for i,v in pairs(bodyarguments) do
-					event:FireServer({[1] = v})
-					wait()
-				end
-				wait()
-			end
-		end
-		wait()
-	end
-end)
+spawn(
+    function()
+        while true do
+            pcall(
+                function()
+                    if farmbodyactive and game.Players.LocalPlayer.Character:WaitForChild("Humanoid") then
+                        while farmbodyactive do
+                            local bodyarguments = {"+BT5", "+BT4", "+BT3", "+BT2", "+BT1"}
+                            local event = game.ReplicatedStorage.RemoteEvent
+                            for i, v in pairs(bodyarguments) do
+                                event:FireServer({[1] = v})
+                                wait()
+                            end
+                            wait()
+                        end
+                    end
+                    wait()
+                end
+            )
+        end
+    end
+)
 
-spawn(function()
-	while true do
-		if farmspeedactive and game.Players.LocalPlayer.Character:WaitForChild("Humanoid") then
-			while farmspeedactive do
-				local speedarguments = {"+MS5", "+MS4", "+MS3", "+MS2", "+MS1"}
-				local event = game.ReplicatedStorage.RemoteEvent
-				for i,v in pairs(speedarguments) do
-					event:FireServer({[1] = v})
-					wait()
-				end
-				wait()
-			end
-		end
-		wait()
-	end
-end)
+spawn(
+    function()
+        while true do
+            pcall(
+                function()
+                    if farmspeedactive and game.Players.LocalPlayer.Character:WaitForChild("Humanoid") then
+                        while farmspeedactive do
+                            local speedarguments = {"+MS5", "+MS4", "+MS3", "+MS2", "+MS1"}
+                            local event = game.ReplicatedStorage.RemoteEvent
+                            for i, v in pairs(speedarguments) do
+                                event:FireServer({[1] = v})
+                                wait()
+                            end
+                            wait()
+                        end
+                    end
+                    wait()
+                end
+            )
+        end
+    end
+)
 
-spawn(function()
-	while true do
-		if farmjumpactive and game.Players.LocalPlayer.Character:WaitForChild("Humanoid") then
-			while farmjumpactive do
-				local jumparguments = {"+JF5", "+JF4", "+JF3", "+JF2", "+JF1"}
-				local event = game.ReplicatedStorage.RemoteEvent
-				for i,v in pairs(jumparguments) do
-					event:FireServer({[1] = v})
-					wait()
-				end
-				wait()
-			end
-		end
-		wait()
-	end
-end)
+spawn(
+    function()
+        while true do
+            pcall(
+                function()
+                    if farmjumpactive and game.Players.LocalPlayer.Character:WaitForChild("Humanoid") then
+                        while farmjumpactive do
+                            local jumparguments = {"+JF5", "+JF4", "+JF3", "+JF2", "+JF1"}
+                            local event = game.ReplicatedStorage.RemoteEvent
+                            for i, v in pairs(jumparguments) do
+                                event:FireServer({[1] = v})
+                                wait()
+                            end
+                            wait()
+                        end
+                    end
+                    wait()
+                end
+            )
+        end
+    end
+)
 
-spawn(function()
-	while true do
-		if farmpsychicactive and game.Players.LocalPlayer.Character:WaitForChild("Humanoid") then
-			if tonumber(string.format("%.0f", game.Players.LocalPlayer.PrivateStats.PsychicPower.Value)) >= 1e15 then
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2544, 5412, -495)
-				psychicarguments = {"+PP6"}
-				farmfistactive = false
-				FarmFist.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-				FarmFist.Text = "Farm Fist Strength: OFF"
-			elseif tonumber(string.format("%.0f", game.Players.LocalPlayer.PrivateStats.PsychicPower.Value)) >= 1e12 then
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2582, 5516, -504)
-				psychicarguments = {"+PP5"}
-				farmfistactive = false
-				FarmFist.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-				FarmFist.Text = "Farm Fist Strength: OFF"
-			elseif tonumber(string.format("%.0f", game.Players.LocalPlayer.PrivateStats.PsychicPower.Value)) >= 1e09 then
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2560, 5500, -439)
-				psychicarguments = {"+PP4"}
-				farmfistactive = false
-				FarmFist.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-				FarmFist.Text = "Farm Fist Strength: OFF"
-			elseif tonumber(string.format("%.0f", game.Players.LocalPlayer.PrivateStats.PsychicPower.Value)) >= 1e06 then
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2527, 5486, -532)
-				psychicarguments = {"+PP3"}
-				farmfistactive = false
-				FarmFist.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-				FarmFist.Text = "Farm Fist Strength: OFF"
-			else
-				psychicarguments = {"+PP2", "+PP1"}
-			end
-			while farmpsychicactive do
-				game:GetService('RunService').Stepped:wait()
-				for i,v in pairs(psychicarguments) do
-					game.ReplicatedStorage.RemoteEvent:FireServer({[1] = v})
-				end
-			end
-		end
-		wait()
-	end
-end)
+spawn(
+    function()
+        while true do
+            pcall(
+                function()
+                    if farmpsychicactive and game.Players.LocalPlayer.Character:WaitForChild("Humanoid") then
+                        if
+                            tonumber(string.format("%.0f", game.Players.LocalPlayer.PrivateStats.PsychicPower.Value)) >=
+                                1e15
+                         then
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2544, 5412, -495)
+                            psychicarguments = {"+PP6"}
+                            farmfistactive = false
+                            FarmFist.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+                            FarmFist.Text = "Farm Fist Strength: OFF"
+                        elseif
+                            tonumber(string.format("%.0f", game.Players.LocalPlayer.PrivateStats.PsychicPower.Value)) >=
+                                1e12
+                         then
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2582, 5516, -504)
+                            psychicarguments = {"+PP5"}
+                            farmfistactive = false
+                            FarmFist.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+                            FarmFist.Text = "Farm Fist Strength: OFF"
+                        elseif
+                            tonumber(string.format("%.0f", game.Players.LocalPlayer.PrivateStats.PsychicPower.Value)) >=
+                                1e09
+                         then
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2560, 5500, -439)
+                            psychicarguments = {"+PP4"}
+                            farmfistactive = false
+                            FarmFist.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+                            FarmFist.Text = "Farm Fist Strength: OFF"
+                        elseif
+                            tonumber(string.format("%.0f", game.Players.LocalPlayer.PrivateStats.PsychicPower.Value)) >=
+                                1e06
+                         then
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2527, 5486, -532)
+                            psychicarguments = {"+PP3"}
+                            farmfistactive = false
+                            FarmFist.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+                            FarmFist.Text = "Farm Fist Strength: OFF"
+                        else
+                            psychicarguments = {"+PP2", "+PP1"}
+                        end
+                        while farmpsychicactive do
+                            game:GetService("RunService").Stepped:wait()
+                            for i, v in pairs(psychicarguments) do
+                                game.ReplicatedStorage.RemoteEvent:FireServer({[1] = v})
+                            end
+                        end
+                    end
+                    wait()
+                end
+            )
+        end
+    end
+)
 
 -- Return to position on Death --
 
-DeathReturn.MouseButton1Click:Connect(function()
-	if deathreturnactive ~= true then
-		deathreturnactive = true
-		DeathReturn.BackgroundColor3 = Color3.new(0, 0.5, 0)
-		DeathReturn.Text = "OnDeath Return: ON"
-	else
-		deathreturnactive = false
-		DeathReturn.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-		DeathReturn.Text = "OnDeath Return: OFF"
-	end
-end)
+DeathReturn.MouseButton1Click:Connect(
+    function()
+        if deathreturnactive ~= true then
+            deathreturnactive = true
+            DeathReturn.BackgroundColor3 = Color3.new(0, 0.5, 0)
+            DeathReturn.Text = "OnDeath Return: ON"
+        else
+            deathreturnactive = false
+            DeathReturn.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+            DeathReturn.Text = "OnDeath Return: OFF"
+        end
+    end
+)
 
-spawn(function()
-	while true do
-		if deathreturnactive then
-			player = game:GetService("Players").LocalPlayer
-			player.Character.Humanoid.Died:connect(function()
-				playerdied = true
-			end)
-		end
-		if not playerdied then
-			lastlocationx = game.Players.LocalPlayer.Character.HumanoidRootPart.Position.x
-			lastlocationy = game.Players.LocalPlayer.Character.HumanoidRootPart.Position.y
-			lastlocationz = game.Players.LocalPlayer.Character.HumanoidRootPart.Position.z
-			SavePosition.Text = "Last Place: " ..lastlocationx.. "," ..lastlocationy.. "," ..lastlocationz
-			--print(tostring(SavePosition.Text))
-			wait(0.5)
-		end
-		if playerdied then
-			--print("Player " ..tostring(game.Players.LocalPlayer.Name).. " Died")
-			--print(tostring(SavePosition.Text))
-			wait(3)
-			game:GetService("ReplicatedStorage").RemoteEvent:FireServer({[1] = "Respawn"})
-			wait(1)
-			game.Lighting.Blur.Enabled = false
-            game.Players.LocalPlayer.PlayerGui.IntroGui.Enabled = false
-            game.Players.LocalPlayer.PlayerGui.ScreenGui.Enabled = true
-			wait(2)
-			--print("screengui disabled")
-			repeat wait(0.1) until game.Players.LocalPlayer.Character.Humanoid
-			--print("Teleporting back to " ..tostring(SavePosition.Text))
-			if deathreturnactive then
-				local FindHum = game.Players.LocalPlayer.Character:WaitForChild("Humanoid")
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(lastlocationx, lastlocationy, lastlocationz)
-			end
-			playerdied = false
-		end
-		wait(0.3)
-	end		
-end)
+spawn(
+    function()
+        while true do
+            pcall(
+                function()
+                    if deathreturnactive then
+                        player = game:GetService("Players").LocalPlayer
+                        player.Character.Humanoid.Died:connect(
+                            function()
+                                playerdied = true
+                            end
+                        )
+                    end
+                    if not playerdied then
+                        lastlocationx = game.Players.LocalPlayer.Character.HumanoidRootPart.Position.x
+                        lastlocationy = game.Players.LocalPlayer.Character.HumanoidRootPart.Position.y
+                        lastlocationz = game.Players.LocalPlayer.Character.HumanoidRootPart.Position.z
+                        SavePosition.Text =
+                            "Last Place: " .. lastlocationx .. "," .. lastlocationy .. "," .. lastlocationz
+                        --print(tostring(SavePosition.Text))
+                        wait(0.5)
+                    end
+                    if playerdied then
+                        --print("Player " ..tostring(game.Players.LocalPlayer.Name).. " Died")
+                        --print(tostring(SavePosition.Text))
+                        wait(3)
+                        game:GetService("ReplicatedStorage").RemoteEvent:FireServer({[1] = "Respawn"})
+                        wait(1)
+                        game.Lighting.Blur.Enabled = false
+                        game.Players.LocalPlayer.PlayerGui.IntroGui.Enabled = false
+                        game.Players.LocalPlayer.PlayerGui.ScreenGui.Enabled = true
+                        wait(2)
+                        --print("screengui disabled")
+                        repeat
+                            wait(0.1)
+                        until game.Players.LocalPlayer.Character.Humanoid
+                        --print("Teleporting back to " ..tostring(SavePosition.Text))
+                        if deathreturnactive then
+                            local FindHum = game.Players.LocalPlayer.Character:WaitForChild("Humanoid")
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                CFrame.new(lastlocationx, lastlocationy, lastlocationz)
+                        end
+                        playerdied = false
+                    end
+                    wait(0.3)
+                end
+            )
+        end
+    end
+)
 
 -- Annoy Player --
 
-AnnoyStart.MouseButton1Click:Connect(function()
-	if annoyplayeractive ~= true then
-		annoyplayeractive = true
-		AnnoyStart.BackgroundColor3 = Color3.new(0, 0.5, 0)
-		AnnoyStart.Text = "TP Spam Player: ON"
-	else
-		annoyplayeractive = false
-		AnnoyStart.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-		AnnoyStart.Text = "TP Spam Player: OFF"
-	end
-end)
+AnnoyStart.MouseButton1Click:Connect(
+    function()
+        if annoyplayeractive ~= true then
+            annoyplayeractive = true
+            AnnoyStart.BackgroundColor3 = Color3.new(0, 0.5, 0)
+            AnnoyStart.Text = "TP Spam Player: ON"
+        else
+            annoyplayeractive = false
+            AnnoyStart.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+            AnnoyStart.Text = "TP Spam Player: OFF"
+        end
+    end
+)
 
-spawn(function()
-	while true do
-		wait(0.5)
-		if annoyplayeractive then
-			for i,v in pairs(game:GetService("Players"):GetChildren()) do
-				if v.Name:lower():find(AnnoyName.Text:lower()) then
-					player = game.Players.LocalPlayer.Character
-					local startpos = player.HumanoidRootPart.CFrame
-					v.Character.Humanoid.Died:connect(function()
-						annoyplayeractive = false
-						AnnoyStart.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-						AnnoyStart.Text = "TP Spam Player: OFF"
-					end)
-					player.Humanoid.Died:connect(function()
-						annoyplayeractive = false
-						AnnoyStart.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-						AnnoyStart.Text = "TP Spam Player: OFF"
-					end)
-					while annoyplayeractive == true do
-						player.HumanoidRootPart.CFrame = v.Character.HumanoidRootPart.CFrame
-						wait(.005)
-					end
-					player.HumanoidRootPart.CFrame = startpos
-				end
-			end
-		end
-	end
-end)
+spawn(
+    function()
+        while true do
+            pcall(
+                function()
+                    wait(0.5)
+                    if annoyplayeractive then
+                        for i, v in pairs(game:GetService("Players"):GetChildren()) do
+                            if v.Name:lower():find(AnnoyName.Text:lower()) then
+                                player = game.Players.LocalPlayer.Character
+                                local startpos = player.HumanoidRootPart.CFrame
+                                v.Character.Humanoid.Died:connect(
+                                    function()
+                                        annoyplayeractive = false
+                                        AnnoyStart.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+                                        AnnoyStart.Text = "TP Spam Player: OFF"
+                                    end
+                                )
+                                player.Humanoid.Died:connect(
+                                    function()
+                                        annoyplayeractive = false
+                                        AnnoyStart.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+                                        AnnoyStart.Text = "TP Spam Player: OFF"
+                                    end
+                                )
+                                while annoyplayeractive == true do
+                                    player.HumanoidRootPart.CFrame = v.Character.HumanoidRootPart.CFrame
+                                    wait(.005)
+                                end
+                                player.HumanoidRootPart.CFrame = startpos
+                            end
+                        end
+                    end
+                end
+            )
+        end
+    end
+)
 
-TptoPlayer.MouseButton1Click:Connect(function()
-	for i,v in pairs(game:GetService("Players"):GetChildren()) do
-		if v.Name:lower():find(AnnoyName.Text:lower()) then
-			if v.Name ~= tostring(MyPlr.Name) then
-				player = game.Players.LocalPlayer.Character
-				player.HumanoidRootPart.CFrame = v.Character.HumanoidRootPart.CFrame * CFrame.new(3, 0, 3)
-			end
-		end
-	end
-end)
+TptoPlayer.MouseButton1Click:Connect(
+    function()
+        for i, v in pairs(game:GetService("Players"):GetChildren()) do
+            if v.Name:lower():find(AnnoyName.Text:lower()) then
+                if v.Name ~= tostring(MyPlr.Name) then
+                    player = game.Players.LocalPlayer.Character
+                    player.HumanoidRootPart.CFrame = v.Character.HumanoidRootPart.CFrame * CFrame.new(3, 0, 3)
+                end
+            end
+        end
+    end
+)
 
-mouse.KeyDown:connect(function(key)
-	if key == tostring(PanicToggle.Text) then
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(459, 248, 887)
-	end
-end)
+mouse.KeyDown:connect(
+    function(key)
+        if key == tostring(PanicToggle.Text) then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(459, 248, 887)
+        end
+    end
+)
 
 -- ESP --
 
-esptrack.MouseButton1Click:connect(function()
-	ESPEnabled = not ESPEnabled
-	if ESPEnabled then
-		esptrack.BackgroundColor3 = Color3.new(0, 0.5, 0)
-		for _, v in next, Plrs:GetPlayers() do
-			if v ~= MyPlr then
-				if CharAddedEvent[v.Name] == nil then
-					CharAddedEvent[v.Name] = v.CharacterAdded:connect(function(Char)
-						if ESPEnabled then
-							RemoveESP(v)
-							CreateESP(v)
-						end
-						repeat wait() until Char:FindFirstChild("HumanoidRootPart")
-					end)
-				end
-				RemoveESP(v)
-				CreateESP(v)
-			end
-		end
-	else
-		esptrack.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-		for _, v in next, Plrs:GetPlayers() do
-			RemoveESP(v)
-		end
-	end
-end)
+esptrack.MouseButton1Click:connect(
+    function()
+        ESPEnabled = not ESPEnabled
+        if ESPEnabled then
+            esptrack.BackgroundColor3 = Color3.new(0, 0.5, 0)
+            for _, v in next, Plrs:GetPlayers() do
+                if v ~= MyPlr then
+                    if CharAddedEvent[v.Name] == nil then
+                        CharAddedEvent[v.Name] =
+                            v.CharacterAdded:connect(
+                            function(Char)
+                                if ESPEnabled then
+                                    RemoveESP(v)
+                                    CreateESP(v)
+                                end
+                                repeat
+                                    wait()
+                                until Char:FindFirstChild("HumanoidRootPart")
+                            end
+                        )
+                    end
+                    RemoveESP(v)
+                    CreateESP(v)
+                end
+            end
+        else
+            esptrack.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+            for _, v in next, Plrs:GetPlayers() do
+                RemoveESP(v)
+            end
+        end
+    end
+)
 
 -- Server Player Stats --
 
-PlayerInfo.MouseButton1Click:connect(function()
-	if not showtopplayersactive then
-		showtopplayersactive = true
-		showtopplayersfistactive = true
-		showtopplayersbodyactive = true
-		showtopplayersspeedactive = true
-		showtopplayersjumpactive = true
-		showtopplayerspsychicactive = true
-		PlayerInfoStatsFrame.Visible = true
-	else
-		showtopplayersactive = false
-		PlayerInfoStatsFrame.Visible = false
-		showtopplayersfistactive = false
-		showtopplayersbodyactive = false
-		showtopplayersspeedactive = false
-		showtopplayersjumpactive = false
-		showtopplayerspsychicactive = false
-	end
-end)
+PlayerInfo.MouseButton1Click:connect(
+    function()
+        if not showtopplayersactive then
+            showtopplayersactive = true
+            showtopplayersfistactive = true
+            showtopplayersbodyactive = true
+            showtopplayersspeedactive = true
+            showtopplayersjumpactive = true
+            showtopplayerspsychicactive = true
+            PlayerInfoStatsFrame.Visible = true
+        else
+            showtopplayersactive = false
+            PlayerInfoStatsFrame.Visible = false
+            showtopplayersfistactive = false
+            showtopplayersbodyactive = false
+            showtopplayersspeedactive = false
+            showtopplayersjumpactive = false
+            showtopplayerspsychicactive = false
+        end
+    end
+)
 
-PlayerInfoStatsClose.MouseButton1Click:connect(function()
-	showtopplayersactive = false
-	PlayerInfoStatsFrame.Visible = false
-	showtopplayersfistactive = false
-	showtopplayersbodyactive = false
-	showtopplayersspeedactive = false
-	showtopplayersjumpactive = false
-	showtopplayerspsychicactive = false
-end)
+PlayerInfoStatsClose.MouseButton1Click:connect(
+    function()
+        showtopplayersactive = false
+        PlayerInfoStatsFrame.Visible = false
+        showtopplayersfistactive = false
+        showtopplayersbodyactive = false
+        showtopplayersspeedactive = false
+        showtopplayersjumpactive = false
+        showtopplayerspsychicactive = false
+    end
+)
 
-spawn(function()
-	while true do
-		if showtopplayersfistactive then
-			BestPlayerFist = 1
-			PlayerFistName = false
-			for i,v in pairs(game:GetService("Players"):GetChildren()) do
-				local PlayerFist = tonumber(game.Players[v.Name].PrivateStats.FistStrength.Value)
-				if PlayerFist > tonumber(BestPlayerFist) then 
-					BestPlayerFist = PlayerFist
-					PlayerFistName = tostring(v.Name)
-				end
-			end
-			StatBestFistText1.Text = "Fist: " ..tostring(PlayerFistName)
-			local fistplrStatus = game.Players[PlayerFistName].leaderstats.Status
-			if fistplrStatus.Value == "Criminal" then
-				StatBestFistText1.TextColor3 = Color3.new(1, 0.1, 1)
-			elseif fistplrStatus.Value == "Lawbreaker" then
-				StatBestFistText1.TextColor3 = Color3.new(1, 0.1, 0.1)
-			elseif fistplrStatus.Value == "Guardian" then
-				StatBestFistText1.TextColor3 = Color3.new(0.1, 0.8, 1)
-			elseif fistplrStatus.Value == "Protector" then
-				StatBestFistText1.TextColor3 = Color3.new(0.1, 0.1, 1)
-			elseif fistplrStatus.Value == "Supervillain" then
-				StatBestFistText1.TextColor3 = Color3.new(0.3, 0.1, 0.1)
-			elseif fistplrStatus.Value == "Superhero" then
-				StatBestFistText1.TextColor3 = Color3.new(0.8, 0.8, 0)
-			else
-				StatBestFistText1.TextColor3 = Color3.new(1, 1, 1)
-			end
-			local FindHum = game.Players[PlayerFistName].Character.Humanoid
-			local FistPlayerHealth = converttoletter(string.format("%.0f", FindHum.Health))
-			local FistPlayerFist = converttoletter(string.format("%.0f", game.Players[PlayerFistName].PrivateStats.FistStrength.Value))
-			local FistPlayerBody = converttoletter(string.format("%.0f", game.Players[PlayerFistName].PrivateStats.BodyToughness.Value))
-			local FistPlayerSpeed = converttoletter(string.format("%.0f", game.Players[PlayerFistName].PrivateStats.MovementSpeed.Value))
-			local FistPlayerJump = converttoletter(string.format("%.0f", game.Players[PlayerFistName].PrivateStats.JumpForce.Value))
-			local FistPlayerPsychic = converttoletter(string.format("%.0f", game.Players[PlayerFistName].PrivateStats.PsychicPower.Value))
-			ShowStatsFist2.Text = tostring(FistPlayerHealth.. "\n" ..FistPlayerFist.. "\n" ..FistPlayerBody.. "\n" ..FistPlayerSpeed.. "\n" ..FistPlayerJump.. "\n" ..FistPlayerPsychic)
-		end
-		wait()
-	end
-end)
+spawn(
+    function()
+        while true do
+            pcall(
+                function()
+                    if showtopplayersfistactive then
+                        BestPlayerFist = 1
+                        PlayerFistName = false
+                        for i, v in pairs(game:GetService("Players"):GetChildren()) do
+                            local PlayerFist = tonumber(game.Players[v.Name].PrivateStats.FistStrength.Value)
+                            if PlayerFist > tonumber(BestPlayerFist) then
+                                BestPlayerFist = PlayerFist
+                                PlayerFistName = tostring(v.Name)
+                            end
+                        end
+                        StatBestFistText1.Text = "Fist: " .. tostring(PlayerFistName)
+                        local fistplrStatus = game.Players[PlayerFistName].leaderstats.Status
+                        if fistplrStatus.Value == "Criminal" then
+                            StatBestFistText1.TextColor3 = Color3.new(1, 0.1, 1)
+                        elseif fistplrStatus.Value == "Lawbreaker" then
+                            StatBestFistText1.TextColor3 = Color3.new(1, 0.1, 0.1)
+                        elseif fistplrStatus.Value == "Guardian" then
+                            StatBestFistText1.TextColor3 = Color3.new(0.1, 0.8, 1)
+                        elseif fistplrStatus.Value == "Protector" then
+                            StatBestFistText1.TextColor3 = Color3.new(0.1, 0.1, 1)
+                        elseif fistplrStatus.Value == "Supervillain" then
+                            StatBestFistText1.TextColor3 = Color3.new(0.3, 0.1, 0.1)
+                        elseif fistplrStatus.Value == "Superhero" then
+                            StatBestFistText1.TextColor3 = Color3.new(0.8, 0.8, 0)
+                        else
+                            StatBestFistText1.TextColor3 = Color3.new(1, 1, 1)
+                        end
+                        local FindHum = game.Players[PlayerFistName].Character.Humanoid
+                        local FistPlayerHealth = converttoletter(string.format("%.0f", FindHum.Health))
+                        local FistPlayerFist =
+                            converttoletter(
+                            string.format("%.0f", game.Players[PlayerFistName].PrivateStats.FistStrength.Value)
+                        )
+                        local FistPlayerBody =
+                            converttoletter(
+                            string.format("%.0f", game.Players[PlayerFistName].PrivateStats.BodyToughness.Value)
+                        )
+                        local FistPlayerSpeed =
+                            converttoletter(
+                            string.format("%.0f", game.Players[PlayerFistName].PrivateStats.MovementSpeed.Value)
+                        )
+                        local FistPlayerJump =
+                            converttoletter(
+                            string.format("%.0f", game.Players[PlayerFistName].PrivateStats.JumpForce.Value)
+                        )
+                        local FistPlayerPsychic =
+                            converttoletter(
+                            string.format("%.0f", game.Players[PlayerFistName].PrivateStats.PsychicPower.Value)
+                        )
+                        ShowStatsFist2.Text =
+                            tostring(
+                            FistPlayerHealth ..
+                                "\n" ..
+                                    FistPlayerFist ..
+                                        "\n" ..
+                                            FistPlayerBody ..
+                                                "\n" ..
+                                                    FistPlayerSpeed ..
+                                                        "\n" .. FistPlayerJump .. "\n" .. FistPlayerPsychic
+                        )
+                    end
+                    wait()
+                end
+            )
+        end
+    end
+)
 
-spawn(function()
-	while true do
-		if showtopplayersbodyactive then
-			BestPlayerBody = 1
-			PlayerBodyName = false
-			for i,v in pairs(game:GetService("Players"):GetChildren()) do
-				local PlayerBody = tonumber(game.Players[v.Name].PrivateStats.BodyToughness.Value)
-				if PlayerBody > tonumber(BestPlayerBody) then 
-					BestPlayerBody = PlayerBody
-					PlayerBodyName = tostring(v.Name)
-				end
-			end
-			StatBestBodyText1.Text = "Body: " ..tostring(PlayerBodyName)
-			local bodyplrStatus = game.Players[PlayerBodyName].leaderstats.Status
-			if bodyplrStatus.Value == "Criminal" then
-				StatBestBodyText1.TextColor3 = Color3.new(1, 0.1, 1)
-			elseif bodyplrStatus.Value == "Lawbreaker" then
-				StatBestBodyText1.TextColor3 = Color3.new(1, 0.1, 0.1)
-			elseif bodyplrStatus.Value == "Guardian" then
-				StatBestBodyText1.TextColor3 = Color3.new(0.1, 0.8, 1)
-			elseif bodyplrStatus.Value == "Protector" then
-				StatBestBodyText1.TextColor3 = Color3.new(0.1, 0.1, 1)
-			elseif bodyplrStatus.Value == "Supervillain" then
-				StatBestBodyText1.TextColor3 = Color3.new(0.3, 0.1, 0.1)
-			elseif bodyplrStatus.Value == "Superhero" then
-				StatBestBodyText1.TextColor3 = Color3.new(0.8, 0.8, 0)
-			else
-				StatBestBodyText1.TextColor3 = Color3.new(1, 1, 1)
-			end
-			local FindHum = game.Players[PlayerBodyName].Character.Humanoid
-			local BodyPlayerHealth = converttoletter(string.format("%.0f", FindHum.Health))
-			local BodyPlayerFist = converttoletter(string.format("%.0f", game.Players[PlayerBodyName].PrivateStats.FistStrength.Value))
-			local BodyPlayerBody = converttoletter(string.format("%.0f", game.Players[PlayerBodyName].PrivateStats.BodyToughness.Value))
-			local BodyPlayerSpeed = converttoletter(string.format("%.0f", game.Players[PlayerBodyName].PrivateStats.MovementSpeed.Value))
-			local BodyPlayerJump = converttoletter(string.format("%.0f", game.Players[PlayerBodyName].PrivateStats.JumpForce.Value))
-			local BodyPlayerPsychic = converttoletter(string.format("%.0f", game.Players[PlayerBodyName].PrivateStats.PsychicPower.Value))
-			ShowStatsBody2.Text = tostring(BodyPlayerHealth.. "\n" ..BodyPlayerFist.. "\n" ..BodyPlayerBody.. "\n" ..BodyPlayerSpeed.. "\n" ..BodyPlayerJump.. "\n" ..BodyPlayerPsychic)
-		end
-		wait()
-	end
-end)
+spawn(
+    function()
+        while true do
+            pcall(
+                function()
+                    if showtopplayersbodyactive then
+                        BestPlayerBody = 1
+                        PlayerBodyName = false
+                        for i, v in pairs(game:GetService("Players"):GetChildren()) do
+                            local PlayerBody = tonumber(game.Players[v.Name].PrivateStats.BodyToughness.Value)
+                            if PlayerBody > tonumber(BestPlayerBody) then
+                                BestPlayerBody = PlayerBody
+                                PlayerBodyName = tostring(v.Name)
+                            end
+                        end
+                        StatBestBodyText1.Text = "Body: " .. tostring(PlayerBodyName)
+                        local bodyplrStatus = game.Players[PlayerBodyName].leaderstats.Status
+                        if bodyplrStatus.Value == "Criminal" then
+                            StatBestBodyText1.TextColor3 = Color3.new(1, 0.1, 1)
+                        elseif bodyplrStatus.Value == "Lawbreaker" then
+                            StatBestBodyText1.TextColor3 = Color3.new(1, 0.1, 0.1)
+                        elseif bodyplrStatus.Value == "Guardian" then
+                            StatBestBodyText1.TextColor3 = Color3.new(0.1, 0.8, 1)
+                        elseif bodyplrStatus.Value == "Protector" then
+                            StatBestBodyText1.TextColor3 = Color3.new(0.1, 0.1, 1)
+                        elseif bodyplrStatus.Value == "Supervillain" then
+                            StatBestBodyText1.TextColor3 = Color3.new(0.3, 0.1, 0.1)
+                        elseif bodyplrStatus.Value == "Superhero" then
+                            StatBestBodyText1.TextColor3 = Color3.new(0.8, 0.8, 0)
+                        else
+                            StatBestBodyText1.TextColor3 = Color3.new(1, 1, 1)
+                        end
+                        local FindHum = game.Players[PlayerBodyName].Character.Humanoid
+                        local BodyPlayerHealth = converttoletter(string.format("%.0f", FindHum.Health))
+                        local BodyPlayerFist =
+                            converttoletter(
+                            string.format("%.0f", game.Players[PlayerBodyName].PrivateStats.FistStrength.Value)
+                        )
+                        local BodyPlayerBody =
+                            converttoletter(
+                            string.format("%.0f", game.Players[PlayerBodyName].PrivateStats.BodyToughness.Value)
+                        )
+                        local BodyPlayerSpeed =
+                            converttoletter(
+                            string.format("%.0f", game.Players[PlayerBodyName].PrivateStats.MovementSpeed.Value)
+                        )
+                        local BodyPlayerJump =
+                            converttoletter(
+                            string.format("%.0f", game.Players[PlayerBodyName].PrivateStats.JumpForce.Value)
+                        )
+                        local BodyPlayerPsychic =
+                            converttoletter(
+                            string.format("%.0f", game.Players[PlayerBodyName].PrivateStats.PsychicPower.Value)
+                        )
+                        ShowStatsBody2.Text =
+                            tostring(
+                            BodyPlayerHealth ..
+                                "\n" ..
+                                    BodyPlayerFist ..
+                                        "\n" ..
+                                            BodyPlayerBody ..
+                                                "\n" ..
+                                                    BodyPlayerSpeed ..
+                                                        "\n" .. BodyPlayerJump .. "\n" .. BodyPlayerPsychic
+                        )
+                    end
+                    wait()
+                end
+            )
+        end
+    end
+)
 
-spawn(function()
-	while true do
-		if showtopplayersspeedactive then
-			BestPlayerSpeed = 1
-			PlayerSpeedName = false
-			for i,v in pairs(game:GetService("Players"):GetChildren()) do
-				local PlayerSpeed = tonumber(game.Players[v.Name].PrivateStats.MovementSpeed.Value)
-				if PlayerSpeed > tonumber(BestPlayerSpeed) then 
-					BestPlayerSpeed = PlayerSpeed
-					PlayerSpeedName = tostring(v.Name)
-				end
-			end
-			StatBestSpeedText1.Text = "Speed: " ..tostring(PlayerSpeedName)
-			local speedplrStatus = game.Players[PlayerSpeedName].leaderstats.Status
-			if speedplrStatus.Value == "Criminal" then
-				StatBestSpeedText1.TextColor3 = Color3.new(1, 0.1, 1)
-			elseif speedplrStatus.Value == "Lawbreaker" then
-				StatBestSpeedText1.TextColor3 = Color3.new(1, 0.1, 0.1)
-			elseif speedplrStatus.Value == "Guardian" then
-				StatBestSpeedText1.TextColor3 = Color3.new(0.1, 0.8, 1)
-			elseif speedplrStatus.Value == "Protector" then
-				StatBestSpeedText1.TextColor3 = Color3.new(0.1, 0.1, 1)
-			elseif speedplrStatus.Value == "Supervillain" then
-				StatBestSpeedText1.TextColor3 = Color3.new(0.3, 0.1, 0.1)
-			elseif speedplrStatus.Value == "Superhero" then
-				StatBestSpeedText1.TextColor3 = Color3.new(0.8, 0.8, 0)
-			else
-				StatBestSpeedText1.TextColor3 = Color3.new(1, 1, 1)
-			end
-			local FindHum = game.Players[PlayerSpeedName].Character.Humanoid
-			local SpeedPlayerHealth = converttoletter(string.format("%.0f", FindHum.Health))
-			local SpeedPlayerFist = converttoletter(string.format("%.0f", game.Players[PlayerSpeedName].PrivateStats.FistStrength.Value))
-			local SpeedPlayerBody = converttoletter(string.format("%.0f", game.Players[PlayerSpeedName].PrivateStats.BodyToughness.Value))
-			local SpeedPlayerSpeed = converttoletter(string.format("%.0f", game.Players[PlayerSpeedName].PrivateStats.MovementSpeed.Value))
-			local SpeedPlayerJump = converttoletter(string.format("%.0f", game.Players[PlayerSpeedName].PrivateStats.JumpForce.Value))
-			local SpeedPlayerPsychic = converttoletter(string.format("%.0f", game.Players[PlayerSpeedName].PrivateStats.PsychicPower.Value))
-			ShowStatsSpeed2.Text = tostring(SpeedPlayerHealth.. "\n" ..SpeedPlayerFist.. "\n" ..SpeedPlayerBody.. "\n" ..SpeedPlayerSpeed.. "\n" ..SpeedPlayerJump.. "\n" ..SpeedPlayerPsychic)
-		end
-		wait()
-	end
-end)
+spawn(
+    function()
+        while true do
+            pcall(
+                function()
+                    if showtopplayersspeedactive then
+                        BestPlayerSpeed = 1
+                        PlayerSpeedName = false
+                        for i, v in pairs(game:GetService("Players"):GetChildren()) do
+                            local PlayerSpeed = tonumber(game.Players[v.Name].PrivateStats.MovementSpeed.Value)
+                            if PlayerSpeed > tonumber(BestPlayerSpeed) then
+                                BestPlayerSpeed = PlayerSpeed
+                                PlayerSpeedName = tostring(v.Name)
+                            end
+                        end
+                        StatBestSpeedText1.Text = "Speed: " .. tostring(PlayerSpeedName)
+                        local speedplrStatus = game.Players[PlayerSpeedName].leaderstats.Status
+                        if speedplrStatus.Value == "Criminal" then
+                            StatBestSpeedText1.TextColor3 = Color3.new(1, 0.1, 1)
+                        elseif speedplrStatus.Value == "Lawbreaker" then
+                            StatBestSpeedText1.TextColor3 = Color3.new(1, 0.1, 0.1)
+                        elseif speedplrStatus.Value == "Guardian" then
+                            StatBestSpeedText1.TextColor3 = Color3.new(0.1, 0.8, 1)
+                        elseif speedplrStatus.Value == "Protector" then
+                            StatBestSpeedText1.TextColor3 = Color3.new(0.1, 0.1, 1)
+                        elseif speedplrStatus.Value == "Supervillain" then
+                            StatBestSpeedText1.TextColor3 = Color3.new(0.3, 0.1, 0.1)
+                        elseif speedplrStatus.Value == "Superhero" then
+                            StatBestSpeedText1.TextColor3 = Color3.new(0.8, 0.8, 0)
+                        else
+                            StatBestSpeedText1.TextColor3 = Color3.new(1, 1, 1)
+                        end
+                        local FindHum = game.Players[PlayerSpeedName].Character.Humanoid
+                        local SpeedPlayerHealth = converttoletter(string.format("%.0f", FindHum.Health))
+                        local SpeedPlayerFist =
+                            converttoletter(
+                            string.format("%.0f", game.Players[PlayerSpeedName].PrivateStats.FistStrength.Value)
+                        )
+                        local SpeedPlayerBody =
+                            converttoletter(
+                            string.format("%.0f", game.Players[PlayerSpeedName].PrivateStats.BodyToughness.Value)
+                        )
+                        local SpeedPlayerSpeed =
+                            converttoletter(
+                            string.format("%.0f", game.Players[PlayerSpeedName].PrivateStats.MovementSpeed.Value)
+                        )
+                        local SpeedPlayerJump =
+                            converttoletter(
+                            string.format("%.0f", game.Players[PlayerSpeedName].PrivateStats.JumpForce.Value)
+                        )
+                        local SpeedPlayerPsychic =
+                            converttoletter(
+                            string.format("%.0f", game.Players[PlayerSpeedName].PrivateStats.PsychicPower.Value)
+                        )
+                        ShowStatsSpeed2.Text =
+                            tostring(
+                            SpeedPlayerHealth ..
+                                "\n" ..
+                                    SpeedPlayerFist ..
+                                        "\n" ..
+                                            SpeedPlayerBody ..
+                                                "\n" ..
+                                                    SpeedPlayerSpeed ..
+                                                        "\n" .. SpeedPlayerJump .. "\n" .. SpeedPlayerPsychic
+                        )
+                    end
+                    wait()
+                end
+            )
+        end
+    end
+)
 
-spawn(function()
-	while true do
-		if showtopplayersjumpactive then
-			BestPlayerJump = 1
-			PlayerJumpName = false
-			for i,v in pairs(game:GetService("Players"):GetChildren()) do
-				local PlayerJump = tonumber(game.Players[v.Name].PrivateStats.JumpForce.Value)
-				if PlayerJump > tonumber(BestPlayerJump) then 
-					BestPlayerJump = PlayerJump
-					PlayerJumpName = tostring(v.Name)
-				end
-			end
-			StatBestJumpText1.Text = "Jump: " ..tostring(PlayerJumpName)
-			local JumpplrStatus = game.Players[PlayerJumpName].leaderstats.Status
-			if JumpplrStatus.Value == "Criminal" then
-				StatBestJumpText1.TextColor3 = Color3.new(1, 0.1, 1)
-			elseif JumpplrStatus.Value == "Lawbreaker" then
-				StatBestJumpText1.TextColor3 = Color3.new(1, 0.1, 0.1)
-			elseif JumpplrStatus.Value == "Guardian" then
-				StatBestJumpText1.TextColor3 = Color3.new(0.1, 0.8, 1)
-			elseif JumpplrStatus.Value == "Protector" then
-				StatBestJumpText1.TextColor3 = Color3.new(0.1, 0.1, 1)
-			elseif JumpplrStatus.Value == "Supervillain" then
-				StatBestJumpText1.TextColor3 = Color3.new(0.3, 0.1, 0.1)
-			elseif JumpplrStatus.Value == "Superhero" then
-				StatBestJumpText1.TextColor3 = Color3.new(0.8, 0.8, 0)
-			else
-				StatBestJumpText1.TextColor3 = Color3.new(1, 1, 1)
-			end
-			local FindHum = game.Players[PlayerJumpName].Character.Humanoid
-			local JumpPlayerHealth = converttoletter(string.format("%.0f", FindHum.Health))
-			local JumpPlayerFist = converttoletter(string.format("%.0f", game.Players[PlayerJumpName].PrivateStats.FistStrength.Value))
-			local JumpPlayerBody = converttoletter(string.format("%.0f", game.Players[PlayerJumpName].PrivateStats.BodyToughness.Value))
-			local JumpPlayerSpeed = converttoletter(string.format("%.0f", game.Players[PlayerJumpName].PrivateStats.MovementSpeed.Value))
-			local JumpPlayerJump = converttoletter(string.format("%.0f", game.Players[PlayerJumpName].PrivateStats.JumpForce.Value))
-			local JumpPlayerPsychic = converttoletter(string.format("%.0f", game.Players[PlayerJumpName].PrivateStats.PsychicPower.Value))
-			ShowStatsJump2.Text = tostring(JumpPlayerHealth.. "\n" ..JumpPlayerFist.. "\n" ..JumpPlayerBody.. "\n" ..JumpPlayerSpeed.. "\n" ..JumpPlayerJump.. "\n" ..JumpPlayerPsychic)
-		end
-		wait()
-	end
-end)
+spawn(
+    function()
+        while true do
+            pcall(
+                function()
+                    if showtopplayersjumpactive then
+                        BestPlayerJump = 1
+                        PlayerJumpName = false
+                        for i, v in pairs(game:GetService("Players"):GetChildren()) do
+                            local PlayerJump = tonumber(game.Players[v.Name].PrivateStats.JumpForce.Value)
+                            if PlayerJump > tonumber(BestPlayerJump) then
+                                BestPlayerJump = PlayerJump
+                                PlayerJumpName = tostring(v.Name)
+                            end
+                        end
+                        StatBestJumpText1.Text = "Jump: " .. tostring(PlayerJumpName)
+                        local JumpplrStatus = game.Players[PlayerJumpName].leaderstats.Status
+                        if JumpplrStatus.Value == "Criminal" then
+                            StatBestJumpText1.TextColor3 = Color3.new(1, 0.1, 1)
+                        elseif JumpplrStatus.Value == "Lawbreaker" then
+                            StatBestJumpText1.TextColor3 = Color3.new(1, 0.1, 0.1)
+                        elseif JumpplrStatus.Value == "Guardian" then
+                            StatBestJumpText1.TextColor3 = Color3.new(0.1, 0.8, 1)
+                        elseif JumpplrStatus.Value == "Protector" then
+                            StatBestJumpText1.TextColor3 = Color3.new(0.1, 0.1, 1)
+                        elseif JumpplrStatus.Value == "Supervillain" then
+                            StatBestJumpText1.TextColor3 = Color3.new(0.3, 0.1, 0.1)
+                        elseif JumpplrStatus.Value == "Superhero" then
+                            StatBestJumpText1.TextColor3 = Color3.new(0.8, 0.8, 0)
+                        else
+                            StatBestJumpText1.TextColor3 = Color3.new(1, 1, 1)
+                        end
+                        local FindHum = game.Players[PlayerJumpName].Character.Humanoid
+                        local JumpPlayerHealth = converttoletter(string.format("%.0f", FindHum.Health))
+                        local JumpPlayerFist =
+                            converttoletter(
+                            string.format("%.0f", game.Players[PlayerJumpName].PrivateStats.FistStrength.Value)
+                        )
+                        local JumpPlayerBody =
+                            converttoletter(
+                            string.format("%.0f", game.Players[PlayerJumpName].PrivateStats.BodyToughness.Value)
+                        )
+                        local JumpPlayerSpeed =
+                            converttoletter(
+                            string.format("%.0f", game.Players[PlayerJumpName].PrivateStats.MovementSpeed.Value)
+                        )
+                        local JumpPlayerJump =
+                            converttoletter(
+                            string.format("%.0f", game.Players[PlayerJumpName].PrivateStats.JumpForce.Value)
+                        )
+                        local JumpPlayerPsychic =
+                            converttoletter(
+                            string.format("%.0f", game.Players[PlayerJumpName].PrivateStats.PsychicPower.Value)
+                        )
+                        ShowStatsJump2.Text =
+                            tostring(
+                            JumpPlayerHealth ..
+                                "\n" ..
+                                    JumpPlayerFist ..
+                                        "\n" ..
+                                            JumpPlayerBody ..
+                                                "\n" ..
+                                                    JumpPlayerSpeed ..
+                                                        "\n" .. JumpPlayerJump .. "\n" .. JumpPlayerPsychic
+                        )
+                    end
+                    wait()
+                end
+            )
+        end
+    end
+)
 
-spawn(function()
-	while true do
-		if showtopplayerspsychicactive then
-			BestPlayerPsychic = 1
-			PlayerPsychicName = false
-			for i,v in pairs(game:GetService("Players"):GetChildren()) do
-				local PlayerPsychic = tonumber(game.Players[v.Name].PrivateStats.PsychicPower.Value)
-				if PlayerPsychic > tonumber(BestPlayerPsychic) then 
-					BestPlayerPsychic = PlayerPsychic
-					PlayerPsychicName = tostring(v.Name)
-				end
-			end
-			StatBestPsychicText1.Text = "Psy: " ..tostring(PlayerPsychicName)
-			local PsychicplrStatus = game.Players[PlayerPsychicName].leaderstats.Status
-			if PsychicplrStatus.Value == "Criminal" then
-				StatBestPsychicText1.TextColor3 = Color3.new(1, 0.1, 1)
-			elseif PsychicplrStatus.Value == "Lawbreaker" then
-				StatBestPsychicText1.TextColor3 = Color3.new(1, 0.1, 0.1)
-			elseif PsychicplrStatus.Value == "Guardian" then
-				StatBestPsychicText1.TextColor3 = Color3.new(0.1, 0.8, 1)
-			elseif PsychicplrStatus.Value == "Protector" then
-				StatBestPsychicText1.TextColor3 = Color3.new(0.1, 0.1, 1)
-			elseif PsychicplrStatus.Value == "Supervillain" then
-				StatBestPsychicText1.TextColor3 = Color3.new(0.3, 0.1, 0.1)
-			elseif PsychicplrStatus.Value == "Superhero" then
-				StatBestPsychicText1.TextColor3 = Color3.new(0.8, 0.8, 0)
-			else
-				StatBestPsychicText1.TextColor3 = Color3.new(1, 1, 1)
-			end
-			local FindHum = game.Players[PlayerPsychicName].Character.Humanoid
-			local PsychicPlayerHealth = converttoletter(string.format("%.0f", FindHum.Health))
-			local PsychicPlayerFist = converttoletter(string.format("%.0f", game.Players[PlayerPsychicName].PrivateStats.FistStrength.Value))
-			local PsychicPlayerBody = converttoletter(string.format("%.0f", game.Players[PlayerPsychicName].PrivateStats.BodyToughness.Value))
-			local PsychicPlayerSpeed = converttoletter(string.format("%.0f", game.Players[PlayerPsychicName].PrivateStats.MovementSpeed.Value))
-			local PsychicPlayerJump = converttoletter(string.format("%.0f", game.Players[PlayerPsychicName].PrivateStats.JumpForce.Value))
-			local PsychicPlayerPsychic = converttoletter(string.format("%.0f", game.Players[PlayerPsychicName].PrivateStats.PsychicPower.Value))
-			ShowStatsPsychic2.Text = tostring(PsychicPlayerHealth.. "\n" ..PsychicPlayerFist.. "\n" ..PsychicPlayerBody.. "\n" ..PsychicPlayerSpeed.. "\n" ..PsychicPlayerJump.. "\n" ..PsychicPlayerPsychic)
-		end
-		wait()
-	end
-end)
+spawn(
+    function()
+        while true do
+            pcall(
+                function()
+                    if showtopplayerspsychicactive then
+                        BestPlayerPsychic = 1
+                        PlayerPsychicName = false
+                        for i, v in pairs(game:GetService("Players"):GetChildren()) do
+                            local PlayerPsychic = tonumber(game.Players[v.Name].PrivateStats.PsychicPower.Value)
+                            if PlayerPsychic > tonumber(BestPlayerPsychic) then
+                                BestPlayerPsychic = PlayerPsychic
+                                PlayerPsychicName = tostring(v.Name)
+                            end
+                        end
+                        StatBestPsychicText1.Text = "Psy: " .. tostring(PlayerPsychicName)
+                        local PsychicplrStatus = game.Players[PlayerPsychicName].leaderstats.Status
+                        if PsychicplrStatus.Value == "Criminal" then
+                            StatBestPsychicText1.TextColor3 = Color3.new(1, 0.1, 1)
+                        elseif PsychicplrStatus.Value == "Lawbreaker" then
+                            StatBestPsychicText1.TextColor3 = Color3.new(1, 0.1, 0.1)
+                        elseif PsychicplrStatus.Value == "Guardian" then
+                            StatBestPsychicText1.TextColor3 = Color3.new(0.1, 0.8, 1)
+                        elseif PsychicplrStatus.Value == "Protector" then
+                            StatBestPsychicText1.TextColor3 = Color3.new(0.1, 0.1, 1)
+                        elseif PsychicplrStatus.Value == "Supervillain" then
+                            StatBestPsychicText1.TextColor3 = Color3.new(0.3, 0.1, 0.1)
+                        elseif PsychicplrStatus.Value == "Superhero" then
+                            StatBestPsychicText1.TextColor3 = Color3.new(0.8, 0.8, 0)
+                        else
+                            StatBestPsychicText1.TextColor3 = Color3.new(1, 1, 1)
+                        end
+                        local FindHum = game.Players[PlayerPsychicName].Character.Humanoid
+                        local PsychicPlayerHealth = converttoletter(string.format("%.0f", FindHum.Health))
+                        local PsychicPlayerFist =
+                            converttoletter(
+                            string.format("%.0f", game.Players[PlayerPsychicName].PrivateStats.FistStrength.Value)
+                        )
+                        local PsychicPlayerBody =
+                            converttoletter(
+                            string.format("%.0f", game.Players[PlayerPsychicName].PrivateStats.BodyToughness.Value)
+                        )
+                        local PsychicPlayerSpeed =
+                            converttoletter(
+                            string.format("%.0f", game.Players[PlayerPsychicName].PrivateStats.MovementSpeed.Value)
+                        )
+                        local PsychicPlayerJump =
+                            converttoletter(
+                            string.format("%.0f", game.Players[PlayerPsychicName].PrivateStats.JumpForce.Value)
+                        )
+                        local PsychicPlayerPsychic =
+                            converttoletter(
+                            string.format("%.0f", game.Players[PlayerPsychicName].PrivateStats.PsychicPower.Value)
+                        )
+                        ShowStatsPsychic2.Text =
+                            tostring(
+                            PsychicPlayerHealth ..
+                                "\n" ..
+                                    PsychicPlayerFist ..
+                                        "\n" ..
+                                            PsychicPlayerBody ..
+                                                "\n" ..
+                                                    PsychicPlayerSpeed ..
+                                                        "\n" .. PsychicPlayerJump .. "\n" .. PsychicPlayerPsychic
+                        )
+                    end
+                    wait()
+                end
+            )
+        end
+    end
+)
 
 -- Display Player Info --
 
-spawn(function()
-	while true do
-		statplayer = tostring(PlayerName.Text)
-		StatsFrame.Visible = false
-		if playerdied == true then repeat wait(0.5) until playerdied == false end
-		for i,v in pairs(game:GetService("Players"):GetChildren()) do
-			if string.lower(v.Name) == string.lower(statplayer) then
-				StatsFrame.Visible = true
-				local FindHum = v.Character:WaitForChild("Humanoid")
-				local PlayerHealth = converttoletter(string.format("%.0f", FindHum.Health))
-				local PlayerFist = converttoletter(string.format("%.0f", game.Players[v.Name].PrivateStats.FistStrength.Value))
-				local PlayerBody = converttoletter(string.format("%.0f", game.Players[v.Name].PrivateStats.BodyToughness.Value))
-				local PlayerSpeed = converttoletter(string.format("%.0f", game.Players[v.Name].PrivateStats.MovementSpeed.Value))
-				local PlayerJump = converttoletter(string.format("%.0f", game.Players[v.Name].PrivateStats.JumpForce.Value))
-				local PlayerPsychic = converttoletter(string.format("%.0f", game.Players[v.Name].PrivateStats.PsychicPower.Value))
-				ShowStats1.Text = "Health:\nFist:\nBody:\nSpeed:\nJump:\nPsychic:"
-				ShowStats2.Text = PlayerHealth.. "\n" ..PlayerFist.. "\n" ..PlayerBody.. "\n" ..PlayerSpeed.. "\n" ..PlayerJump.. "\n" ..PlayerPsychic
-				break
-			end
-		end
-		wait(0.25)
-	end
-end)
+spawn(
+    function()
+        while true do
+            pcall(
+                function()
+                    statplayer = tostring(PlayerName.Text)
+                    StatsFrame.Visible = false
+                    if playerdied == true then
+                        repeat
+                            wait(0.5)
+                        until playerdied == false
+                    end
+                    for i, v in pairs(game:GetService("Players"):GetChildren()) do
+                        if string.lower(v.Name) == string.lower(statplayer) then
+                            StatsFrame.Visible = true
+                            local FindHum = v.Character:WaitForChild("Humanoid")
+                            local PlayerHealth = converttoletter(string.format("%.0f", FindHum.Health))
+                            local PlayerFist =
+                                converttoletter(
+                                string.format("%.0f", game.Players[v.Name].PrivateStats.FistStrength.Value)
+                            )
+                            local PlayerBody =
+                                converttoletter(
+                                string.format("%.0f", game.Players[v.Name].PrivateStats.BodyToughness.Value)
+                            )
+                            local PlayerSpeed =
+                                converttoletter(
+                                string.format("%.0f", game.Players[v.Name].PrivateStats.MovementSpeed.Value)
+                            )
+                            local PlayerJump =
+                                converttoletter(
+                                string.format("%.0f", game.Players[v.Name].PrivateStats.JumpForce.Value)
+                            )
+                            local PlayerPsychic =
+                                converttoletter(
+                                string.format("%.0f", game.Players[v.Name].PrivateStats.PsychicPower.Value)
+                            )
+                            ShowStats1.Text = "Health:\nFist:\nBody:\nSpeed:\nJump:\nPsychic:"
+                            ShowStats2.Text =
+                                PlayerHealth ..
+                                "\n" ..
+                                    PlayerFist ..
+                                        "\n" ..
+                                            PlayerBody ..
+                                                "\n" .. PlayerSpeed .. "\n" .. PlayerJump .. "\n" .. PlayerPsychic
+                            break
+                        end
+                    end
+                    wait(0.25)
+                end
+            )
+        end
+    end
+)
 
 --- ReJoin Server ---
 
-ReJoinServer.MouseButton1Click:connect(function()
-	local placeId = 2202352383
-	game:GetService("TeleportService"):Teleport(placeId)
-end)
+ReJoinServer.MouseButton1Click:connect(
+    function()
+        local placeId = 2202352383
+        game:GetService("TeleportService"):Teleport(placeId)
+    end
+)

@@ -1534,6 +1534,7 @@ farmbtsafety.MouseButton1Down:connect(
 spawn(
     function()
         while true do
+        wait()
             pcall(
                 function()
                     if farmbtsafetyactive then
@@ -1563,6 +1564,7 @@ local curlocation =
     coroutine.wrap(
     function()
         while true do
+         wait()
             LocationX = round(game.Players.LocalPlayer.Character.HumanoidRootPart.Position.x, 0)
             LocationY = round(game.Players.LocalPlayer.Character.HumanoidRootPart.Position.y, 0)
             LocationZ = round(game.Players.LocalPlayer.Character.HumanoidRootPart.Position.z, 0)
@@ -1869,6 +1871,7 @@ FarmPsychic.MouseButton1Click:Connect(
 spawn(
     function()
         while true do
+         wait()
             pcall(
                 function()
                     if farmfistactive and game.Players.LocalPlayer.Character:WaitForChild("Humanoid") then
@@ -1919,6 +1922,7 @@ spawn(
 spawn(
     function()
         while true do
+         wait()
             pcall(
                 function()
                     if farmbodyactive and game.Players.LocalPlayer.Character:WaitForChild("Humanoid") then
@@ -1942,6 +1946,7 @@ spawn(
 spawn(
     function()
         while true do
+         wait()
             pcall(
                 function()
                     if farmspeedactive and game.Players.LocalPlayer.Character:WaitForChild("Humanoid") then
@@ -1965,6 +1970,7 @@ spawn(
 spawn(
     function()
         while true do
+         wait()
             pcall(
                 function()
                     if farmjumpactive and game.Players.LocalPlayer.Character:WaitForChild("Humanoid") then
@@ -1988,6 +1994,7 @@ spawn(
 spawn(
     function()
         while true do
+         wait()
             pcall(
                 function()
                     if farmpsychicactive and game.Players.LocalPlayer.Character:WaitForChild("Humanoid") then
@@ -2063,6 +2070,7 @@ DeathReturn.MouseButton1Click:Connect(
 spawn(
     function()
         while true do
+         wait()
             pcall(
                 function()
                     if deathreturnactive then
@@ -2130,6 +2138,7 @@ AnnoyStart.MouseButton1Click:Connect(
 spawn(
     function()
         while true do
+         wait()
             pcall(
                 function()
                     wait(0.5)
@@ -2262,6 +2271,7 @@ PlayerInfoStatsClose.MouseButton1Click:connect(
 spawn(
     function()
         while true do
+         wait()
             pcall(
                 function()
                     if showtopplayersfistactive then
@@ -2335,6 +2345,7 @@ spawn(
 spawn(
     function()
         while true do
+         wait()
             pcall(
                 function()
                     if showtopplayersbodyactive then
@@ -2408,6 +2419,7 @@ spawn(
 spawn(
     function()
         while true do
+         wait()
             pcall(
                 function()
                     if showtopplayersspeedactive then
@@ -2481,6 +2493,7 @@ spawn(
 spawn(
     function()
         while true do
+         wait()
             pcall(
                 function()
                     if showtopplayersjumpactive then
@@ -2554,6 +2567,7 @@ spawn(
 spawn(
     function()
         while true do
+         wait()
             pcall(
                 function()
                     if showtopplayerspsychicactive then
@@ -2629,6 +2643,7 @@ spawn(
 spawn(
     function()
         while true do
+         wait()
             pcall(
                 function()
                     statplayer = tostring(PlayerName.Text)
